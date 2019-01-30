@@ -1,0 +1,10 @@
+#!/usr/bin/zsh
+
+xrdb -merge .Xresources
+xmodmap ~/.speedswapper
+feh --bg-fill /usr/share/backgrounds/default
+
+xscreensaver -no-splash &
+compton &
+
+exec xmonad

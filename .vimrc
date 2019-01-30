@@ -1,0 +1,30 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/syntastic'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'mattn/emmet-vim'
+Plug 'neovimhaskell/haskell-vim'
+
+call plug#end()
+
+filetype plugin indent on
+
+" Indent with 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+" Self explanatory
+set number relativenumber
+set splitbelow splitright
