@@ -23,6 +23,7 @@ main = do
     , ("M-<Return>", spawn term)
     , ("M-S-<Return>", windows W.swapMaster)
     , ("M-z", spawn "xscreensaver-command -lock")
+    , ("M-x", spawn "poweroff")
     , ("M-c", spawn "google-chrome")
     , ("M-v", spawn (term <+> " nvim"))
     , ("M-b", sendMessage ToggleStruts)
