@@ -22,9 +22,10 @@ alias pyhs='python -m http.server 8080'
 alias pym='python -m'
 alias tm=tmux
 alias ta='tmux attach || tmux'
-alias v='nvim'
+alias vim='nvim'
 
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME' # https://youtu.be/tBoLDpTWVOM
+# https://youtu.be/tBoLDpTWVOM
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
 if [ -d /mnt/c/Windows/ ]; then
   alias ci='cd /mnt/c/Users/bente/'

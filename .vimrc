@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-markdown'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'mattn/emmet-vim'
@@ -28,3 +29,12 @@ set expandtab
 " Self explanatory
 set number relativenumber
 set splitbelow splitright
+
+if exists('+colorcolumn')
+  hi ColorColumn ctermbg=lightgrey
+  set colorcolumn=80
+endif
+
+if exists(':tnoremap')
+  tnoremap <Esc> <C-\><C-n>
+endif
