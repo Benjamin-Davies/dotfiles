@@ -12,7 +12,8 @@ main = do
   spawnPipe "xmobar"
   xmonad $ docks $ defaultConfig
     { manageHook = manageDocks <+> manageHook defaultConfig
-    , layoutHook = avoidStruts . noBorders . spacingWithEdge 10 $ layoutHook defaultConfig
+    , layoutHook = avoidStruts . noBorders . smartSpacingWithEdge 10
+      $ layoutHook defaultConfig
     , modMask = mod4Mask
     } `additionalKeysP`
     [ ("M-q", kill)
@@ -24,6 +25,7 @@ main = do
     , ("M-z", spawn "xscreensaver-command -lock")
     , ("M-c", spawn "google-chrome")
     , ("M-v", spawn (term <+> " nvim"))
+    , ("M-b", sendMessage ToggleStruts)
     , ("M-m", spawn "minecraft-launcher")
     , ("M-<Space>", spawn "dmenu_run")
     , ("<Print>", spawn "scrot")
