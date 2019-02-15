@@ -8,6 +8,8 @@ import XMonad.Util.Run(spawnPipe)
 import System.IO
 
 main = do
+  spawnPipe "xmodmap ~/.speedswapper"
+  spawnPipe "feh --bg-fill /usr/share/backgrounds/default"
   spawnPipe "compton"
   spawnPipe "xmobar"
   xmonad $ docks $ defaultConfig
