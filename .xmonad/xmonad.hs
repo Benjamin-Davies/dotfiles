@@ -11,6 +11,7 @@ main = do
   spawnPipe "xmodmap ~/.speedswapper"
   spawnPipe "feh --bg-fill /usr/share/backgrounds/default"
   spawnPipe "compton"
+  spawnPipe "urxvtd"
   spawnPipe "xmobar"
   xmonad $ docks $ defaultConfig
     { manageHook = manageDocks <+> manageHook defaultConfig
@@ -27,7 +28,7 @@ main = do
     , ("M-z", spawn "xscreensaver-command -lock")
     , ("M-x", spawn "poweroff")
     , ("M-c", spawn "google-chrome")
-    , ("M-v", spawn (term <+> " nvim"))
+    , ("M-v", spawn (term <+> " -e nvim"))
     , ("M-b", sendMessage ToggleStruts)
     , ("M-m", spawn "minecraft-launcher")
     , ("M-<Space>", spawn "dmenu_run")
@@ -35,4 +36,4 @@ main = do
     , ("C-<Print>", spawn "sleep 0.2; scrot -s")
     ]
 
-term = "x-terminal-emulator" 
+term = "urxvtc" 
