@@ -1,0 +1,6 @@
+#include "source/xresources-solarized/Xresources.dark"
+
+URxvt.font: xft:Fira Code Retina:size=11
+URxvt.scrollBar: false
+URxvt.depth: 32
+URxvt.background: rgba:0000/2b00/3600/e600
