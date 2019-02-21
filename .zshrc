@@ -15,8 +15,9 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/snap/bin
 export EDITOR=$(which nvim)
+export PROMPT='%c > '
 
-alias ch='cd ~'
+alias cdn='cd ~/Documents/notes; cd'
 alias py=python
 alias pyhs='python -m http.server 8080'
 alias pym='python -m'
