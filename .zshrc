@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -15,7 +15,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/snap/bin
 export EDITOR=$(which nvim)
-export PROMPT='%c > '
+export ret_status="%(?:%{$fg_bold[green]%}->:%{$fg_bold[red]%}->)"
 
 alias cdn='cd ~/Documents/notes; cd'
 alias py=python
