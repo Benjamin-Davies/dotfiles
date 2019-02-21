@@ -15,6 +15,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/snap/bin
 export EDITOR=$(which nvim)
+# Replace unicode arrow at start of prompt with ->
 export ret_status="%(?:%{$fg_bold[green]%}->:%{$fg_bold[red]%}->)"
 
 alias cdn='cd ~/Documents/notes; cd'
