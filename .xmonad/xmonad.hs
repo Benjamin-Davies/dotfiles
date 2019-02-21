@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
+import XMonad.Layout.Grid
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.Run(spawnPipe)
@@ -11,12 +12,12 @@ main = do
   spawnPipe "xmodmap ~/.speedswapper"
   spawnPipe "feh --bg-fill /usr/share/backgrounds/default"
   spawnPipe "compton"
-  spawnPipe "urxvtd"
   spawnPipe "xmobar"
+  spawnPipe "google-chrome --no-startup-window"
   xmonad $ docks $ defaultConfig
     { manageHook = manageDocks <+> manageHook defaultConfig
     , layoutHook = avoidStruts . noBorders . smartSpacingWithEdge 10
-      $ layoutHook defaultConfig
+      $ layoutHook defaultConfig ||| Grid
     , modMask = mod4Mask
     } `additionalKeysP`
     [ ("M-q", kill)
@@ -36,4 +37,4 @@ main = do
     , ("C-<Print>", spawn "sleep 0.2; scrot -s")
     ]
 
-term = "urxvtc" 
+term = "konsole" 
