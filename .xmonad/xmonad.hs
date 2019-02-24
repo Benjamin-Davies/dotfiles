@@ -26,7 +26,7 @@ main = do
     , ("M-r", restart "xmonad" True)
     , ("M-<Return>", spawn term)
     , ("M-S-<Return>", windows W.swapMaster)
-    , ("M-z", spawn "xscreensaver-command -lock")
+    , ("M-z", spawn "i3lock -i /usr/share/backgrounds/default")
     , ("M-x", spawn "poweroff")
     , ("M-c", spawn "google-chrome")
     , ("M-v", spawn (term <+> " -e nvim"))
