@@ -33,6 +33,9 @@ main = do
     , ("M-b", sendMessage ToggleStruts)
     , ("M-m", spawn "minecraft-launcher")
     , ("M-<Space>", spawn "dmenu_run")
+    , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
+    , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
+    , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +2%")
     , ("<Print>", spawn "scrot")
     , ("C-<Print>", spawn "sleep 0.2; scrot -s")
     ]
