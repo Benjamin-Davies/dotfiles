@@ -16,6 +16,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'mattn/emmet-vim'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'calebsmith/vim-lambdify'
 
 call plug#end()
 
