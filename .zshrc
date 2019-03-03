@@ -19,7 +19,7 @@ export EDITOR=$(which nvim)
 export ret_status="%(?:%{$fg_bold[green]%}->:%{$fg_bold[red]%}->)"
 
 alias cdn='cd ~/Documents/notes; cd'
-alias pd='pandoc --variable=fontfamily:arev'
+alias pd='pandoc --variable=fontfamily:arev --variable=geometry:margin=2cm'
 alias py=python
 alias pyhs='python -m http.server 8080'
 alias pym='python -m'
