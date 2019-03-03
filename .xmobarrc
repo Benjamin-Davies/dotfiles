@@ -1,11 +1,10 @@
-Config { font = "xft:Fira Code:size=11"
-        , bgColor = "#002b36"
-        , fgColor = "#839496"
-        , position = TopW R 100
-        , commands = [ Run Com "uname" ["-s","-r"] "" 36000
-                      , Run Date "%a %_d %b %Y %H:%M:%S" "date" 10
-                      ]
-        , sepChar = "%"
-        , alignSep = "}{"
-        , template = " }{ %uname% | %date% "
-        }
+Config
+  { font = "xft:Fira Code:size=11"
+  , bgColor = "#002b36"
+  , fgColor = "#839496"
+  , position = TopW R 100
+  , commands = [ Run Date "%d %b %H:%M:%S" "date" 10 ]
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = " }{ %date% "
+  }
