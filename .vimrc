@@ -17,6 +17,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'mattn/emmet-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'calebsmith/vim-lambdify'
+Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -36,6 +37,4 @@ if exists('+colorcolumn')
   set colorcolumn=80
 endif
 
-if exists(':tnoremap')
-  tnoremap <Esc> <C-\><C-n>
-endif
+let g:auto_save = 1
