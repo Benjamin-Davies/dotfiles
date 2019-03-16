@@ -16,9 +16,8 @@ startup = do
   spawn "xmodmap ~/.speedswapper"
   spawn $ "feh --bg-fill " ++ background
   spawn "compton"
-  spawn "xmobar"
+  spawn "conky"
   spawn "google-chrome --no-startup-window"
-  spawn term
 
 conf = docks $ defaultConfig
     { manageHook = manageDocks <+> manageHook defaultConfig
@@ -32,7 +31,7 @@ keyBindings =
   -- Control and power
   [ ("M-q", kill)
   , ("M-r", restart "xmonad" True)
-  , ("M-F4", spawn "poweroff")
+  , ("M-<F4>", spawn "poweroff")
   , ("M-z", lockScreen)
   -- Layout
   , ("M-w", sendMessage NextLayout)
@@ -42,6 +41,7 @@ keyBindings =
   , ("M-e", spawn "pcmanfm")
   , ("M-<Return>", spawn term)
   , ("M-c", spawn "google-chrome")
+  , ("M-S-c", spawn "lxterminal -e cmatrix")
   , ("M-v", runInTerm "" "nvim")
   , ("M-m", spawn "minecraft-launcher")
   , ("M-<Space>", spawn "dmenu_run")
