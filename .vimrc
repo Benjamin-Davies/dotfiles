@@ -32,9 +32,4 @@ set expandtab
 set number relativenumber
 set splitbelow splitright
 
-if exists('+colorcolumn')
-  hi ColorColumn ctermbg=lightgrey
-  set colorcolumn=80
-endif
-
 let g:auto_save = 1
