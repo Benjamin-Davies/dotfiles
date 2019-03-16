@@ -43,7 +43,7 @@ function conky_clock()
     local center_y = 200
     local radius = 170
 
-    local font_size = radius / 5.5
+    local font_size = radius / 3.5
 
     local date_table = os.date('*t')
 
@@ -57,12 +57,9 @@ function conky_clock()
     local minutes_str = tostring(minutes)
     if string.len(minutes_str) == 1 then minutes_str = '0' .. minutes_str end
 
-    local seconds_str = tostring(seconds)
-    if string.len(seconds_str) == 1 then seconds_str = '0' .. seconds_str end
-
-    cairo_move_to(cr, center_x - font_size * 2.5, center_y + font_size / 2.5)
+    cairo_move_to(cr, center_x - font_size * 1.5, center_y + font_size / 2.5)
     cairo_set_font_size(cr, font_size)
-    cairo_show_text(cr, hours_str .. ':' .. minutes_str .. ':' .. seconds_str)
+    cairo_show_text(cr, hours_str .. ':' .. minutes_str)
     cairo_stroke(cr)
 
     if hours > 12 then hours = hours - 12 end
