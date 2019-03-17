@@ -44,6 +44,7 @@ keyBindings =
   , ("M-S-c", spawn "lxterminal -e cmatrix")
   , ("M-v", runInTerm "" "nvim")
   , ("M-m", spawn "minecraft-launcher")
+  , ("M-S-m", spawn "monodevelop")
   , ("M-<Space>", spawn "dmenu_run")
   -- Sound
   , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
