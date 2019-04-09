@@ -39,8 +39,9 @@ keyBindings =
   , ("M-S-<Return>", windows W.swapMaster)
   -- Applications
   , ("M-e", spawn "pcmanfm")
+  , ("M-y", openInBrowser "https://www.youtube.com/")
   , ("M-<Return>", spawn term)
-  , ("M-c", spawn "google-chrome")
+  , ("M-c", openInBrowser "https://benjamin-davies.github.io/newtab/")
   , ("M-S-c", spawn "lxterminal -e cmatrix")
   , ("M-v", runInTerm "" "nvim")
   , ("M-m", spawn "minecraft-launcher")
@@ -56,6 +57,7 @@ keyBindings =
   ]
 
 lockScreen = spawn $ "i3lock -i " ++ background
+openInBrowser site = spawn $ "google-chrome " ++ site
 
 background = "/usr/share/backgrounds/default"
 term = "konsole"
