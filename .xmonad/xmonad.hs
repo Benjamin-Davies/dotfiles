@@ -1,61 +1,62 @@
-import XMonad
-import XMonad.Hooks.ManageDocks
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Spacing
-import XMonad.Layout.Grid
-import qualified XMonad.StackSet as W
-import XMonad.Util.EZConfig
-import XMonad.Util.Run(runInTerm)
+import Control.Exception
+import qualified Data.Map as M
+import Graphics.X11.ExtraTypes.XF86
 import System.IO
+import XMonad
+import qualified XMonad.StackSet as W
 
 main = do
   startup
   xmonad conf
 
+ignore _ = return ()
+
 startup = do
   spawn "xmodmap ~/.speedswapper"
-  spawn $ "feh --bg-fill " ++ background
-  spawn "compton"
-  spawn "conky"
-  spawn "google-chrome --no-startup-window"
+--  spawn $ "feh --bg-fill " ++ background
+--  spawn "compton"
+--  spawn "conky"
+--  spawn "google-chrome --no-startup-window"
 
-conf = docks $ defaultConfig
-    { manageHook = manageDocks <+> manageHook defaultConfig
-    , layoutHook = avoidStruts . noBorders . smartSpacingWithEdge 10
-      $ layoutHook defaultConfig ||| Grid
-    , modMask = mod4Mask
+conf = defaultConfig
+    { modMask = mod4Mask
     , terminal = term
-    } `additionalKeysP` keyBindings
+    } `additionalKeys` keyBindings
 
 keyBindings =
   -- Control and power
-  [ ("M-q", kill)
-  , ("M-r", restart "xmonad" True)
-  , ("M-<F4>", spawn "poweroff")
-  , ("M-z", lockScreen)
+  [ ((cmdMask, xK_q),   kill)
+  , ((cmdMask, xK_r),   restart "xmonad" True)
+  , ((cmdMask, xK_F4),  spawn "poweroff")
+  , ((cmdMask, xK_z),   lockScreen)
   -- Layout
-  , ("M-w", sendMessage NextLayout)
-  , ("M-b", sendMessage ToggleStruts)
-  , ("M-S-<Return>", windows W.swapMaster)
+  , ((cmdMask,                xK_w),      sendMessage NextLayout)
+  , ((cmdMask .|. shiftMask,  xK_Return), windows W.swapMaster)
   -- Applications
-  , ("M-e", spawn "pcmanfm")
-  , ("M-<Return>", spawn term)
-  , ("M-c", spawn "google-chrome")
-  , ("M-S-c", spawn "lxterminal -e cmatrix")
-  , ("M-v", runInTerm "" "nvim")
-  , ("M-m", spawn "minecraft-launcher")
-  , ("M-S-m", spawn "monodevelop")
-  , ("M-<Space>", spawn "dmenu_run")
+  , ((cmdMask, xK_e),               spawn "pcmanfm")
+  , ((cmdMask, xK_Return),          spawn term)
+  , ((cmdMask, xK_c),               spawn "google-chrome")
+  , ((cmdMask .|. shiftMask, xK_c), spawn "lxterminal -e cmatrix")
+  , ((cmdMask, xK_v),               runInTerm "" "nvim")
+  , ((cmdMask, xK_m),               spawn "minecraft-launcher")
+  , ((cmdMask .|. shiftMask, xK_m), spawn "monodevelop")
+  , ((cmdMask, xK_space),           spawn "dmenu_run")
   -- Sound
-  , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-  , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
-  , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +2%")
+  , ((0, xF86XK_AudioMute),         spawn "pactl set-sink-mute 0 toggle")
+  , ((0, xF86XK_AudioLowerVolume),  spawn "pactl set-sink-volume 0 -2%")
+  , ((0, xF86XK_AudioRaiseVolume),  spawn "pactl set-sink-volume 0 +2%")
   -- Screenshot
-  , ("<Print>", spawn "scrot -z")
-  , ("C-<Print>", spawn "sleep 0.2; scrot -sz")
+  , ((0,            xK_Print), spawn "scrot -z")
+  , ((controlMask,  xK_Print), spawn "sleep 0.2; scrot -sz")
   ]
+
+cmdMask = mod4Mask
 
 lockScreen = spawn $ "i3lock -i " ++ background
 
 background = "/usr/share/backgrounds/default"
 term = "konsole"
+runInTerm options command = spawn $ term ++ " " ++ options ++ " -e " ++ command
+
+additionalKeys conf keyList =
+  conf { keys = \cnf -> M.union (M.fromList keyList) (keys conf cnf) }
