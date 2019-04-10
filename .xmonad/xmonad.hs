@@ -39,10 +39,11 @@ keyBindings =
   , ("M-S-<Return>", windows W.swapMaster)
   -- Applications
   , ("M-e", spawn "pcmanfm")
-  , ("M-y", openInBrowser "https://www.youtube.com/")
+  , ("M-y", openInBrowser 0 "https://www.youtube.com/")
   , ("M-<Return>", spawn term)
-  , ("M-c", openInBrowser "https://benjamin-davies.github.io/newtab/")
+  , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
   , ("M-S-c", spawn "lxterminal -e cmatrix")
+  , ("M-s", openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
   , ("M-v", runInTerm "" "nvim")
   , ("M-m", spawn "minecraft-launcher")
   , ("M-S-m", spawn "monodevelop")
@@ -57,7 +58,11 @@ keyBindings =
   ]
 
 lockScreen = spawn $ "i3lock -i " ++ background
-openInBrowser site = spawn $ "google-chrome --new-window " ++ site
+openInBrowser profile site = spawn $ "google-chrome --profile-directory='" ++ profileDir profile ++ "' --new-window " ++ site
+
+profileDir :: Integer -> [Char]
+profileDir 0        = "Default"
+profileDir profile  = "Profile " ++ show profile
 
 background = "/usr/share/backgrounds/default"
 term = "konsole"
