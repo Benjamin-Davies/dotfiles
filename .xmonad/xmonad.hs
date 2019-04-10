@@ -57,7 +57,7 @@ keyBindings =
   ]
 
 lockScreen = spawn $ "i3lock -i " ++ background
-openInBrowser site = spawn $ "google-chrome " ++ site
+openInBrowser site = spawn $ "google-chrome --new-window " ++ site
 
 background = "/usr/share/backgrounds/default"
 term = "konsole"
