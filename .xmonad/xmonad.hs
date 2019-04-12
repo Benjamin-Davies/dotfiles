@@ -45,6 +45,7 @@ keyBindings =
   , ("M-S-c", spawn "lxterminal -e cmatrix")
   , ("M-s", openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
   , ("M-v", runInTerm "" "nvim")
+  , ("M-S-v", spawn "code")
   , ("M-m", spawn "minecraft-launcher")
   , ("M-S-m", spawn "monodevelop")
   , ("M-<Space>", spawn "dmenu_run")
