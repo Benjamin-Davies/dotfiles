@@ -44,6 +44,7 @@ keyBindings =
   , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
   , ("M-S-c", spawn "lxterminal -e cmatrix")
   , ("M-s", openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
+  , ("M-S-s", spawn "spotify")
   , ("M-v", runInTerm "" "nvim")
   , ("M-S-v", spawn "code")
   , ("M-m", spawn "minecraft-launcher")
