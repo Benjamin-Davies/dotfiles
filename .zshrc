@@ -25,7 +25,7 @@ alias pyhs='python -m http.server 8080'
 alias pym='python -m'
 alias tm=tmux
 alias ta='tmux attach || tmux'
-alias vim='nvim'
+alias nv='nvim'
 
 # https://youtu.be/tBoLDpTWVOM
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
