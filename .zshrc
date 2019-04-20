@@ -9,6 +9,7 @@ plugins=(
   vi-mode
   git
   npm
+  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
