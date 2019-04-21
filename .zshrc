@@ -24,16 +24,8 @@ alias pd='pandoc --variable=fontfamily:arev --variable=geometry:margin=2cm'
 alias py=python
 alias pyhs='python -m http.server 8080'
 alias pym='python -m'
-alias tm=tmux
-alias ta='tmux attach || tmux'
+alias tm='tmux'
 alias nv='nvim'
 
 # https://youtu.be/tBoLDpTWVOM
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
-
-if [ -d /mnt/c/Windows/ ]; then
-  alias ci='cd /mnt/c/Users/bente/'
-  alias psh=/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
-  alias cmd=/mnt/c/Windows/System32/cmd.exe
-  alias adb=/mnt/c/Program Files/adb-fastboot/adb.exe
-fi
