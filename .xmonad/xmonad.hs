@@ -40,7 +40,7 @@ keyBindings =
   -- Applications
   , ("M-e", spawn "pcmanfm")
   , ("M-y", openInBrowser 0 "https://www.youtube.com/")
-  , ("M-\\", runInTerm "" "zsh -c 'source .oh-my-zsh/plugins/tmux/tmux.plugin.zsh; tmux && exit'")
+  , ("M-\\", runInTerm "" "zsh -c 'tmux attach || tmux'")
   , ("M-<Return>", spawn term)
   , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
   , ("M-S-c", spawn "lxterminal -e cmatrix")
