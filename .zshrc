@@ -14,7 +14,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/snap/bin
+export PATH="/snap/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export EDITOR=$(which nvim)
 # Replace unicode arrow at start of prompt with ->
 export ret_status="%(?:%{$fg_bold[green]%}->:%{$fg_bold[red]%}->)"
