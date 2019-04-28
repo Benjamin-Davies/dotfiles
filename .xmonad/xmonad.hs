@@ -40,6 +40,7 @@ keyBindings =
   -- Applications
   , ("M-e", spawn "pcmanfm")
   , ("M-y", openInBrowser 0 "https://www.youtube.com/")
+  , ("M-\\", runInTerm "" "zsh -c 'source .oh-my-zsh/plugins/tmux/tmux.plugin.zsh; tmux && exit'")
   , ("M-<Return>", spawn term)
   , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
   , ("M-S-c", spawn "lxterminal -e cmatrix")
@@ -52,7 +53,7 @@ keyBindings =
   , ("M-<Space>", spawn "dmenu_run")
   -- Sound
   , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-  , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
+  , ("<XF74AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
   , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +2%")
   -- Screenshot
   , ("<Print>", spawn "scrot -z")
