@@ -14,7 +14,14 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/snap/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export GEM_HOME=$HOME/.gem
+  export PATH="$HOME/.gem/bin:$PATH"
+else
+  export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+fi
+
+export PATH="/snap/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export EDITOR=$(which nvim)
 # Replace unicode arrow at start of prompt with ->
 export ret_status="%(?:%{$fg_bold[green]%}->:%{$fg_bold[red]%}->)"
