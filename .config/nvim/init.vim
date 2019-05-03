@@ -1,8 +1,7 @@
 source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/keymaps.vim
 
 filetype plugin indent on
-
-let g:mapleader=','
 
 " Indent with 2 spaces
 set tabstop=2
