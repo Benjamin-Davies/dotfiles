@@ -53,7 +53,7 @@ keyBindings =
   , ("M-<Space>", spawn "dmenu_run")
   -- Sound
   , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-  , ("<XF74AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
+  , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
   , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +2%")
   -- Screenshot
   , ("<Print>", spawn "scrot -z")
