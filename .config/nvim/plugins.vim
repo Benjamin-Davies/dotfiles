@@ -27,7 +27,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-markdown'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-"Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug '907th/vim-auto-save'
 
