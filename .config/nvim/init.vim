@@ -13,3 +13,5 @@ set number relativenumber
 set splitbelow splitright
 
 let g:auto_save = 1
+
+hi StatusLine ctermbg=Green ctermfg=Black
