@@ -43,7 +43,7 @@ keyBindings =
   , ("M-\\", runInTerm "" "zsh -c 'tmux attach || tmux'")
   , ("M-<Return>", spawn term)
   , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
-  , ("M-S-c", spawn "lxterminal -e cmatrix")
+  , ("M-S-c", runInTerm "" "cmatrix")
   , ("M-s", openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
   , ("M-S-s", spawn "spotify")
   , ("M-v", runInTerm "" "nvim")
@@ -68,4 +68,4 @@ profileDir 0        = "Default"
 profileDir profile  = "Profile " ++ show profile
 
 background = "/usr/share/backgrounds/default"
-term = "konsole"
+term = "st"
