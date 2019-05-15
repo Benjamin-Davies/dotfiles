@@ -27,6 +27,7 @@ export EDITOR=$(which nvim)
 export ret_status="%(?:%{$fg_bold[green]%}->:%{$fg_bold[red]%}->)"
 
 alias cdn='cd ~/Documents/notes; cd'
+alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
 alias pd='pandoc --variable=fontfamily:arev --variable=geometry:margin=2cm'
 alias py=python
 alias pyhs='python -m http.server 8080'
