@@ -1,0 +1,28 @@
+st.font:        -*-Fira Code-*-*-*-*-16-*-*-*-*-*-*-1
+st.bold_font:   0
+st.background:  #1B2B34
+st.foreground:  #D8DEE9
+st.cursorColor: #CDD3DE
+st.termname:    xterm-256color
+st.shell:       /bin/sh
+st.bellvolume:  100
+st.tabspaces:   8
+st.chscale:     1.0
+st.cwscale:     1.0
+
+st.color0:      #1B2B34
+st.color1:      #343D46
+st.color2:      #4F5B66
+st.color3:      #65737E
+st.color4:      #A7ADBA
+st.color5:      #C0C5CE
+st.color6:      #CDD3DE
+st.color7:      #D8DEE9
+st.color8:      #EC5f67
+st.color9:      #F99157
+st.color10:     #FAC863
+st.color11:     #99C794
+st.color12:     #5FB3B3
+st.color13:     #6699CC
+st.color14:     #C594C5
+st.color15:     #AB7967

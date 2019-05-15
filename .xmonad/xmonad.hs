@@ -2,7 +2,6 @@ import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
-import XMonad.Layout.Grid
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.Run(runInTerm)
@@ -16,13 +15,10 @@ startup = do
   spawn "xmodmap ~/.speedswapper"
   spawn $ "feh --bg-fill " ++ background
   spawn "compton"
-  spawn "conky"
   spawn "google-chrome --no-startup-window"
 
 conf = docks $ defaultConfig
-    { manageHook = manageDocks <+> manageHook defaultConfig
-    , layoutHook = avoidStruts . noBorders . smartSpacingWithEdge 10
-      $ layoutHook defaultConfig ||| Grid
+    { layoutHook = noBorders $ Tall 1 0.05 0.55 ||| Full
     , modMask = mod4Mask
     , terminal = term
     } `additionalKeysP` keyBindings
@@ -43,7 +39,7 @@ keyBindings =
   , ("M-\\", runInTerm "" "zsh -c 'tmux attach || tmux'")
   , ("M-<Return>", spawn term)
   , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
-  , ("M-S-c", runInTerm "" "cmatrix")
+  , ("M-S-c", spawn "cool-retro-term -e zsh -c cmatrix")
   , ("M-s", openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
   , ("M-S-s", spawn "spotify")
   , ("M-v", runInTerm "" "nvim")
