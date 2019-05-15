@@ -37,3 +37,5 @@ alias nv='nvim'
 
 # https://youtu.be/tBoLDpTWVOM
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+
+neofetch
