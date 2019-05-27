@@ -38,6 +38,7 @@ alias nv='nvim'
 # https://youtu.be/tBoLDpTWVOM
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
-if [ "$TERM" = "screen" ]; then
+if [ "$TMUX" ]; then
+  clear
   neofetch
 fi
