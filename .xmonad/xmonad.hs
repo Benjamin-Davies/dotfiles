@@ -13,7 +13,7 @@ main = do
 
 startup = do
   spawn "xmodmap ~/.speedswapper"
-  spawn $ "feh --bg-fill " ++ background
+  spawn $ "hsetroot -solid \"#1B2B34\""
   spawn "compton"
   spawn "google-chrome --no-startup-window"
 
@@ -34,7 +34,7 @@ keyBindings =
   , ("M-b", sendMessage ToggleStruts)
   , ("M-S-<Return>", windows W.swapMaster)
   -- Applications
-  , ("M-e", spawn "pcmanfm")
+  , ("M-e", spawn "nemo")
   , ("M-y", openInBrowser 0 "https://www.youtube.com/")
   , ("M-\\", runInTerm "" "zsh -c 'tmux attach || tmux'")
   , ("M-<Return>", spawn term)
