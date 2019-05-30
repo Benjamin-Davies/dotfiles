@@ -39,7 +39,7 @@ keyBindings =
   , ("M-\\", runInTerm "" "zsh -c 'tmux attach || tmux'")
   , ("M-<Return>", spawn term)
   , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
-  , ("M-S-c", spawn "cool-retro-term -e zsh -c cmatrix")
+  , ("M-S-c", runInTerm "" "cmatrix")
   , ("M-s", openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
   , ("M-S-s", spawn "spotify")
   , ("M-v", runInTerm "" "nvim")
