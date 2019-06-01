@@ -17,8 +17,8 @@ startup = do
   spawn "compton"
   spawn "google-chrome --no-startup-window"
 
-conf = docks $ defaultConfig
-    { layoutHook = noBorders $ Tall 1 0.05 0.55 ||| Full
+conf = defaultConfig
+    { layoutHook = Tall 1 0.05 0.55 ||| Full
     , modMask = mod4Mask
     , terminal = term
     } `additionalKeys` keyBindings
@@ -33,19 +33,19 @@ keyBindings =
   , ((cmdMask,                xK_w),      sendMessage NextLayout)
   , ((cmdMask .|. shiftMask,  xK_Return), windows W.swapMaster)
   -- Applications
-  , ("M-e", spawn "nemo")
-  , ("M-y", openInBrowser 0 "https://www.youtube.com/")
-  , ("M-\\", runInTerm "" "zsh -c 'tmux attach || tmux'")
-  , ("M-<Return>", spawn term)
-  , ("M-c", openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
-  , ("M-S-c", runInTerm "" "cmatrix")
-  , ("M-s", openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
-  , ("M-S-s", spawn "spotify")
-  , ("M-v", runInTerm "" "nvim")
-  , ("M-S-v", spawn "code")
-  , ("M-m", spawn "minecraft-launcher")
-  , ("M-S-m", spawn "monodevelop")
-  , ("M-<Space>", spawn "dmenu_run")
+  , ((cmdMask,                xK_e), spawn "nemo")
+  , ((cmdMask,                xK_y), openInBrowser 0 "https://www.youtube.com/")
+  , ((cmdMask,        xK_backslash), runInTerm "" "zsh -c 'tmux attach || tmux'")
+  , ((cmdMask,        xK_Return   ), spawn term)
+  , ((cmdMask,                xK_c), openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
+  , ((cmdMask .|. shiftMask,  xK_c), runInTerm "" "cmatrix")
+  , ((cmdMask,                xK_s), openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
+  , ((cmdMask .|. shiftMask,  xK_s), spawn "spotify")
+  , ((cmdMask,                xK_v), runInTerm "" "nvim")
+  , ((cmdMask .|. shiftMask,  xK_v), spawn "code")
+  , ((cmdMask,                xK_m), spawn "minecraft-launcher")
+  , ((cmdMask .|. shiftMask,  xK_m), spawn "monodevelop")
+  , ((cmdMask,        xK_space    ), spawn "dmenu_run")
   -- Sound
   , ((0, xF86XK_AudioMute),         spawn "pactl set-sink-mute 0 toggle")
   , ((0, xF86XK_AudioLowerVolume),  spawn "pactl set-sink-volume 0 -2%")
@@ -68,5 +68,6 @@ background = "/usr/share/backgrounds/default"
 term = "konsole"
 runInTerm options command = spawn $ term ++ " " ++ options ++ " -e " ++ command
 
+additionalKeys :: XConfig a -> [((KeyMask, KeySym), X ())] -> XConfig a
 additionalKeys conf keyList =
   conf { keys = \cnf -> M.union (M.fromList keyList) (keys conf cnf) }
