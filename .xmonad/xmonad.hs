@@ -18,7 +18,8 @@ startup = do
   spawn "google-chrome --no-startup-window"
 
 conf = defaultConfig
-    { layoutHook = Tall 1 0.05 0.55 ||| Full
+    { borderWidth = 0
+    , layoutHook = Tall 1 0.05 0.55 ||| Full
     , modMask = mod4Mask
     , terminal = term
     } `additionalKeys` keyBindings
@@ -65,7 +66,7 @@ profileDir 0        = "Default"
 profileDir profile  = "Profile " ++ show profile
 
 background = "/usr/share/backgrounds/default"
-term = "konsole"
+term = "st"
 runInTerm options command = spawn $ term ++ " " ++ options ++ " -e " ++ command
 
 additionalKeys :: XConfig a -> [((KeyMask, KeySym), X ())] -> XConfig a
