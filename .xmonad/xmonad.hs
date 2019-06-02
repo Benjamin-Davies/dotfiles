@@ -38,7 +38,7 @@ keyBindings =
   , ((cmdMask,                xK_y), openInBrowser 0 "https://www.youtube.com/")
   , ((cmdMask,        xK_backslash), runInTerm "" "zsh -c 'tmux attach || tmux'")
   , ((cmdMask,        xK_Return   ), spawn term)
-  , ((cmdMask,                xK_c), openInBrowser 0 "https://benjamin-davies.github.io/newtab/")
+  , ((cmdMask,                xK_c), openInBrowser 0 "chrome://newtab")
   , ((cmdMask .|. shiftMask,  xK_c), runInTerm "" "cmatrix")
   , ((cmdMask,                xK_s), openInBrowser 1 "https://moodle.mmc.school.nz/login/index.php")
   , ((cmdMask .|. shiftMask,  xK_s), spawn "spotify")
