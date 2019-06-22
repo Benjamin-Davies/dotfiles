@@ -5,8 +5,8 @@ st.foreground:  #D8DEE9
 st.cursorColor: #CDD3DE
 st.termname:    xterm-256color
 st.shell:       /bin/sh
-st.bellvolume:  100
-st.tabspaces:   8
+st.bellvolume:  0
+st.tabspaces:   4
 st.chscale:     1.0
 st.cwscale:     1.0
 
