@@ -14,4 +14,5 @@ set splitbelow splitright
 
 let g:auto_save = 1
 
-hi StatusLine ctermbg=Green ctermfg=Black
+hi StatusLine cterm=bold ctermfg=11
+hi StatusLineNC cterm=bold ctermfg=13
