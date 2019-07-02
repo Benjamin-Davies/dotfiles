@@ -26,10 +26,10 @@ conf = defaultConfig
 
 keyBindings =
   -- Control and power
-  [ ((cmdMask, xK_q),   kill)
-  , ((cmdMask, xK_r),   restart "xmonad" True)
-  , ((cmdMask, xK_F4),  spawn "poweroff")
-  , ((cmdMask, xK_z),   lockScreen)
+  [ ((cmdMask,                xK_q  ), kill)
+  , ((cmdMask,                xK_r  ), restart "xmonad" True)
+  , ((cmdMask,                xK_F4 ), spawn "poweroff")
+  , ((cmdMask .|. shiftMask,  xK_l  ), lockScreen)
   -- Layout
   , ((cmdMask,                xK_w),      sendMessage NextLayout)
   , ((cmdMask .|. shiftMask,  xK_Return), windows W.swapMaster)
