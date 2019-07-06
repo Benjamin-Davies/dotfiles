@@ -30,5 +30,6 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'mattn/emmet-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug '907th/vim-auto-save'
+Plug 'itchyny/vim-haskell-indent'
 
 call plug#end()
