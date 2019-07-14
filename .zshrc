@@ -1,5 +1,14 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+if [[ ! -f "$ZSH" ]]; then
+  git clone https://github.com/robbyrussell/oh-my-zsh $ZSH
+fi
+
+ZSH_AUTOSUGGESTIONS=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+if [[ ! -f "$ZSH_AUTOSUGGESTIONS" ]]; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS
+fi
+
 ZSH_THEME="robbyrussell"
 
 COMPLETION_WAITING_DOTS="true"
@@ -10,6 +19,7 @@ plugins=(
   git
   npm
   tmux
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
