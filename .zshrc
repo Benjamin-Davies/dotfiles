@@ -1,11 +1,11 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-if [[ ! -f "$ZSH" ]]; then
+if [[ ! -d "$ZSH" ]]; then
   git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh $ZSH
 fi
 
 ZSH_AUTOSUGGESTIONS=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-if [[ ! -f "$ZSH_AUTOSUGGESTIONS" ]]; then
+if [[ ! -d "$ZSH_AUTOSUGGESTIONS" ]]; then
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS
 fi
 
