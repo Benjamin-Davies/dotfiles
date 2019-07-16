@@ -9,7 +9,7 @@ if [[ ! -d "$ZSH_AUTOSUGGESTIONS" ]]; then
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS
 fi
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="cypher"
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -33,8 +33,6 @@ fi
 
 export PATH="/snap/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cabal/bin:$PATH"
 export EDITOR=$(which nvim)
-# Replace unicode arrow at start of prompt with ->
-export ret_status="%(?:%{$fg_bold[green]%}->:%{$fg_bold[red]%}->)"
 
 alias cdn='cd ~/Documents/notes; cd'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
