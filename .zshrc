@@ -24,6 +24,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Replace prompt character with >>
+# because it acts weird over ssh + tmux
+export PROMPT="$(echo $PROMPT | tr » ">>")"
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export GEM_HOME=$HOME/.gem
   export PATH="$HOME/.gem/bin:$PATH"
