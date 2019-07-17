@@ -50,6 +50,5 @@ if [ "$TMUX" ]; then
   clear
   neofetch
 else
-  tmux
-  exit
+  tmux && exit
 fi
