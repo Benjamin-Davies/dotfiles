@@ -49,4 +49,7 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 if [ "$TMUX" ]; then
   clear
   neofetch
+else
+  tmux
+  exit
 fi
