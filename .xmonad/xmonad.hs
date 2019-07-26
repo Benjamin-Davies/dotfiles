@@ -13,7 +13,10 @@ ignore _ = return ()
 
 startup = do
   spawn "xmodmap ~/.speedswapper"
-  spawn $ "hsetroot -solid \"#1B2B34\""
+  -- Solid background
+  --spawn $ "hsetroot -solid \"#1B2B34\""
+  -- Picture background
+  spawn $ "feh --bg-fill " ++ background
   spawn "compton"
   spawn "google-chrome --no-startup-window"
 
