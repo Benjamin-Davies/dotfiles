@@ -9,7 +9,7 @@ if [[ ! -d "$ZSH_AUTOSUGGESTIONS" ]]; then
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS
 fi
 
-ZSH_THEME="cypher"
+ZSH_THEME="theunraveler"
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -52,5 +52,12 @@ if [ "$TMUX" ]; then
 else
   # -u flag says to assume utf8 support
   # It was acting unusual over ssh
-  tmux -u && exit
+
+  # Try to connect to an existing session.
+  tmux attach
+
+  # If failed, just run tmux, fixing the TERM variable if requested.
+  if [[ $? -ne 0 ]]; then
+    tmux new-session -u
+  fi
 fi
