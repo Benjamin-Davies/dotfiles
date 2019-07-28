@@ -56,8 +56,11 @@ else
   # Try to connect to an existing session.
   tmux attach
 
-  # If failed, just run tmux, fixing the TERM variable if requested.
+  # If failed, just run tmux
   if [[ $? -ne 0 ]]; then
-    tmux new-session -u
+    tmux -u
   fi
+
+  # Close zsh
+  if [[ $? -ne 0 ]]; then exit; fi
 fi
