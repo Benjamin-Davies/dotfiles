@@ -18,6 +18,7 @@ startup = do
   -- Picture background
   spawn $ "feh --bg-fill " ++ background
   spawn "compton"
+  spawn "albert"
   spawn "google-chrome --no-startup-window"
 
 conf = defaultConfig
@@ -49,7 +50,7 @@ keyBindings =
   , ((cmdMask .|. shiftMask,  xK_v), spawn "code")
   , ((cmdMask,                xK_m), spawn "minecraft-launcher")
   , ((cmdMask .|. shiftMask,  xK_m), spawn "monodevelop")
-  , ((cmdMask,        xK_space    ), spawn "dmenu_run")
+  , ((cmdMask,        xK_space    ), spawn "albert show")
   -- Sound
   , ((0, xF86XK_AudioMute),         spawn "pactl set-sink-mute 0 toggle")
   , ((0, xF86XK_AudioLowerVolume),  spawn "pactl set-sink-volume 0 -2%")
