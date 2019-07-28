@@ -62,5 +62,5 @@ else
   fi
 
   # Close zsh
-  if [[ $? -ne 0 ]]; then exit; fi
+  if [[ $? -eq 0 ]]; then exit; fi
 fi
