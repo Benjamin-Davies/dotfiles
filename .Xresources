@@ -1,8 +1,5 @@
 st.font:        -*-Input Mono-*-*-*-*-16-*-*-*-*-*-*-1
 st.bold_font:   0
-st.background:  #1B2B34
-st.foreground:  #D8DEE9
-st.cursorColor: #CDD3DE
 st.termname:    xterm-256color
 st.shell:       /bin/sh
 st.bellvolume:  0
