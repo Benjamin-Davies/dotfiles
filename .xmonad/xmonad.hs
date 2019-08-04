@@ -1,8 +1,12 @@
+{-# LANGUAGE FlexibleInstances, MultiParamTypeClasses #-}
+
 import Control.Exception
 import qualified Data.Map as M
+import Graphics.X11 (Rectangle(..))
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
 import XMonad
+import XMonad.Layout
 import qualified XMonad.StackSet as W
 
 main = do
@@ -22,16 +26,17 @@ startup = do
   spawn "google-chrome --no-startup-window"
 
 conf = defaultConfig
-    { borderWidth = 0
-    , layoutHook = Tall 1 0.05 0.55 ||| Full
-    , modMask = mod4Mask
-    , terminal = term
-    } `additionalKeys` keyBindings
+  { borderWidth = 0
+  , layoutHook = (Gaps 20 10 $ Tall 1 0.05 0.55) ||| Full
+  , modMask = mod4Mask
+  , terminal = term
+  } `additionalKeys` keyBindings
 
 keyBindings =
   -- Control and power
   [ ((cmdMask,                xK_q  ), kill)
   , ((cmdMask,                xK_r  ), restart "xmonad" True)
+  , ((cmdMask .|. shiftMask,  xK_r  ), restart "xmonad" False)
   , ((cmdMask,                xK_F4 ), spawn "poweroff")
   , ((cmdMask .|. shiftMask,  xK_l  ), lockScreen)
   -- Layout
@@ -62,7 +67,7 @@ keyBindings =
 
 cmdMask = mod4Mask
 
-lockScreen = spawn $ "i3lock -i " ++ background
+lockScreen = spawn $ "i3lock -i " ++ lockBackground
 openInBrowser profile site = spawn $ "google-chrome --profile-directory='" ++ profileDir profile ++ "' --new-window " ++ site
 
 profileDir :: Integer -> [Char]
@@ -70,9 +75,27 @@ profileDir 0        = "Default"
 profileDir profile  = "Profile " ++ show profile
 
 background = "/usr/share/backgrounds/default"
+lockBackground = "/usr/share/backgrounds/lockscreen"
 term = "st"
 runInTerm options command = spawn $ term ++ " " ++ options ++ " -e " ++ command
 
+-- Minimal implementation of additionalKeys
 additionalKeys :: XConfig a -> [((KeyMask, KeySym), X ())] -> XConfig a
 additionalKeys conf keyList =
   conf { keys = \cnf -> M.union (M.fromList keyList) (keys conf cnf) }
+
+-- Minimal implementation of Gaps layout
+data Gaps l a = Gaps Int Int (l a) deriving (Read, Show)
+instance LayoutClass l a => LayoutClass (Gaps l) a where
+  runLayout (W.Workspace i (Gaps ig og l) ms) r = do
+    (rs, l') <- runLayout (W.Workspace i l ms) (withGap og r)
+    return ([(a, withGap ig r) | (a, r) <- rs],
+            maybe Nothing (Just . (Gaps ig og)) l')
+
+  handleMessage (Gaps ig og l) = fmap (fmap (Gaps ig og)) . handleMessage l
+  description (Gaps _ _ l) = "Gaps " ++ description l
+
+withGap :: Int -> Rectangle -> Rectangle
+withGap g (Rectangle x y w h) =
+  Rectangle (x + fromIntegral g) (y + fromIntegral g)
+    (w - 2 * fromIntegral g) (h - 2 * fromIntegral g)
