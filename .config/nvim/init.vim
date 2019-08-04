@@ -17,3 +17,5 @@ let g:auto_save = 1
 hi StatusLine cterm=bold ctermfg=11
 hi StatusLineNC cterm=bold ctermfg=13
 hi VertSplit cterm=NONE ctermfg=2
+
+au FileType html,markdown,text setl spell
