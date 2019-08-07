@@ -13,8 +13,6 @@ main = do
   startup
   xmonad conf
 
-ignore _ = return ()
-
 startup = do
   spawn "xmodmap ~/.speedswapper"
   -- Solid background
@@ -67,7 +65,7 @@ keyBindings =
 
 cmdMask = mod4Mask
 
-lockScreen = spawn $ "i3lock -i " ++ lockBackground
+lockScreen = spawn "dm-tool switch-to-greeter"
 openInBrowser profile site = spawn $ "google-chrome --profile-directory='" ++ profileDir profile ++ "' --new-window " ++ site
 
 profileDir :: Integer -> [Char]
@@ -75,7 +73,6 @@ profileDir 0        = "Default"
 profileDir profile  = "Profile " ++ show profile
 
 background = "/usr/share/backgrounds/default"
-lockBackground = "/usr/share/backgrounds/lockscreen"
 term = "st"
 runInTerm options command = spawn $ term ++ " " ++ options ++ " -e " ++ command
 
