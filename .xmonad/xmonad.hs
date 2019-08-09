@@ -20,7 +20,7 @@ startup = do
   -- Picture background
   spawn $ "feh --bg-fill " ++ background
   spawn "compton"
-  spawn "albert"
+  spawn "TMUX=TMUX albert"
   spawn "google-chrome --no-startup-window"
 
 conf = defaultConfig
