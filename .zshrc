@@ -47,7 +47,6 @@ alias nv='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
 if [ "$TMUX" ]; then
-  clear
   neofetch
 else
   # -u flag says to assume utf8 support
