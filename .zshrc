@@ -46,6 +46,10 @@ alias nv='nvim'
 # https://youtu.be/tBoLDpTWVOM
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
+if command -v xdg-open > /dev/null; then
+  alias open='xdg-open'
+fi
+
 if [ "$TMUX" ]; then
   neofetch
 else
