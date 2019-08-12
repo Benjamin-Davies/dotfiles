@@ -11,6 +11,7 @@ set expandtab
 " Self explanatory
 set number relativenumber
 set splitbelow splitright
+set wrap linebreak
 
 let g:auto_save = 1
 
