@@ -22,7 +22,7 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-sensible'
 "Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 "Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-markdown'
 Plug 'leafgarland/typescript-vim'
@@ -31,5 +31,6 @@ Plug 'mattn/emmet-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug '907th/vim-auto-save'
 Plug 'itchyny/vim-haskell-indent'
+Plug 'lervag/vimtex'
 
 call plug#end()
