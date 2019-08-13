@@ -22,6 +22,7 @@ startup = do
   spawn "compton"
   spawn "TMUX=TMUX albert"
   spawn "google-chrome --no-startup-window"
+  spawn "albert"
 
 conf = defaultConfig
   { borderWidth = 0
