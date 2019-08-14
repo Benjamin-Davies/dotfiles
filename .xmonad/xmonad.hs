@@ -22,6 +22,7 @@ startup = do
   spawn "compton"
   spawn "TMUX=TMUX albert"
   spawn "google-chrome --no-startup-window"
+  spawn "pgrep redshift || redshift -l -38:176 -t 6500:3500"
 
 conf = defaultConfig
   { borderWidth = 0
