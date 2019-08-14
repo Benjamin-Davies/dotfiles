@@ -36,7 +36,7 @@ export EDITOR=$(which nvim)
 
 alias cdn='cd ~/Documents/notes; cd'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
-alias pd='pandoc --variable=fontfamily:arev --variable=geometry:margin=2cm'
+alias please='sudo'
 alias py=python
 alias pyhs='python -m http.server 8080'
 alias pym='python -m'
