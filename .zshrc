@@ -37,6 +37,7 @@ export EDITOR=$(which nvim)
 alias cdn='cd ~/Documents/notes; cd'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
 alias pd='pandoc --variable=fontfamily:arev --variable=geometry:margin=2cm'
+alias pls=sudo
 alias py=python
 alias pyhs='python -m http.server 8080'
 alias pym='python -m'
@@ -49,6 +50,13 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
+
+# Function to bulk convert md to pdf
+pdpdf() {
+  for file in "$@"; do
+    pandoc "$file" -o "$file".pdf -V header-includes:'\renewcommand{\familydefault}{\sfdefault}'
+  done
+}
 
 if [ "$TMUX" ]; then
   neofetch
