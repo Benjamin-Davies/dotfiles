@@ -9,10 +9,12 @@ import XMonad
 import XMonad.Layout
 import qualified XMonad.StackSet as W
 
+main :: IO ()
 main = do
   startup
-  xmonad conf
+  catch (xmonad conf) shutdown
 
+startup :: IO ()
 startup = do
   spawn "xmodmap ~/.speedswapper"
   -- Solid background
@@ -22,6 +24,11 @@ startup = do
   spawn "compton"
   spawn "TMUX=TMUX albert"
   spawn "google-chrome --no-startup-window"
+  spawn "pgrep redshift || redshift -l -38:176 -t 6500:3500"
+
+shutdown :: SomeException -> IO ()
+shutdown _ = do
+  spawn "pkill redshift"
 
 conf = defaultConfig
   { borderWidth = 0
