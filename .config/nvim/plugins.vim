@@ -15,6 +15,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'junegunn/fzf.vim'
 "Plug 'ntpeters/vim-better-whitespace'
 "Plug 'rstacruz/vim-closer'
 "Plug 'easymotion/vim-easymotion'
