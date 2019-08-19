@@ -62,6 +62,7 @@ keyBindings =
   , ((cmdMask .|. shiftMask,  xK_m), spawn "monodevelop")
   , ((cmdMask,        xK_space    ), spawn "albert show")
   -- Sound
+  , ((0, xF86XK_AudioPlay),         spawn "mpc toggle")
   , ((0, xF86XK_AudioMute),         spawn "pactl set-sink-mute 0 toggle")
   , ((0, xF86XK_AudioLowerVolume),  spawn "pactl set-sink-volume 0 -2%")
   , ((0, xF86XK_AudioRaiseVolume),  spawn "pactl set-sink-volume 0 +2%")
