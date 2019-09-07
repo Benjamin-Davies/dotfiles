@@ -48,7 +48,8 @@ for i in groups:
 
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=2)
+    #layout.Stack(num_stacks=2)
+    layout.MonadTall(ratio=0.55, margin=10, single_margin=20)
 ]
 
 widget_defaults = dict(
