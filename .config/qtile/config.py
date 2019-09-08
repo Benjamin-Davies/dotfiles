@@ -6,13 +6,16 @@ from libqtile import layout, bar, widget, hook
 
 mod = "mod4"
 
-background = "/usr/share/backgrounds/cinnamon_default.jpg"
+background = "/usr/share/backgrounds/gnome/Wood.jpg"
 term = "st"
 
 @hook.subscribe.startup_once
-def autostart():
+def autostart_once():
     call("xrdb ~/.Xresources", shell=True)
     call("xmodmap ~/.speedswapper", shell=True)
+
+@hook.subscribe.startup
+def autostart():
     call("feh --bg-fill " + background, shell=True)
     Popen("compton", shell=True)
     Popen("TMUX=TMUX albert", shell=True)
@@ -28,11 +31,19 @@ keys = [
     Key([mod, "shift"], "space", lazy.spawncmd()),
 
     # Navigation
-    Key([mod], "k", lazy.layout.down()),
-    Key([mod], "j", lazy.layout.up()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_up()),
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "k", lazy.layout.up()),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod], "Tab", lazy.next_layout()),
+    Key([mod], "t", lazy.window.toggle_floating()),
+    Key([mod], "F11", lazy.window.toggle_fullscreen()),
+
+    # Media
+    Key([], "XF86AudioPlay", lazy.spawn("mpc toggle")),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -2%")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +2%")),
 
     # Applications
     Key([mod], "Return", lazy.spawn(term)),
@@ -48,8 +59,7 @@ for i in groups:
 
 layouts = [
     layout.Max(),
-    #layout.Stack(num_stacks=2)
-    layout.MonadTall(ratio=0.55, margin=10, single_margin=20)
+    layout.MonadTall(ratio=0.55, margin=24),
 ]
 
 widget_defaults = dict(
@@ -64,17 +74,22 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.GroupBox(),
+                widget.CurrentLayoutIcon(),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Systray(),
-                widget.Clock(format='%I:%M'),
+                widget.Mpd2(),
+                widget.Volume(),
+                widget.CheckUpdates(color_have_updates='#acc267'),
+                widget.Clock(format='%H:%M'),
             ],
-            32,
+            24,
+            background='#151515',
+            opacity=0.8,
         ),
     ),
 ]
 
-# Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
