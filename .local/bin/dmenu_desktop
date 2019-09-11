@@ -1,6 +1,7 @@
 #!/bin/env python3
 
 from glob import glob
+import re
 from sys import argv
 from subprocess import call, PIPE, Popen
 
@@ -28,7 +29,10 @@ result = result.decode('UTF-8')
 
 if result != '':
     app = app_table[result]
+    cmd = re.sub(r' %\w', '', app['Exec'])
+    print(cmd)
+
     if app['Terminal'] == 'true':
-        call(['tmux', 'new-window', app['Exec']])
+        call(['tmux', 'new-window', cmd])
     else:
-        call(app['Exec'], shell=True)
+        call(cmd, shell=True)
