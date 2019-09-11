@@ -31,7 +31,7 @@ else
   export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 fi
 
-export PATH="/snap/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=$(which nvim)
 
 alias cdn='cd ~/Documents/notes; cd'

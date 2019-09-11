@@ -13,16 +13,18 @@ term = 'st'
 
 @hook.subscribe.startup_once
 def autostart_once():
-    call('xrdb ~/.Xresources', shell=True)
     call('xmodmap ~/.speedswapper', shell=True)
     Popen('redshift -l -38:176 -t 6500:3500', shell=True)
-    Popen('TMUX=TMUX albert', shell=True)
     Popen('google-chrome-stable --no-startup-window', shell=True)
 
 @hook.subscribe.startup
 def autostart():
+    call('xrdb ~/.Xresources', shell=True)
     call('feh --bg-fill ' + background, shell=True)
     Popen('compton', shell=True)
+
+def lazyDmenu(cmd='dmenu_run'):
+    return lazy.spawn(cmd + ' -i')
 
 def lazyBrowser(url, profile=0):
     profile_dir = 'Default'
@@ -36,8 +38,7 @@ keys = [
     Key([mod], 'q', lazy.window.kill()),
     Key([mod, 'shift'], 'q', lazy.shutdown()),
     Key([mod], 'r', lazy.restart()),
-    Key([mod], 'space', lazy.spawn('albert toggle')),
-    Key([mod, 'shift'], 'space', lazy.spawncmd()),
+    Key([mod], 'F4', lazy.spawn('poweroff')),
 
     # Navigation
     Key([mod], 'j', lazy.layout.down()),
@@ -47,6 +48,10 @@ keys = [
     Key([mod], 'Tab', lazy.next_layout()),
     Key([mod], 't', lazy.window.toggle_floating()),
     Key([mod], 'F11', lazy.window.toggle_fullscreen()),
+
+    # DMenus
+    Key([mod, 'shift'], 'space', lazyDmenu()),
+    Key([mod], 'space', lazyDmenu('dmenu_desktop')),
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
