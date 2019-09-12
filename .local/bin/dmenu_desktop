@@ -27,7 +27,7 @@ proc = Popen(['dmenu'] + argv[1:], stdin=PIPE, stdout=PIPE)
 result, _ = proc.communicate(''.join(app_names).encode('UTF-8'))
 result = result.decode('UTF-8')
 
-if result != '':
+if result != '\n':
     app = app_table[result]
     cmd = re.sub(r' %\w', '', app['Exec'])
     print(cmd)

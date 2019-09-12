@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+from sys import argv
+from subprocess import call, PIPE, Popen
+
+apps = [('Compton', '~/.config/compton.conf'),
+        ('Hammerspoon', '~/.hammerspoon/init.lua'),
+        ('Neovim', '~/.config/nvim/init.vim'),
+        ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
+        ('Neovim Plugins', '~/.config/nvim/plugins.vim'),
+        ('Qtile', '~/.config/qtile/config.py'),
+        ('SSH', '~/.ssh/config'),
+        ('Tmux', '~/.tmux.conf'),
+        ('XMonad', '~/.config/xmonad/xmonad.hs'),
+        ('Xresources', '~/.Xresources'),
+        ('Zsh', '~/.zshrc'),
+        ]
+
+# ends with \n for interaction with dmenu command
+file_names = [ a + '\n' for a, _ in apps ]
+file_table = { a + '\n' : b for a, b in apps }
+
+proc = Popen(['dmenu'] + argv[1:], stdin=PIPE, stdout=PIPE)
+result, _ = proc.communicate(''.join(file_names).encode('UTF-8'))
+result = result.decode('UTF-8')
+
+if result != '\n':
+    fn = file_table[result]
+    call(['tmux', 'new-window', 'nvim ' + fn])

@@ -52,6 +52,7 @@ keys = [
     # DMenus
     Key([mod, 'shift'], 'space', lazyDmenu()),
     Key([mod], 'space', lazyDmenu('dmenu_desktop')),
+    Key([mod], 'comma', lazyDmenu('dmenu_config')),
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
