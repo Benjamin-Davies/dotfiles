@@ -24,7 +24,9 @@ def autostart():
     Popen('compton', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
-    return lazy.spawn(cmd + f' -f -b -i -fn "InputSans-Regular:pixelsize=16" -nb {colors.black} -nf {colors.white} -sb {colors.green} -sf {colors.black}')
+    return lazy.spawn(cmd + ' -f -b -i -fn "InputSans-Regular:pixelsize=16"'
+                          + f' -nb {colors.black} -nf {colors.white}'
+                          + f' -sb {colors.blue} -sf {colors.black}')
 
 def lazyBrowser(url, profile=0):
     profile_dir = 'Default'
@@ -91,15 +93,14 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.GroupBox(this_current_screen_border=colors.blue),
-                widget.Prompt(),
+                widget.GroupBox(this_current_screen_border=colors.blue,
+                                borderwidth=2,
+                                highlight_method='line',
+                                padding=0),
                 widget.WindowName(),
                 widget.Systray(),
                 widget.Volume(),
-                widget.CheckUpdates(colour_have_updates=colors.red,
-                                    colour_no_updates=colors.green,
-                                    ),
-                widget.Clock(format='%H:%M', foreground=colors.blue),
+                widget.Clock(format='%H:%M'),
             ],
             24,
             background=colors.black,
@@ -140,6 +141,7 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = True
 focus_on_window_activation = 'smart'
+widget_defaults={'font': 'InputSans', 'fontsize': 14, 'padding': 5}
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
