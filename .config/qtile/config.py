@@ -24,7 +24,7 @@ def autostart():
     Popen('compton', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
-    return lazy.spawn(cmd + ' -i')
+    return lazy.spawn(cmd + f' -f -b -i -fn "InputSans-Regular:pixelsize=16" -nb {colors.black} -nf {colors.white} -sb {colors.green} -sf {colors.black}')
 
 def lazyBrowser(url, profile=0):
     profile_dir = 'Default'
