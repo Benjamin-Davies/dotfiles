@@ -23,7 +23,7 @@ apps = [ parse_desktop_file(f) for f in files ]
 app_names = [ a['Name'] + '\n' for a in apps ]
 app_table = dict(zip(app_names, apps))
 
-proc = Popen(['dmenu'] + argv[1:], stdin=PIPE, stdout=PIPE)
+proc = Popen(['dmenu', '-p', 'Apps:'] + argv[1:], stdin=PIPE, stdout=PIPE)
 result, _ = proc.communicate(''.join(app_names).encode('UTF-8'))
 result = result.decode('UTF-8')
 
