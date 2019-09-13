@@ -105,7 +105,6 @@ screens = [
             ],
             24,
             background=colors.black,
-            opacity=0.8,
         ),
     ),
 ]
