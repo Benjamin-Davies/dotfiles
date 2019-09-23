@@ -9,7 +9,7 @@ local mash = {"ctrl", "cmd"}
 hotkey.bind(mash, "r", function() hs.reload() end)
 
 hotkey.bind(mash, "t", function() tiling.retile() end)
-hotkey.bind(mash, "w", function() tiling.cycleLayout() end)
+hotkey.bind(mash, "tab", function() tiling.cycleLayout() end)
 hotkey.bind(mash, "j", function() tiling.cycle(1) end)
 hotkey.bind(mash, "k", function() tiling.cycle(-1) end)
 hotkey.bind(mash, "space", function() tiling.promote() end)

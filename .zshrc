@@ -43,7 +43,7 @@ alias pym='python -m'
 alias tm='tmux'
 
 # https://youtu.be/tBoLDpTWVOM
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
