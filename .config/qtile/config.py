@@ -33,7 +33,7 @@ def lazyBrowser(url, profile=0):
     if profile > 0:
         profile_dir = f'Profile {profile}'
 
-    return lazy.spawn(f'google-chrome-stable --profile-directory={profile_dir} --new-window {url}')
+    return lazy.spawn(f'google-chrome-stable "--profile-directory={profile_dir}" --new-window {url}')
 
 keys = [
     # Control and power
