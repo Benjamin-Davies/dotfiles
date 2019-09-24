@@ -80,7 +80,12 @@ for i in groups:
     ])
 
 layouts = [
-    layout.MonadTall(ratio=0.55, margin=24),
+    layout.MonadTall(
+        ratio=0.55,
+        margin=24,
+        border_focus=colors.green,
+        border_normal=colors.black,
+        ),
 ]
 
 screens = []

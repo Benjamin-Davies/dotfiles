@@ -1,38 +1,42 @@
-[bar/main]
-width = 100%
-bottom = true
+[settings]
+screenchange-reload = true
 
-font-0 = Input Sans:pixelsize=12
+[bar/main]
+bottom = true
+height = 30
+padding = 7
+module-margin = 2
+line-size = 3
+
+font-0 = DejaVu Sans:pixelsize=12
 background = ${xrdb:color0}
 foreground = #fff
 
-padding = 2
-module-margin = 1
-line-size = 3
-
 modules-left = workspaces title
-modules-right = pulseaudio date
+modules-right = pulseaudio date time
 
 [module/workspaces]
 type = internal/xworkspaces
 label-active = " %name% "
 label-active-underline = ${xrdb:color2}
 label-occupied = " %name% "
-label-occupied-foreground = ${xrdb:color4}
 label-empty = " %name% "
 
 [module/title]
 type = internal/xwindow
-
-[module/date]
-type = internal/date
-label = %time%
-time = %H:%M
 
 [module/pulseaudio]
 type = internal/pulseaudio
 label-volume = Volume: %percentage%%
 label-muted = Muted
 
-[settings]
-screenchange-reload = true
+[module/date]
+type = internal/date
+label = %date%
+date = %a %d %b
+
+[module/time]
+type = internal/date
+label = %time%
+internal = 3
+time = %H:%M
