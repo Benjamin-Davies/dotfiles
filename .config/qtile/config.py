@@ -22,6 +22,7 @@ def autostart():
     call('xrdb ~/.Xresources', shell=True)
     call('feh --bg-fill ' + background, shell=True)
     Popen('compton', shell=True)
+    Popen('polybar main', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
     return lazy.spawn(cmd + ' -f -b -i -fn "InputSans-Regular:pixelsize=16"'
@@ -82,32 +83,7 @@ layouts = [
     layout.MonadTall(ratio=0.55, margin=24),
 ]
 
-widget_defaults = dict(
-    font='sans',
-    fontsize=12,
-    padding=3,
-)
-extension_defaults = widget_defaults.copy()
-
-screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.GroupBox(this_current_screen_border=colors.blue,
-                                borderwidth=2,
-                                highlight_method='line',
-                                padding=3,
-                                ),
-                widget.WindowName(),
-                widget.Systray(),
-                widget.Volume(),
-                widget.Clock(format='%H:%M'),
-            ],
-            24,
-            background=colors.black,
-        ),
-    ),
-]
+screens = []
 
 mouse = [
     Drag([mod], 'Button1', lazy.window.set_position_floating(),

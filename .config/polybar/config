@@ -1,0 +1,38 @@
+[bar/main]
+width = 100%
+bottom = true
+
+font-0 = Input Sans:pixelsize=12
+background = ${xrdb:color0}
+foreground = #fff
+
+padding = 2
+module-margin = 1
+line-size = 3
+
+modules-left = workspaces title
+modules-right = pulseaudio date
+
+[module/workspaces]
+type = internal/xworkspaces
+label-active = " %name% "
+label-active-underline = ${xrdb:color2}
+label-occupied = " %name% "
+label-occupied-foreground = ${xrdb:color4}
+label-empty = " %name% "
+
+[module/title]
+type = internal/xwindow
+
+[module/date]
+type = internal/date
+label = %time%
+time = %H:%M
+
+[module/pulseaudio]
+type = internal/pulseaudio
+label-volume = Volume: %percentage%%
+label-muted = Muted
+
+[settings]
+screenchange-reload = true
