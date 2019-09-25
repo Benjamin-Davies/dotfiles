@@ -32,7 +32,6 @@ else
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
-export EDITOR=$(which nvim)
 
 alias :e=nvim
 alias cdn='cd ~/Documents/notes; cd'
@@ -43,13 +42,22 @@ alias py=python
 alias pyhs='python -m http.server 8080'
 alias pym='python -m'
 alias tm='tmux'
-alias nv='nvim'
 
 # https://youtu.be/tBoLDpTWVOM
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
+fi
+
+if command -v nvim > /dev/null; then
+  export EDITOR=$(which nvim)
+  alias nv=nvim
+  alias :e=nvim
+else
+  export EDITOR=$(which vim)
+  alias nv=vim
+  alias :e=vim
 fi
 
 # Function to bulk convert md to pdf
