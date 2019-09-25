@@ -9,7 +9,7 @@ module-margin = 2
 line-size = 3
 
 font-0 = DejaVu Sans:pixelsize=12
-background = ${xrdb:color0}
+background = #0000
 foreground = #fff
 
 modules-left = workspaces title
