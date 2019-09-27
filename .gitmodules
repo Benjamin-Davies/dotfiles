@@ -1,3 +1,6 @@
 [submodule ".hammerspoon/hs/tiling"]
 	path = .hammerspoon/hs/tiling
 	url = https://github.com/dsanson/hs.tiling.git
+[submodule ".local/pfetch"]
+	path = .local/pfetch
+	url = https://github.com/dylanaraps/pfetch.git
