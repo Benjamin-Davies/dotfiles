@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
+from subprocess import PIPE, Popen, call
 from sys import argv
-from subprocess import call, PIPE, Popen
 
 apps = [('Compton', '~/.config/compton.conf'),
         ('Hammerspoon', '~/.hammerspoon/init.lua'),

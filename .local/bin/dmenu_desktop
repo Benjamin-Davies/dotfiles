@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-from glob import glob
 import re
+from glob import glob
+from subprocess import PIPE, Popen, call
 from sys import argv
-from subprocess import call, PIPE, Popen
+
 
 def parse_desktop_file(fn):
     table = {}
