@@ -46,6 +46,8 @@ alias tm='tmux'
 # https://youtu.be/tBoLDpTWVOM
 alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
+alias config-update='config pull && config submodule init && config submodule update'
+
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
