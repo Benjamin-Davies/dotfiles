@@ -11,6 +11,6 @@ cd $HOME
 git clone --bare $url
 
 alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
-config checkout -f master
+config checkout -f .
 config submodule init
 config submodule update
