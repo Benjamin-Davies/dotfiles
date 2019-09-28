@@ -68,7 +68,7 @@ pdpdf() {
 }
 
 if [ "$TMUX" ]; then
-  neofetch
+  ~/.local/pfetch/pfetch
 else
   # -u flag says to assume utf8 support
   # It was acting unusual over ssh
