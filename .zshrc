@@ -31,7 +31,7 @@ else
   export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
 
 alias cdn='cd ~/Documents/notes; cd'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
