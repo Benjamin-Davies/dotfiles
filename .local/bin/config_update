@@ -6,5 +6,5 @@ config pull
 config submodule init
 config submodule update
 
-echo "Close instance once PlugUpdate is finished" \
-  | nvim -c PlugUpdate -
+echo "Updating Vim plugins" \
+  | nvim -c PlugUpdate -c ':qa!' -
