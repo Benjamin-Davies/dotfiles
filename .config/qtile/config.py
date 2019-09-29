@@ -16,13 +16,13 @@ def autostart_once():
     call('xmodmap ~/.speedswapper', shell=True)
     Popen('redshift -l -38:176 -t 6500:3500', shell=True)
     Popen('google-chrome-stable --no-startup-window', shell=True)
+    Popen('polybar main', shell=True)
 
 @hook.subscribe.startup
 def autostart():
     call('xrdb ~/.Xresources', shell=True)
     call('feh --bg-fill ' + background, shell=True)
     Popen('compton', shell=True)
-    Popen('polybar main', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
     return lazy.spawn(cmd + ' -f -b -i -fn "InputSans-Regular:pixelsize=16"'
@@ -65,6 +65,7 @@ keys = [
 
     # Applications
     Key([mod], 'Return', lazy.spawn(term)),
+    Key([mod, 'shift'], 'Return', lazy.spawn(term + ' -e tmux new')),
     Key([mod], 'e', lazy.spawn('nemo')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
