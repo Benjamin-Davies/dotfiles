@@ -10,3 +10,6 @@
 [submodule ".local/zsh-autosuggestions"]
 	path = .local/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule ".local/vim-plug"]
+	path = .local/vim-plug
+	url = https://github.com/junegunn/vim-plug.git
