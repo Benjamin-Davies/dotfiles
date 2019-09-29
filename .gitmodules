@@ -4,3 +4,9 @@
 [submodule ".local/pfetch"]
 	path = .local/pfetch
 	url = https://github.com/dylanaraps/pfetch.git
+[submodule ".local/oh-my-zsh"]
+	path = .local/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule ".local/zsh-autosuggestions"]
+	path = .local/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git

@@ -1,13 +1,4 @@
-export ZSH="$HOME/.oh-my-zsh"
-
-if [[ ! -d "$ZSH" ]]; then
-  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh $ZSH
-fi
-
-ZSH_AUTOSUGGESTIONS=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-if [[ ! -d "$ZSH_AUTOSUGGESTIONS" ]]; then
-  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS
-fi
+export ZSH="$HOME/.local/oh-my-zsh"
 
 ZSH_THEME="theunraveler"
 
