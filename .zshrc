@@ -1,5 +1,5 @@
-export ZSH="$HOME/.local/oh-my-zsh"
-
+ZSH="$HOME/.local/oh-my-zsh"
+ZSH_CUSTOM="$HOME/.local/zsh-custom"
 ZSH_THEME="theunraveler"
 
 COMPLETION_WAITING_DOTS="true"
