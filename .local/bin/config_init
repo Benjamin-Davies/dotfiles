@@ -12,6 +12,5 @@ git clone --bare $url
 
 alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 config checkout -f master
-config submodule init
-config submodule update
+$HOME/.local/bin/config_update
 zsh
