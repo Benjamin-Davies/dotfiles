@@ -30,7 +30,7 @@ tiling.set('layouts', {
   'fullscreen', 'main-vertical-custom'
 })
 
-hotkey.bind(mash, "return", function() application.launchOrFocus("Terminal") end)
+hotkey.bind(mash, "return", function() application.launchOrFocus("Alacritty") end)
 hotkey.bind(mash, "c", function() os.execute("open -n -a Google\\ Chrome --args --profile-directory=Default") end)
 hotkey.bind(mash, "s", function() os.execute("open -n -a Google\\ Chrome --args --profile-directory=Profile\\ 1 https://moodle.mmc.school.nz/login/index.php") end)
 hotkey.bind(mash, "y", function() os.execute("open -n -a Google\\ Chrome https://youtube.com/ --args --profile-directory=Profile\\ 1") end)
