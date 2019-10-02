@@ -4,6 +4,7 @@ alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
 config pull
 config submodule update --init --remote --depth=1
+config status
 
 echo "Updating Vim plugins" \
   | nvim -c PlugUpdate -c ':qa!' -
