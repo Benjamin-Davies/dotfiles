@@ -13,3 +13,6 @@
 [submodule ".local/vim-plug"]
 	path = .local/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule ".local/zsh-custom/plugins/zsh-syntax-highlighting"]
+	path = .local/zsh-custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
