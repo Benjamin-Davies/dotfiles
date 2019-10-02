@@ -6,10 +6,10 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
-  vi-mode
   git
   npm
   tmux
+  vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
