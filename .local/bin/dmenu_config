@@ -27,4 +27,4 @@ result = result.decode('UTF-8')
 
 if result != '\n':
     fn = file_table[result]
-    call(['tmux', 'new-window', 'nvim ' + fn])
+    call(['tmux_run', '-t', 'st', 'nvim ' + fn])
