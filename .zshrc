@@ -1,16 +1,17 @@
-export ZSH="$HOME/.local/oh-my-zsh"
-
+ZSH="$HOME/.local/oh-my-zsh"
+ZSH_CUSTOM="$HOME/.local/zsh-custom"
 ZSH_THEME="theunraveler"
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
-  vi-mode
   git
   npm
   tmux
+  vi-mode
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
