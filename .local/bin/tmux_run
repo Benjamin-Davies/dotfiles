@@ -29,6 +29,9 @@ for arg in argv[1:]:
 if command == None:
   command = 'echo No command specified; read'
 
+if call(['pgrep', '^tmux: server$']) != 0:
+  call(['tmux', 'new-session', '-d'])
+
 call(['tmux', 'new-window', command])
 
 if terminal != None and call(['pgrep', f'^{terminal}']) != 0:
