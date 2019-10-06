@@ -40,8 +40,10 @@ keys = [
     # Control and power
     Key([mod], 'q', lazy.window.kill()),
     Key([mod, 'shift'], 'q', lazy.shutdown()),
+    Key([mod, 'control'], 'q', lazy.spawn('dm-tool lock')),
     Key([mod], 'r', lazy.restart()),
-    Key([mod], 'F4', lazy.spawn('poweroff')),
+    Key([mod], 'F4', lazy.spawn('sh -c "killall qtile && poweroff"')),
+    Key([mod, 'shift'], 'F4', lazy.spawn('sh -c "killall qtile && reboot"')),
 
     # Navigation
     Key([mod], 'j', lazy.layout.down()),
