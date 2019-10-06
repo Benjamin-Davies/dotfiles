@@ -36,6 +36,9 @@ def lazyBrowser(url, profile=0):
 
     return lazy.spawn(f'google-chrome-stable "--profile-directory={profile_dir}" --new-window {url}')
 
+def lazyTerm(command):
+    return lazy.spawn(f'tmux_run -t {term} {command}')
+
 keys = [
     # Control and power
     Key([mod], 'q', lazy.window.kill()),
@@ -68,7 +71,7 @@ keys = [
     # Applications
     Key([mod], 'Return', lazy.spawn(term)),
     Key([mod, 'shift'], 'Return', lazy.spawn(term + ' -e tmux new')),
-    Key([mod], 'e', lazy.spawn('nemo')),
+    Key([mod], 'e', lazyTerm('vifm')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
