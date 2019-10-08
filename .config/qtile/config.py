@@ -9,7 +9,7 @@ import colors
 mod = 'mod4'
 
 background = '/usr/share/backgrounds/gnome/Wood.jpg'
-term = 'st'
+term = 'alacritty'
 
 @hook.subscribe.startup_once
 def autostart_once():
