@@ -64,9 +64,9 @@ keys = [
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
-    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 0 toggle')),
-    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 0 -2%')),
-    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 0 +2%')),
+    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 1 toggle')),
+    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 1 -2%')),
+    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 1 +2%')),
 
     # Applications
     Key([mod], 'Return', lazy.spawn(term)),
