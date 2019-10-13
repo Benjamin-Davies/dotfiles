@@ -27,8 +27,12 @@
 			   (invert-face 'mode-line)
 			   (run-with-timer 0.1 nil #'invert-face 'mode-line)))
 
-(add-to-list 'default-frame-alist
-	     '(font . "Input Mono-11"))
+(if (eq system-type 'darwin)
+    (add-to-list 'default-frame-alist
+		 '(font . "Input Mono-15"))
+  (add-to-list 'default-frame-alist
+	       '(font . "Input Mono-11")))
+(load-theme 'wombat)
 
 (evil-mode)
 
