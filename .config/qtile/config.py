@@ -36,9 +36,6 @@ def lazyBrowser(url, profile=0):
 
     return lazy.spawn(f'google-chrome-stable "--profile-directory={profile_dir}" --new-window {url}')
 
-def lazyTerm(command):
-    return lazy.spawn(f'tmux_run -t {term} {command}')
-
 keys = [
     # Control and power
     Key([mod], 'q', lazy.window.kill()),
@@ -64,14 +61,14 @@ keys = [
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
-    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 0 toggle')),
-    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 0 -2%')),
-    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 0 +2%')),
+    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 1 toggle')),
+    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 1 -2%')),
+    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 1 +2%')),
 
     # Applications
     Key([mod], 'Return', lazy.spawn(term)),
     Key([mod, 'shift'], 'Return', lazy.spawn(term + ' -e tmux new')),
-    Key([mod], 'e', lazyTerm('vifm')),
+    Key([mod], 'e', lazy.spawn('emacsclient -c .')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
