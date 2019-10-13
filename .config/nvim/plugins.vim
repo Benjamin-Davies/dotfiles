@@ -7,7 +7,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-sensible'
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 "Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-markdown'

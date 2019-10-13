@@ -4,6 +4,7 @@ from subprocess import PIPE, Popen, call
 from sys import argv
 
 apps = [('Compton', '~/.config/compton.conf'),
+        ('Emacs', '~/.emacs.d/init.el')
         ('Hammerspoon', '~/.hammerspoon/init.lua'),
         ('Neovim', '~/.config/nvim/init.vim'),
         ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
@@ -27,4 +28,4 @@ result = result.decode('UTF-8')
 
 if result != '\n':
     fn = file_table[result]
-    call(['tmux_run', '-t', 'alacritty', 'nvim ' + fn])
+    call(['emacsclient', '-c', fn])
