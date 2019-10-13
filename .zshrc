@@ -42,8 +42,8 @@ if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
 
-if command -v nvim > /dev/null; then
-  export EDITOR=$(which nvim)
+if command -v emacsclient > /dev/null; then
+  export EDITOR=$(which emacsclient)
   alias nv=nvim
   alias :e=nvim
 else
