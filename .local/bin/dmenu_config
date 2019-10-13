@@ -4,7 +4,7 @@ from subprocess import PIPE, Popen, call
 from sys import argv
 
 apps = [('Compton', '~/.config/compton.conf'),
-        ('Emacs', '~/.emacs.d/init.el')
+        ('Emacs', '~/.emacs.d/init.el'),
         ('Hammerspoon', '~/.hammerspoon/init.lua'),
         ('Neovim', '~/.config/nvim/init.vim'),
         ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
