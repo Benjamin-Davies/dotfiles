@@ -13,8 +13,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode evil-magit magit linum-relative auctex
-    evil))))
+    (dired-hide-dotfiles markdown-mode evil-magit magit linum-relative auctex evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -29,6 +28,7 @@
 (package-install 'magit)
 (package-install 'evil-magit)
 (package-install 'markdown-mode)
+(package-install 'dired-hide-dotfiles)
 
 ;;; Set cursor and visual-bell
 (set-default 'cursor-type 'hbar)
@@ -63,6 +63,10 @@
 (linum-mode)
 (linum-relative-global-mode)
 (setq linum-relative-current-symbol "")
+
+;;; Simplify dired
+(dired-hide-dotfiles-mode)
+(dired-hide-details-mode)
 
 ;;; Modeline modes
 (column-number-mode)

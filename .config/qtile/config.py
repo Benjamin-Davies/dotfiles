@@ -68,7 +68,7 @@ keys = [
     # Applications
     Key([mod], 'Return', lazy.spawn(term)),
     Key([mod, 'shift'], 'Return', lazy.spawn(term + ' -e tmux new')),
-    Key([mod], 'e', lazy.spawn('emacsclient -c .')),
+    Key([mod], 'e', lazy.spawn('emacsclient -c')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
