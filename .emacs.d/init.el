@@ -23,12 +23,18 @@
 
 ;;; Install packages
 (package-install 'evil)
-(package-install 'auctex)
 (package-install 'linum-relative)
+(package-install 'dired-hide-dotfiles)
+
 (package-install 'magit)
 (package-install 'evil-magit)
+
+(package-install 'typescript-mode)
 (package-install 'markdown-mode)
-(package-install 'dired-hide-dotfiles)
+(package-install 'auctex)
+(package-install 'auto-complete-auctex)
+
+(package-install 'lsp-mode)
 
 ;;; Set cursor and visual-bell
 (set-default 'cursor-type 'hbar)
