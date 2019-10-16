@@ -25,7 +25,6 @@ fi
 
 export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
 
-alias :e=nvim
 alias cdn='cd ~/Documents/notes; cd'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
 alias pd='pandoc --variable=fontfamily:arev --variable=geometry:margin=2cm'
@@ -42,14 +41,18 @@ if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
 
-if command -v emacsclient > /dev/null; then
-  export EDITOR=$(which emacsclient)
-  alias nv=nvim
+if command -v nvim > /dev/null; then
+  export EDITOR=$(which nvim)
   alias :e=nvim
 else
   export EDITOR=$(which vim)
-  alias nv=vim
   alias :e=vim
+fi
+
+if command -v emacsclient > /dev/null; then
+  export ALTERNATE_EDITOR=$EDITOR
+  export EDITOR=$(which emacsclient)
+  alias :e=emacsclient
 fi
 
 # Function to bulk convert md to pdf
@@ -59,7 +62,7 @@ pdpdf() {
   done
 }
 
-if [ "$TMUX" ]; then
+if [ "$TMUX" -o "$EMACS" ]; then
   ~/.local/pfetch/pfetch
 else
   # -u flag says to assume utf8 support
