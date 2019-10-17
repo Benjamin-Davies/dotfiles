@@ -2,9 +2,14 @@
 set -e
 alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
+config stash push
 config pull
 config submodule update --init --remote --depth=1
+config commit -a -m "Update submodules"
+config push \
+  || echo "Unable to push module updates"
 config status
+config stash pop
 
 echo "Updating Vim plugins" \
   | nvim -c PlugUpdate -c ':qa!' -
