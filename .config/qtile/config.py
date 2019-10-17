@@ -9,7 +9,7 @@ import colors
 mod = 'mod4'
 
 background = '/usr/share/backgrounds/gnome/Wood.jpg'
-term = 'st'
+term = 'alacritty'
 
 @hook.subscribe.startup_once
 def autostart_once():
@@ -40,8 +40,10 @@ keys = [
     # Control and power
     Key([mod], 'q', lazy.window.kill()),
     Key([mod, 'shift'], 'q', lazy.shutdown()),
+    Key([mod, 'control'], 'q', lazy.spawn('dm-tool lock')),
     Key([mod], 'r', lazy.restart()),
-    Key([mod], 'F4', lazy.spawn('poweroff')),
+    Key([mod], 'F4', lazy.spawn('sh -c "killall qtile && poweroff"')),
+    Key([mod, 'shift'], 'F4', lazy.spawn('sh -c "killall qtile && reboot"')),
 
     # Navigation
     Key([mod], 'j', lazy.layout.down()),
@@ -59,14 +61,14 @@ keys = [
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
-    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 0 toggle')),
-    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 0 -2%')),
-    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 0 +2%')),
+    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 1 toggle')),
+    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 1 -2%')),
+    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 1 +2%')),
 
     # Applications
     Key([mod], 'Return', lazy.spawn(term)),
     Key([mod, 'shift'], 'Return', lazy.spawn(term + ' -e tmux new')),
-    Key([mod], 'e', lazy.spawn('nemo')),
+    Key([mod], 'e', lazy.spawn('emacsclient -c')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),

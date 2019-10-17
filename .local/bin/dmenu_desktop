@@ -34,6 +34,6 @@ if result != '\n':
     print(cmd)
 
     if app['Terminal'] == 'true':
-        call(['tmux', 'new-window', cmd])
+        call(['tmux_run', '-t', 'alacritty', cmd])
     else:
         call(cmd, shell=True)
