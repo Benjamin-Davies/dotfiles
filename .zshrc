@@ -49,12 +49,6 @@ else
   alias :e=vim
 fi
 
-if command -v emacsclient > /dev/null; then
-  export ALTERNATE_EDITOR=$EDITOR
-  export EDITOR=$(which emacsclient)
-  alias :e=emacsclient
-fi
-
 # Function to bulk convert md to pdf
 pdpdf() {
   for file in "$@"; do

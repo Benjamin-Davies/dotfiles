@@ -28,4 +28,4 @@ result = result.decode('UTF-8')
 
 if result != '\n':
     fn = file_table[result]
-    call(['emacsclient', '-c', fn])
+    call(['tmux_run', '-t', 'alacritty', fn])
