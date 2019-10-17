@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd .config/alacritty
+ln -sf alacritty.$(uname -s).yml alacritty.yml
