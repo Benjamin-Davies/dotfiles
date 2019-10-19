@@ -7,8 +7,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
   git
-  npm
-  tmux
   vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting
