@@ -79,3 +79,5 @@ bindsym $mod+semicolon mode "resize"
 default_border none
 
 exec xmodmap ~/.speedswapper
+
+exec lxterminal -e /opt/evolocity-js/run
