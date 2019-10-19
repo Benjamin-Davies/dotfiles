@@ -7,8 +7,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
   git
-  npm
-  tmux
   vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -25,17 +23,10 @@ fi
 
 export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
 
-alias cdn='cd ~/Documents/notes; cd'
-alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
-alias pd='pandoc --variable=fontfamily:arev --variable=geometry:margin=2cm'
-alias pls=sudo
-alias py=python
-alias pyhs='python -m http.server 8080'
-alias pym='python -m'
-alias tm='tmux'
-
 # https://youtu.be/tBoLDpTWVOM
 alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
+alias :e=$EDITOR
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
@@ -43,10 +34,8 @@ fi
 
 if command -v nvim > /dev/null; then
   export EDITOR=$(which nvim)
-  alias :e=nvim
 else
   export EDITOR=$(which vim)
-  alias :e=vim
 fi
 
 # Function to bulk convert md to pdf
