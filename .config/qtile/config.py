@@ -8,7 +8,7 @@ import colors
 
 mod = 'mod4'
 
-background = '/usr/share/backgrounds/gnome/Wood.jpg'
+background_dir = '/usr/share/backgrounds/nz-scenery/'
 term = 'alacritty'
 
 @hook.subscribe.startup_once
@@ -21,7 +21,7 @@ def autostart_once():
 @hook.subscribe.startup
 def autostart():
     call('xrdb ~/.Xresources', shell=True)
-    call('feh --bg-fill ' + background, shell=True)
+    call('feh --random --bg-fill ' + background_dir, shell=True)
     Popen('compton', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
@@ -68,7 +68,7 @@ keys = [
     # Applications
     Key([mod], 'Return', lazy.spawn(term)),
     Key([mod, 'shift'], 'Return', lazy.spawn(term + ' -e tmux new')),
-    Key([mod], 'e', lazy.spawn('emacsclient -c')),
+    Key([mod], 'e', lazy.spawn('nemo')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
@@ -85,7 +85,7 @@ for i in groups:
 layouts = [
     layout.MonadTall(
         ratio=0.55,
-        margin=24,
+        margin=32,
         border_focus=colors.green,
         border_normal=colors.black,
         ),
