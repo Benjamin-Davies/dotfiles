@@ -8,6 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'dkarter/bullets.vim'
 
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
