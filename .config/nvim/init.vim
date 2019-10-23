@@ -13,7 +13,7 @@ set expandtab
 set number relativenumber
 set splitbelow splitright
 set wrap linebreak breakindent
-set hidden 
+set hidden
 set nobackup nowritebackup
 set cmdheight=2
 set updatetime=300
@@ -26,6 +26,6 @@ set signcolumn=yes
 hi StatusLine cterm=bold ctermfg=11
 hi StatusLineNC cterm=bold ctermfg=13
 hi VertSplit cterm=NONE ctermfg=2
-hi SignColumn ctermbg=0
+hi SignColumn ctermbg=NONE
 
 au FileType html,markdown,text setl spell
