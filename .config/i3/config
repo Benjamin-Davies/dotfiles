@@ -80,4 +80,4 @@ default_border none
 
 exec xmodmap ~/.speedswapper
 
-exec lxterminal -e /opt/evolocity-js/run
+exec polybar main
