@@ -1,6 +1,9 @@
 " jk == Esc
 inoremap jk <ESC>
 
+" \d to insert date header (used in notes)
+nmap <Leader>d "=strftime('### %d/%m')<CR>P
+
 " fzf
 " Shamelessly copied from https://medium.com/@jesseleite/its-dangerous-to-vim-alone-take-fzf-283bcff74d21
 nmap <Leader>f :GFiles<CR>
