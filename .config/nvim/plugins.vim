@@ -4,11 +4,16 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 
 " Because I'm lazy
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dkarter/bullets.vim'
+
+Plug 'junegunn/fzf.vim'
+let uname = substitute(system('uname'), '\n', '', '')
+if uname == 'Darwin'
+  set runtimepath+=/usr/local/opt/fzf
+endif
 
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
