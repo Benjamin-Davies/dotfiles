@@ -80,4 +80,6 @@ default_border none
 
 exec xmodmap ~/.speedswapper
 
-exec lxterminal -e /opt/evolocity-js/run
+# Startup Evolocity interface
+exec polybar --config=/opt/evolocity-js/polybar.config evolocity
+exec navit
