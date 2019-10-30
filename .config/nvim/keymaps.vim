@@ -1,26 +1,21 @@
-" jk == Esc
+" jk == Esc, even in terminal
 inoremap jk <ESC>
+tnoremap jk <C-\><C-n>
 
-" \d to insert date header (used in notes)
-nmap <Leader>d "=strftime('### %d/%m')<CR>P
-
-" fzf
-" Shamelessly copied from https://medium.com/@jesseleite/its-dangerous-to-vim-alone-take-fzf-283bcff74d21
+" fzf etc.
+" Some copied from https://medium.com/@jesseleite/its-dangerous-to-vim-alone-take-fzf-283bcff74d21
 nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>h :History<CR>
-nmap <Leader>t :BTags<CR>
-nmap <Leader>T :Tags<CR>
 nmap <Leader>l :BLines<CR>
-nmap <Leader>L :Lines<CR>
-nmap <Leader>' :Marks<CR>
-nmap <Leader>/ :Ag<Space>
+nmap <Leader>m :Marks<CR>
 nmap <Leader>H :Helptags!<CR>
-nmap <Leader>C :Commands<CR>
 nmap <Leader>: :History:<CR>
-nmap <Leader>M :Maps<CR>
 nmap <Leader>s :Filetypes<CR>
+nmap <Leader>g :Git<CR>
+" \d to insert date header (used in notes)
+nmap <Leader>d "=strftime('### %d/%m')<CR>P
 
 " coc
 " Mostly copied from https://github.com/neoclide/coc.nvim/blob/b59c1dffb48370c342b63106a0d47970e5347b42/Readme.md
@@ -59,8 +54,8 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>rn <Plug>(coc-rename)
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>t  <Plug>(coc-format-selected)
+nmap <leader>t  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
