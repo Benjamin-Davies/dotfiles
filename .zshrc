@@ -45,20 +45,23 @@ pdpdf() {
   done
 }
 
-if [ "$TMUX" -o "$EMACS" ]; then
-  ~/.local/pfetch/pfetch
-else
-  # -u flag says to assume utf8 support
-  # It was acting unusual over ssh
+~/.local/pfetch/pfetch
 
-  # Try to connect to an existing session.
-  tmux attach
-
-  # If failed, just run tmux
-  if [[ $? -ne 0 ]]; then
-    tmux -u
-  fi
-
-  # Close zsh
-  if [[ $? -eq 0 ]]; then exit; fi
-fi
+# Unused tmux auto-launch
+#if [ "$TMUX" -o "$EMACS" ]; then
+#  Run aesthetic scripts
+#else
+#  # -u flag says to assume utf8 support
+#  # It was acting unusual over ssh
+#
+#  # Try to connect to an existing session.
+#  tmux attach
+#
+#  # If failed, just run tmux
+#  if [[ $? -ne 0 ]]; then
+#    tmux -u
+#  fi
+#
+#  # Close zsh
+#  if [[ $? -eq 0 ]]; then exit; fi
+#fi
