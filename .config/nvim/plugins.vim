@@ -18,6 +18,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'tpope/vim-markdown'
 Plug 'lervag/vimtex'
+Plug 'cespare/vim-toml'
 
 " Tool integration
 Plug 'tpope/vim-fugitive'
