@@ -30,3 +30,7 @@ hi SignColumn ctermbg=NONE
 hi Pmenu ctermbg=0 ctermfg=5
 
 au FileType html,markdown,text setl spell
+
+" nohls after incsearch
+au CmdlineEnter /,\? :set hlsearch
+au CmdlineLeave /,\? :set nohlsearch
