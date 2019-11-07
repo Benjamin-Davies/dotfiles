@@ -29,7 +29,7 @@ hi VertSplit cterm=NONE ctermfg=2
 hi SignColumn ctermbg=NONE
 hi Pmenu ctermbg=0 ctermfg=5
 
-au FileType html,markdown,text setl spell
+au FileType html,markdown,text,tex setl spell
 
 " nohls after incsearch
 au CmdlineEnter /,\? :set hlsearch
