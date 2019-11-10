@@ -8,7 +8,7 @@ import colors
 
 mod = 'mod4'
 
-background_dir = '/usr/share/backgrounds/nz-scenery/'
+background = '/usr/share/backgrounds/duelyst-10.png'
 term = 'alacritty'
 
 @hook.subscribe.startup_once
@@ -21,7 +21,7 @@ def autostart_once():
 @hook.subscribe.startup
 def autostart():
     call('xrdb ~/.Xresources', shell=True)
-    call('feh --random --bg-fill ' + background_dir, shell=True)
+    call('feh --bg-fill ' + background, shell=True)
     Popen('compton', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
@@ -89,8 +89,7 @@ layouts = [
     layout.MonadTall(
         ratio=0.55,
         margin=32,
-        border_focus=colors.green,
-        border_normal=colors.black,
+        border_width=0,
         ),
 ]
 
