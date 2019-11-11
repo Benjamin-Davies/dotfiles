@@ -1,6 +1,7 @@
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/keymaps.vim
 
+" Allow filetype detection
 filetype plugin indent on
 
 " Indent with 2 spaces
@@ -12,20 +13,25 @@ set expandtab
 set number relativenumber
 set splitbelow splitright
 set wrap linebreak breakindent
-set hidden 
+set hidden
 set nobackup nowritebackup
 set cmdheight=2
 set updatetime=300
+
 " Don't give 'no match' messages
 set shortmess+=c
 " Always show the column on the left for error messages
 set signcolumn=yes
 
-let g:auto_save = 1
-
 hi StatusLine cterm=bold ctermfg=11
 hi StatusLineNC cterm=bold ctermfg=13
 hi VertSplit cterm=NONE ctermfg=2
-hi SignColumn ctermbg=0
+hi SignColumn ctermbg=NONE
+hi Pmenu ctermbg=0 ctermfg=5
 
-au FileType html,markdown,text setl spell
+let g:tex_flavor = "latex"
+au FileType html,markdown,text,tex setl spell
+
+" nohls after incsearch
+au CmdlineEnter /,\? :set hlsearch
+au CmdlineLeave /,\? :set nohlsearch

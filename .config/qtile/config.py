@@ -8,8 +8,8 @@ import colors
 
 mod = 'mod4'
 
-background = '/usr/share/backgrounds/gnome/Wood.jpg'
-term = 'alacritty'
+background = '/usr/share/backgrounds/duelyst-10.png'
+term = 'kitty'
 
 @hook.subscribe.startup_once
 def autostart_once():
@@ -25,7 +25,7 @@ def autostart():
     Popen('compton', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
-    return lazy.spawn(cmd + ' -f -b -i -fn "InputSans-Regular:pixelsize=16"'
+    return lazy.spawn(cmd + ' -f -i -l 5 -fn "FiraSans-Regular:pixelsize=20"'
                           + f' -nb {colors.black} -nf {colors.white}'
                           + f' -sb {colors.blue} -sf {colors.black}')
 
@@ -35,6 +35,9 @@ def lazyBrowser(url, profile=0):
         profile_dir = f'Profile {profile}'
 
     return lazy.spawn(f'google-chrome-stable "--profile-directory={profile_dir}" --new-window {url}')
+
+def lazyTerm(command='zsh'):
+    return lazy.spawn(term + ' -e ' + command)
 
 keys = [
     # Control and power
@@ -58,17 +61,18 @@ keys = [
     Key([mod, 'shift'], 'space', lazyDmenu()),
     Key([mod], 'space', lazyDmenu('dmenu_desktop')),
     Key([mod], 'comma', lazyDmenu('dmenu_config')),
+    Key([mod], 'period', lazyDmenu('dmenu_social')),
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
     Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 1 toggle')),
-    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 1 -2%')),
-    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 1 +2%')),
+    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 0 -2%')),
+    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 0 +2%')),
 
     # Applications
-    Key([mod], 'Return', lazy.spawn(term)),
-    Key([mod, 'shift'], 'Return', lazy.spawn(term + ' -e tmux new')),
-    Key([mod], 'e', lazy.spawn('emacsclient -c')),
+    Key([mod], 'Return', lazyTerm()),
+    Key([mod], 'v', lazyTerm('vifm')),
+    Key([mod], 'e', lazy.spawn('nemo')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
@@ -85,9 +89,8 @@ for i in groups:
 layouts = [
     layout.MonadTall(
         ratio=0.55,
-        margin=24,
-        border_focus=colors.green,
-        border_normal=colors.black,
+        margin=32,
+        border_width=0,
         ),
 ]
 

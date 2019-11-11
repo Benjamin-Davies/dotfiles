@@ -4,8 +4,7 @@ from subprocess import PIPE, Popen, call
 from sys import argv
 
 apps = [('Compton', '~/.config/compton.conf'),
-        ('Emacs', '~/.emacs.d/init.el'),
-        ('Hammerspoon', '~/.hammerspoon/init.lua'),
+        ('Kitty', '~/.config/kitty/kitty.conf'),
         ('Neovim', '~/.config/nvim/init.vim'),
         ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
         ('Neovim Plugins', '~/.config/nvim/plugins.vim'),
@@ -28,4 +27,4 @@ result = result.decode('UTF-8')
 
 if result != '\n':
     fn = file_table[result]
-    call(['emacsclient', '-c', fn])
+    call('kitty -e nvim ' + fn, shell=True)

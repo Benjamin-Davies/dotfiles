@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+from subprocess import PIPE, Popen, call
+from sys import argv
+
+apps = [('Facebook', 'https://facebook.com/'),
+        ('Facebook Messenger', 'https://facebook.com/messages/'),
+        ('Gmail', 'https://mail.google.com/mail/ca/u/0/'),
+        ('Gmail (School)', 'https://mail.google.com/mail/ca/u/1/'),
+        ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
+        ('WhatsApp', 'https://web.whatsapp.com/'),
+        ('YouTube', 'https://youtube.com/'),
+        ]
+
+# ends with \n for interaction with dmenu command
+file_names = [ a + '\n' for a, _ in apps ]
+file_table = { a + '\n' : b for a, b in apps }
+
+proc = Popen(['dmenu', '-p', 'Social:'] + argv[1:], stdin=PIPE, stdout=PIPE)
+result, _ = proc.communicate(''.join(file_names).encode('UTF-8'))
+result = result.decode('UTF-8')
+
+if result != '\n':
+    fn = file_table[result]
+    call('google-chrome-stable --new-window --profile-directory="Default" ' + fn, shell=True)
