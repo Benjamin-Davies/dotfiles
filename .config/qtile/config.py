@@ -25,7 +25,7 @@ def autostart():
     Popen('compton', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
-    return lazy.spawn(cmd + ' -f -b -i -fn "InputSans-Regular:pixelsize=16"'
+    return lazy.spawn(cmd + ' -f -i -l 5 -fn "FiraSans-Regular:pixelsize=20"'
                           + f' -nb {colors.black} -nf {colors.white}'
                           + f' -sb {colors.blue} -sf {colors.black}')
 
