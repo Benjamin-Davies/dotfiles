@@ -4,6 +4,7 @@ ZSH_THEME="theunraveler"
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_AUTO_UPDATE="true"
 
 plugins=(
   git
