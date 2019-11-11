@@ -4,6 +4,7 @@ from subprocess import PIPE, Popen, call
 from sys import argv
 
 apps = [('Compton', '~/.config/compton.conf'),
+        ('Kitty', '~/.config/kitty/kitty.conf'),
         ('Neovim', '~/.config/nvim/init.vim'),
         ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
         ('Neovim Plugins', '~/.config/nvim/plugins.vim'),
@@ -26,4 +27,4 @@ result = result.decode('UTF-8')
 
 if result != '\n':
     fn = file_table[result]
-    call('alacritty -e nvim ' + fn, shell=True)
+    call('kitty -e nvim ' + fn, shell=True)

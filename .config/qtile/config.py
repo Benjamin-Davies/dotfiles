@@ -9,7 +9,7 @@ import colors
 mod = 'mod4'
 
 background = '/usr/share/backgrounds/duelyst-10.png'
-term = 'alacritty'
+term = 'kitty'
 
 @hook.subscribe.startup_once
 def autostart_once():
