@@ -16,6 +16,8 @@ nmap <Leader>s :Filetypes<CR>
 nmap <Leader>g :Git<CR>
 " \d to insert date header (used in notes)
 nmap <Leader>d "=strftime('### %d/%m')<CR>P
+" \z to kill the current buffer and switch to the last use one
+nmap <Leader>z :bprevious\|bdelete #<CR>
 
 " coc
 " Mostly copied from https://github.com/neoclide/coc.nvim/blob/b59c1dffb48370c342b63106a0d47970e5347b42/Readme.md

@@ -8,6 +8,7 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dkarter/bullets.vim'
+Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'junegunn/fzf.vim'
 let uname = substitute(system('uname'), '\n', '', '')
