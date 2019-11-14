@@ -24,20 +24,22 @@ fi
 
 export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
 
-# https://youtu.be/tBoLDpTWVOM
-alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
-alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
-alias :e=$EDITOR
-
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
 
-if command -v nvim > /dev/null; then
+if command -v nvr > /dev/null; then
+  export EDITOR=$(which nvr)\ --remote-wait-silent
+elif command -v nvim > /dev/null; then
   export EDITOR=$(which nvim)
 else
   export EDITOR=$(which vim)
 fi
+
+# https://youtu.be/tBoLDpTWVOM
+alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
+alias :e=$EDITOR
 
 # Function to bulk convert md to pdf
 pdpdf() {
@@ -47,22 +49,3 @@ pdpdf() {
 }
 
 ~/.local/pfetch/pfetch
-
-# Unused tmux auto-launch
-#if [ "$TMUX" -o "$EMACS" ]; then
-#  Run aesthetic scripts
-#else
-#  # -u flag says to assume utf8 support
-#  # It was acting unusual over ssh
-#
-#  # Try to connect to an existing session.
-#  tmux attach
-#
-#  # If failed, just run tmux
-#  if [[ $? -ne 0 ]]; then
-#    tmux -u
-#  fi
-#
-#  # Close zsh
-#  if [[ $? -eq 0 ]]; then exit; fi
-#fi
