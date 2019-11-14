@@ -23,6 +23,7 @@ else
 fi
 
 export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
+export ABDUCO_CMD=zsh
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
