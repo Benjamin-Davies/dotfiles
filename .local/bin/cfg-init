@@ -10,7 +10,7 @@ fi
 cd $HOME
 git clone --bare $url
 
-alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
-config checkout -f master
-$HOME/.local/bin/config_update
+alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+cfg checkout -f master
+$HOME/.local/bin/cfg-update
 zsh

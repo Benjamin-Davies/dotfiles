@@ -1,0 +1,13 @@
+#!/bin/sh
+alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+
+cfg stash push
+cfg pull
+cfg submodule update --init --remote --depth=1
+cfg commit -a -m "Update submodules"
+cfg push
+cfg status
+cfg stash pop
+
+echo "Updating Vim plugins" \
+  | nvim -c PlugUpdate -c ':qa!' -
