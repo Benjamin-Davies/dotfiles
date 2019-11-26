@@ -19,14 +19,8 @@ endif
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
 
-" Highlighting
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'tpope/vim-markdown'
-Plug 'lervag/vimtex'
-Plug 'cespare/vim-toml'
-
-" Tool integration
+" Integration
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'mattn/emmet-vim'
