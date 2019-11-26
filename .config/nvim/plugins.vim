@@ -26,3 +26,5 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'mattn/emmet-vim'
 
 call plug#end()
+
+let g:coc_global_extensions = [ 'coc-python', 'coc-rls', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-lists', 'coc-git' ]
