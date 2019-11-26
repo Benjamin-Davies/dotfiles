@@ -38,7 +38,7 @@ else
 fi
 
 # https://youtu.be/tBoLDpTWVOM
-alias config='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
 alias :e=$EDITOR
 
