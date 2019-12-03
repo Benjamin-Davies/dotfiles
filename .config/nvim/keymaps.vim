@@ -1,7 +1,3 @@
-" jk == Esc, even in terminal
-inoremap jk <ESC>
-tnoremap jk <C-\><C-n>
-
 " fzf etc.
 " Some copied from https://medium.com/@jesseleite/its-dangerous-to-vim-alone-take-fzf-283bcff74d21
 nmap <Leader>f :GFiles<CR>
