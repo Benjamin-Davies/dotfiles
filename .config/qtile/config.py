@@ -58,8 +58,7 @@ keys = [
     Key([mod], 'F11', lazy.window.toggle_fullscreen()),
 
     # DMenus
-    Key([mod, 'shift'], 'space', lazyDmenu()),
-    Key([mod], 'space', lazyDmenu('dmenu_desktop')),
+    Key([mod], 'space', lazyDmenu()),
     Key([mod], 'comma', lazyDmenu('dmenu_config')),
     Key([mod], 'period', lazyDmenu('dmenu_social')),
 
