@@ -1,10 +1,11 @@
 ZSH="$HOME/.local/oh-my-zsh"
 ZSH_CUSTOM="$HOME/.local/zsh-custom"
-ZSH_THEME="theunraveler"
+ZSH_THEME="avit"
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_TITLE="true"
 
 plugins=(
   git
@@ -40,7 +41,7 @@ fi
 # https://youtu.be/tBoLDpTWVOM
 alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
-alias :e=$EDITOR
+alias restart='clear && exec zsh'
 
 # Function to bulk convert md to pdf
 pdpdf() {
