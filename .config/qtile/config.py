@@ -8,8 +8,8 @@ import colors
 
 mod = 'mod4'
 
-background = '/usr/share/backgrounds/duelyst-10.png'
-term = 'kitty'
+background = '/usr/share/backgrounds/wallpapers-2018/tree-736875.jpg'
+term = 'cool-retro-term'
 
 @hook.subscribe.startup_once
 def autostart_once():
@@ -22,7 +22,7 @@ def autostart_once():
 def autostart():
     call('xrdb ~/.Xresources', shell=True)
     call('feh --bg-fill ' + background, shell=True)
-    Popen('compton', shell=True)
+    Popen('picom', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
     return lazy.spawn(cmd + ' -f -i -l 5 -fn "FiraSans-Regular:pixelsize=20"'
