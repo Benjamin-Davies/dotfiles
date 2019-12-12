@@ -8,7 +8,7 @@ import colors
 
 mod = 'mod4'
 
-background = '/usr/share/backgrounds/wallpapers-2018/tree-736875.jpg'
+background = '/usr/share/backgrounds/christmas/ChristmasTux2007_2560x1600.png'
 term = 'kitty'
 
 @hook.subscribe.startup_once
