@@ -9,9 +9,9 @@ padding = 7
 module-margin = 2
 line-size = 3
 
-font-0 = FiraSans-Regular:pixelsize=13
-background = #e6161821
-foreground = #d2d4de
+font-0 = FiraSans-Regular:pixelsize=15
+background = #00000000
+foreground = #9ef59d
 
 modules-left = workspaces
 modules-center = title
@@ -20,7 +20,7 @@ modules-right = pulseaudio date time
 [module/workspaces]
 type = internal/xworkspaces
 label-active = " %name% "
-label-active-underline = #d2d4de
+label-active-underline = #48ee5e
 label-occupied = " %name% "
 label-empty = " %name% "
 
