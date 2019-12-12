@@ -9,7 +9,7 @@ import colors
 mod = 'mod4'
 
 background = '/usr/share/backgrounds/wallpapers-2018/tree-736875.jpg'
-term = 'cool-retro-term'
+term = 'kitty'
 
 @hook.subscribe.startup_once
 def autostart_once():
