@@ -1,4 +1,4 @@
-cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+cmd - return : open -a Terminal
 
 cmd + ctrl - c : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory=Default --new-window chrome://newtab
 cmd + ctrl - y : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory=Default --new-window https://youtube.com/

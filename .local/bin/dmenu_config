@@ -3,11 +3,11 @@
 from subprocess import PIPE, Popen, call
 from sys import argv
 
-apps = [('Compton', '~/.config/compton.conf'),
-        ('Kitty', '~/.config/kitty/kitty.conf'),
+apps = [('Kitty', '~/.config/kitty/kitty.conf'),
         ('Neovim', '~/.config/nvim/init.vim'),
         ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
         ('Neovim Plugins', '~/.config/nvim/plugins.vim'),
+        ('Picom', '~/.config/picom.conf'),
         ('Polybar', '~/.config/polybar/config'),
         ('Qtile', '~/.config/qtile/config.py'),
         ('SSH', '~/.ssh/config'),

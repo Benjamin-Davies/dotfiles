@@ -1,14 +1,14 @@
 from subprocess import call, Popen
 
 from libqtile.config import Key, Screen, Group, Drag, Click
-from libqtile.lazy import lazy
+from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
 import colors
 
 mod = 'mod4'
 
-background = '/usr/share/backgrounds/duelyst-10.png'
+background = '/usr/share/backgrounds/christmas/ChristmasTux2007_2560x1600.png'
 term = 'kitty'
 
 @hook.subscribe.startup_once
@@ -22,12 +22,12 @@ def autostart_once():
 def autostart():
     call('xrdb ~/.Xresources', shell=True)
     call('feh --bg-fill ' + background, shell=True)
-    Popen('compton', shell=True)
+    Popen('picom', shell=True)
 
 def lazyDmenu(cmd='dmenu_run'):
-    return lazy.spawn(cmd + ' -f -i -l 5 -fn "FiraSans-Regular:pixelsize=20"'
-                          + f' -nb {colors.black} -nf {colors.white}'
-                          + f' -sb {colors.blue} -sf {colors.black}')
+    return lazy.spawn(cmd + ' -f -i -fn "FiraSans-Regular:pixelsize=20"'
+                          + f' -nb {colors.background} -nf {colors.text}'
+                          + f' -sb {colors.green} -sf {colors.red}')
 
 def lazyBrowser(url, profile=0):
     profile_dir = 'Default'
@@ -58,8 +58,7 @@ keys = [
     Key([mod], 'F11', lazy.window.toggle_fullscreen()),
 
     # DMenus
-    Key([mod, 'shift'], 'space', lazyDmenu()),
-    Key([mod], 'space', lazyDmenu('dmenu_desktop')),
+    Key([mod], 'space', lazyDmenu()),
     Key([mod], 'comma', lazyDmenu('dmenu_config')),
     Key([mod], 'period', lazyDmenu('dmenu_social')),
 
