@@ -15,6 +15,7 @@ apps = [('Kitty', '~/.config/kitty/kitty.conf'),
         ('XMonad', '~/.config/xmonad/xmonad.hs'),
         ('Xresources', '~/.Xresources'),
         ('Zsh', '~/.zshrc'),
+        ('Scripts', '~/.local/bin/'),
         ]
 
 # ends with \n for interaction with dmenu command

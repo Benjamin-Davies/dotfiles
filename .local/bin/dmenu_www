@@ -3,14 +3,15 @@
 from subprocess import PIPE, Popen, call
 from sys import argv
 
-apps = [('Facebook', 'https://facebook.com/'),
+apps = [('Discord', 'https://discordapp.com/app'),
+        ('Facebook', 'https://facebook.com/'),
         ('Facebook Messenger', 'https://facebook.com/messages/'),
         ('Gmail', 'https://mail.google.com/mail/ca/u/0/'),
         ('Gmail (School)', 'https://mail.google.com/mail/ca/u/1/'),
         ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
+        ('NeverSSL', 'http://neverssl.com/'),
         ('WhatsApp', 'https://web.whatsapp.com/'),
         ('YouTube', 'https://youtube.com/'),
-        ('NeverSSL', 'http://neverssl.com/'),
         ]
 
 # ends with \n for interaction with dmenu command
