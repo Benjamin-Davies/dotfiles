@@ -10,13 +10,14 @@ apps = [('Facebook', 'https://facebook.com/'),
         ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
         ('WhatsApp', 'https://web.whatsapp.com/'),
         ('YouTube', 'https://youtube.com/'),
+        ('NeverSSL', 'http://neverssl.com/'),
         ]
 
 # ends with \n for interaction with dmenu command
 file_names = [ a + '\n' for a, _ in apps ]
 file_table = { a + '\n' : b for a, b in apps }
 
-proc = Popen(['dmenu', '-p', 'social'] + argv[1:], stdin=PIPE, stdout=PIPE)
+proc = Popen(['dmenu', '-p', 'www'] + argv[1:], stdin=PIPE, stdout=PIPE)
 result, _ = proc.communicate(''.join(file_names).encode('UTF-8'))
 result = result.decode('UTF-8')
 

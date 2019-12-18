@@ -62,7 +62,7 @@ keys = [
     Key([mod], 'space', lazyRofi()),
     Key([mod, 'shift'], 'space', lazyRofi('run')),
     Key([mod], 'comma', lazyDmenu('dmenu_config')),
-    Key([mod], 'period', lazyDmenu('dmenu_social')),
+    Key([mod], 'period', lazyDmenu('dmenu_www')),
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
