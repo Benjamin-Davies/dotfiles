@@ -14,7 +14,7 @@ term = 'kitty'
 @hook.subscribe.startup_once
 def autostart_once():
     call('xmodmap ~/.speedswapper', shell=True)
-    Popen('redshift -l -38:176 -t 6500:3500', shell=True)
+    Popen('redshift -l -38:176 -t 5500:2500', shell=True)
     Popen('google-chrome-stable --no-startup-window', shell=True)
     Popen('polybar main', shell=True)
 
