@@ -24,10 +24,11 @@ def autostart():
     call('feh --bg-fill ' + background, shell=True)
     Popen('picom', shell=True)
 
-def lazyDmenu(cmd='dmenu_run'):
-    return lazy.spawn(cmd + ' -f -i -fn "FiraSans-Regular:pixelsize=20"'
-                          + f' -nb {colors.background} -nf {colors.text}'
-                          + f' -sb {colors.green} -sf {colors.red}')
+def lazyDmenu(cmd='dmenu_config'):
+    return lazy.spawn(cmd + ' -i')
+
+def lazyRofi(mode='drun'):
+    return lazy.spawn('rofi -i -show ' + mode)
 
 def lazyBrowser(url, profile=0):
     profile_dir = 'Default'
@@ -58,7 +59,8 @@ keys = [
     Key([mod], 'F11', lazy.window.toggle_fullscreen()),
 
     # DMenus
-    Key([mod], 'space', lazyDmenu()),
+    Key([mod], 'space', lazyRofi()),
+    Key([mod, 'shift'], 'space', lazyRofi('run')),
     Key([mod], 'comma', lazyDmenu('dmenu_config')),
     Key([mod], 'period', lazyDmenu('dmenu_social')),
 
