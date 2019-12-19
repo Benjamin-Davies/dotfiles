@@ -6,6 +6,7 @@ from sys import argv
 apps = [('Discord', 'https://discordapp.com/app'),
         ('Facebook', 'https://facebook.com/'),
         ('Facebook Messenger', 'https://facebook.com/messages/'),
+        ('Github', 'https://github.com/'),
         ('Gmail', 'https://mail.google.com/mail/ca/u/0/'),
         ('Gmail (School)', 'https://mail.google.com/mail/ca/u/1/'),
         ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
