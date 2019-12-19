@@ -1,0 +1,7 @@
+#!/bin/sh
+# Install doom emacs
+
+git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d
+
+$HOME/.emacs.d/bin/doom install
+$HOME/.emacs.d/bin/doom refresh
