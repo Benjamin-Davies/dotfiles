@@ -73,7 +73,8 @@ keys = [
     # Applications
     Key([mod], 'Return', lazyTerm()),
     Key([mod], 'v', lazyTerm('vifm')),
-    Key([mod], 'e', lazy.spawn('nemo')),
+    Key([mod], 'e', lazy.spawn('emacsclient -c')),
+    Key([mod, 'shift'], 'e', lazy.spawn('thunar')),
     Key([mod], 'c', lazyBrowser('chrome://newtab')),
     Key([mod], 'y', lazyBrowser('https://youtube.com/')),
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
