@@ -23,7 +23,7 @@ else
   export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 fi
 
-export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.emacs.d/bin:./node_modules/.bin:$PATH"
 export ABDUCO_CMD=zsh
 
 if command -v xdg-open > /dev/null; then
