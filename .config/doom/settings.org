@@ -1,4 +1,4 @@
-#+TITLE: config
+#+TITLE: My Emacs Settings
 
 * Fonts
 
@@ -8,6 +8,45 @@ Use Input Mono and Fira Sans
 (setq doom-font (font-spec :family "input mono" :size 16)
       doom-big-font (font-spec :family "input mono" :size 36)
       doom-variable-pitch-font (font-spec :family "fira sans" :size 16))
+#+END_SRC
+
+* Theme
+
+I want to try to use a light theme
+
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'doom-one-light)
+#+END_SRC
+
+** Org Mode
+
+Hide the bullets for titles by replacing them with zero width spaces
+
+#+BEGIN_SRC emacs-lisp
+(setq org-bullets-bullet-list '("\u200B"))
+#+END_SRC
+
+And adjust the font size of titles and make them black
+
+#+BEGIN_SRC emacs-lisp
+(defun my/org-mode-hook ()
+  (dolist (pair '((org-level-1 . 1.6)
+                  (org-level-2 . 1.5)
+                  (org-level-3 . 1.4)
+                  (org-level-4 . 1.3)
+                  (org-level-5 . 1.2)
+                  (org-level-6 . 1.1)
+                  (org-level-7 . 1.1)
+                  (org-level-8 . 1.1)))
+    (set-face-attribute (car pair) nil :foreground "black" :height (cdr pair))))
+
+(add-hook 'org-mode-hook 'my/org-mode-hook)
+#+END_SRC
+
+Enable mixed pitch fonts using the mixed-pitch package
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 'mixed-pitch-mode)
 #+END_SRC
 
 * Projects
