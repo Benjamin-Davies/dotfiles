@@ -30,8 +30,8 @@ if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
 
-if command -v nvr > /dev/null; then
-  export EDITOR=$(which nvr)\ --remote-wait-silent
+if command -v emacsclient > /dev/null; then
+  export EDITOR=$(which emacsclient)
 elif command -v nvim > /dev/null; then
   export EDITOR=$(which nvim)
 else

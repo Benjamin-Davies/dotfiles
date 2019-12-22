@@ -22,11 +22,14 @@
           (lambda ()
             (exwm-workspace-rename-buffer exwm-class-name)))
 
-;(defun app-bindings (pairs)
-;  (mapcar (lambda (pair)
-;            (cons (kbd (car pair))
-;                  (lambda () (start-process-shell-command (cdr pair) nil (cdr pair)))))
-;          pairs))
+(defun start (cmd)
+  (lambda ()
+    (interactive)
+    (start-process-shell-command cmd nil cmd)))
+(defun rofi (mode)
+  (lambda ()
+    (interactive)
+    (shell-command "Rofi" nil (concat "rofi -i -show " mode " &"))))
 
 ;; Global keybindings
 (setq exwm-input-global-keys
@@ -39,9 +42,7 @@
         ([?\s-r] . (lambda (command)
                        (interactive (list (read-shell-command "$ ")))
                        (start-process-shell-command command nil command)))
-        ([?\s- ] . (lambda ()
-                     (interactive)
-                     (start-process-shell-command "Rofi" nil "rofi -show drun")))
+        ([?\s- ] . ,(rofi "drun"))
 ;        ,@(app-bindings
 ;           `(([?\s-c] . "google-chrome-stable --new-window")
 ;             ([?\s-e] . "thunar")))
