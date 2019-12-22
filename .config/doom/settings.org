@@ -1,0 +1,30 @@
+#+TITLE: config
+
+* Fonts
+
+Use Input Mono and Fira Sans
+
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "input mono" :size 16)
+      doom-big-font (font-spec :family "input mono" :size 36)
+      doom-variable-pitch-font (font-spec :family "fira sans" :size 16))
+#+END_SRC
+
+* Projects
+
+Automatically search for projects in `~/Projects/`
+
+#+BEGIN_SRC emacs-lisp
+(setq projectile-project-search-path '("~/Projects/"))
+#+END_SRC
+
+* macOS Specific
+
+** Fullscreen
+
+Open frames in fullscreen on macOS
+
+#+BEGIN_SRC emacs-lisp
+(if (eq system-type 'darwin)
+    (toggle-frame-fullscreen))
+#+END_SRC
