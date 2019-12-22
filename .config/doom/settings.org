@@ -20,11 +20,18 @@ Automatically search for projects in `~/Projects/`
 
 * macOS Specific
 
+Only run the following code if we are on macOS
+
+#+BEGIN_SRC emacs-lisp
+(if (eq system-type 'darwin)
+#+END_SRC
+
 ** Fullscreen
 
 Open frames in fullscreen on macOS
 
 #+BEGIN_SRC emacs-lisp
-(if (eq system-type 'darwin)
     (toggle-frame-fullscreen))
 #+END_SRC
+
+#+RESULTS:
