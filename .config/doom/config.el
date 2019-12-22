@@ -14,4 +14,50 @@
 ; EXWM
 (require 'exwm)
 (require 'exwm-config)
-(exwm-config-default)
+
+;; Initial workspace number
+(setq exwm-workspace-number 1)
+;; Make class name the buffer name
+(add-hook 'exwm-update-class-hook
+          (lambda ()
+            (exwm-workspace-rename-buffer exwm-class-name)))
+
+;(defun app-bindings (pairs)
+;  (mapcar (lambda (pair)
+;            (cons (kbd (car pair))
+;                  (lambda () (start-process-shell-command (cdr pair) nil (cdr pair)))))
+;          pairs))
+
+;; Global keybindings
+(setq exwm-input-global-keys
+      `(
+        ;; WM
+        ([?\s-r] . exwm-reset)
+        ([?\s-w] . exwm-workspace-switch)
+
+        ;; Applications
+        ([?\s-r] . (lambda (command)
+                       (interactive (list (read-shell-command "$ ")))
+                       (start-process-shell-command command nil command)))
+        ([?\s- ] . (lambda ()
+                     (interactive)
+                     (start-process-shell-command "Rofi" nil "rofi -show drun")))
+;        ,@(app-bindings
+;           `(([?\s-c] . "google-chrome-stable --new-window")
+;             ([?\s-e] . "thunar")))
+
+        ;; Workspaces
+        ,@(mapcar (lambda (i)
+                    `(,(kbd (format "s-%d" i)) .
+                      (lambda ()
+                        (interactive)
+                        (exwm-workspace-switch-create ,i))))
+                  (number-sequence 0 9))))
+
+(define-key exwm-mode-map (kbd "C-c") nil)
+(define-key exwm-mode-map [?\s-.] 'exwm-input-send-next-key)
+
+;; Use some stuff from the default config
+(exwm-enable)
+(exwm-config-ido)
+(exwm-config-misc)
