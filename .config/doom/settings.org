@@ -65,11 +65,9 @@ Only run the following code if we are on macOS
 (if (eq system-type 'darwin)
 #+END_SRC
 
-** Fullscreen
+** Maximized
 
-** TODO Commit
-
-Open frames in fullscreen on macOS
+Open frames maximized on macOS
 
 #+BEGIN_SRC emacs-lisp
     (toggle-frame-maximized))
