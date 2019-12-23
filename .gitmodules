@@ -13,3 +13,6 @@
 [submodule ".local/zsh-custom/plugins/zsh-syntax-highlighting"]
 	path = .local/zsh-custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".local/macos-auto-raise"]
+	path = .local/macos-auto-raise
+	url = https://github.com/sbmpost/AutoRaise.git

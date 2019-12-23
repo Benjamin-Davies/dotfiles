@@ -67,10 +67,10 @@ Only run the following code if we are on macOS
 
 ** Fullscreen
 
+** TODO Commit
+
 Open frames in fullscreen on macOS
 
 #+BEGIN_SRC emacs-lisp
-    (toggle-frame-fullscreen))
+    (toggle-frame-maximized))
 #+END_SRC
-
-#+RESULTS:
