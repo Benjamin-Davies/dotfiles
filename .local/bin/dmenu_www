@@ -12,6 +12,7 @@ apps = [('Contacts', 'https://contacts.google.com/'),
         ('Gmail (School)', 'https://mail.google.com/mail/ca/u/1/'),
         ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
         ('NeverSSL', 'http://neverssl.com/'),
+        ('Spotify', 'https://open.spotify.com/'),
         ('WhatsApp', 'https://web.whatsapp.com/'),
         ('YouTube', 'https://youtube.com/'),
         ]
