@@ -1,2 +1,2 @@
-rofi.theme: /usr/share/rofi/themes/DarkBlue.rasi
 rofi.terminal: kitty
+rofi.theme: /usr/share/rofi/themes/Arc.rasi

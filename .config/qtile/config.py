@@ -8,7 +8,6 @@ import colors
 
 mod = 'mod4'
 
-background = '/usr/share/backgrounds/christmas/ChristmasTux2007_2560x1600.png'
 term = 'kitty'
 
 @hook.subscribe.startup_once
@@ -21,7 +20,7 @@ def autostart_once():
 @hook.subscribe.startup
 def autostart():
     call('xrdb ~/.Xresources', shell=True)
-    call('feh --bg-fill ' + background, shell=True)
+    call('~/.fehbg', shell=True)
     Popen('picom', shell=True)
 
 def lazyDmenu(cmd='dmenu_config'):
@@ -66,7 +65,7 @@ keys = [
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
-    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 1 toggle')),
+    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 0 toggle')),
     Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 0 -2%')),
     Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 0 +2%')),
 
