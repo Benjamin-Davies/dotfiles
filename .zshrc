@@ -23,15 +23,18 @@ else
   export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 fi
 
-export PATH="$HOME/.local/bin:$HOME/.emacs.d/bin:./node_modules/.bin:$PATH"
-export ABDUCO_CMD=zsh
+export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
+
+# Use default colors for ls
+export LSCOLORS=
+export LS_COLORS=
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
 
-if command -v emacsclient > /dev/null; then
-  export EDITOR=$(which emacsclient)
+if command -v nvr > /dev/null; then
+  export EDITOR="$(which nvr) --remote-tab-wait-silent"
 elif command -v nvim > /dev/null; then
   export EDITOR=$(which nvim)
 else
