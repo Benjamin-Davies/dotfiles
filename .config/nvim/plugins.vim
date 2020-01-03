@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'mattn/emmet-vim'
+Plug 'glacambre/firenvim'
 
 call plug#end()
 
