@@ -90,7 +90,7 @@ for i in groups:
 layouts = [
     layout.MonadTall(
         ratio=0.55,
-        margin=32,
+        margin=16,
         border_width=0,
         ),
 ]

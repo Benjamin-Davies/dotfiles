@@ -16,3 +16,6 @@
 [submodule ".local/macos-auto-raise"]
 	path = .local/macos-auto-raise
 	url = https://github.com/sbmpost/AutoRaise.git
+[submodule ".local/kitty-themes"]
+	path = .local/kitty-themes
+	url = https://github.com/dexpota/kitty-themes.git
