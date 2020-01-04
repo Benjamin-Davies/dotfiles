@@ -95,6 +95,15 @@ layouts = [
         ),
 ]
 
+# Replace the defaults for floating windows
+new_defaults = []
+for key, value, desc in layout.Floating.defaults:
+    if key == 'border_focus': value = '#5555ff'
+    elif key == 'border_normal': value = '#000000'
+    elif key == 'border_width': value = 3
+    new_defaults.append((key, value, desc))
+layout.Floating.defaults = new_defaults
+
 screens = []
 
 mouse = [
