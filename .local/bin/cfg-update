@@ -14,7 +14,3 @@ cfg stash pop
 
 echo "Updating Vim plugins" \
   | nvim -c PlugUpdate -c ':qa!' -
-
-if command -v $HOME/.emacs.d/bin/doom; then
-  $HOME/.emacs.d/bin/doom refresh
-fi
