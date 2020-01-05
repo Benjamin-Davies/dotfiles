@@ -48,6 +48,7 @@ fi
 # https://youtu.be/tBoLDpTWVOM
 alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
+alias gcalcli='gcalcli --client-id 991880063730-lu4otp4132sugbed4ut8adqjdjfnkrqe.apps.googleusercontent.com --client-secret evW8BVRQuAtM4U4XzqRG54iv'
 alias restart='clear && exec zsh'
 
 # Function to bulk convert md to pdf

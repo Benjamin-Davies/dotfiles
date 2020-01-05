@@ -4,14 +4,17 @@ screenchange-reload = true
 [bar/main]
 bottom = false
 
-height = 40
-padding = 7
+height = 48
+padding = 5
 module-margin = 2
-line-size = 5
+line-size = 3
+
+border-size = 16
+border-bottom-size = 0
 
 font-0 = FiraSans-Regular:pixelsize=15
-background = #F9F9F9
-foreground = #383A42
+background = #122637
+foreground = #ffffff
 
 modules-left = workspaces title
 modules-right = pulseaudio battery date time
@@ -19,21 +22,17 @@ modules-right = pulseaudio battery date time
 [module/workspaces]
 type = internal/xworkspaces
 label-active = " %name% "
-label-active-foreground = #50A14F
-label-active-underline = #50A14F
+label-active-foreground = #3bcf1d
 label-empty = " %name% "
-label-empty-foreground = #4078F2
+label-empty-foreground = #5555ff
 
 [module/title]
 type = internal/xwindow
-label-foreground = #50A14F
 
 [module/pulseaudio]
 type = internal/pulseaudio
 label-volume = Volume: %percentage%%
-label-volume-foreground = #4078F2
 label-muted = Muted
-label-muted-foreground = #E45649
 
 [module/battery]
 type = internal/battery
@@ -41,12 +40,10 @@ type = internal/battery
 [module/date]
 type = internal/date
 label = %date%
-label-foreground = #50A14F
 date = %a %d %b
 
 [module/time]
 type = internal/date
 label = %time%
-label-foreground = #4078F2
 internal = 3
 time = %H:%M
