@@ -3,7 +3,8 @@
 from subprocess import PIPE, Popen, call
 from sys import argv
 
-apps = [('Kitty', '~/.config/kitty/kitty.conf'),
+apps = [('Bspwm', '~/.config/bspwm/bspwmrc'),
+        ('Kitty', '~/.config/sxhkd/kitty.conf'),
         ('Neovim', '~/.config/nvim/init.vim'),
         ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
         ('Neovim Plugins', '~/.config/nvim/plugins.vim'),
@@ -11,6 +12,7 @@ apps = [('Kitty', '~/.config/kitty/kitty.conf'),
         ('Polybar', '~/.config/polybar/config'),
         ('Qtile', '~/.config/qtile/config.py'),
         ('SSH', '~/.ssh/config'),
+        ('Sxhkd', '~/.config/sxhkd/sxhkdrc'),
         ('Tmux', '~/.tmux.conf'),
         ('XMonad', '~/.config/xmonad/xmonad.hs'),
         ('Xresources', '~/.Xresources'),

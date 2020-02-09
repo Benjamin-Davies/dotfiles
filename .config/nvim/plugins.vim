@@ -22,9 +22,10 @@ let g:auto_save = 1
 " Integration
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'mattn/emmet-vim'
+Plug 'glacambre/firenvim'
 
 call plug#end()
 

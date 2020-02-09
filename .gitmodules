@@ -13,3 +13,6 @@
 [submodule ".local/zsh-custom/plugins/zsh-syntax-highlighting"]
 	path = .local/zsh-custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".local/kitty-themes"]
+	path = .local/kitty-themes
+	url = https://github.com/dexpota/kitty-themes.git

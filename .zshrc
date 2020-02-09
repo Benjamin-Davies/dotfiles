@@ -24,23 +24,31 @@ else
 fi
 
 export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
-export ABDUCO_CMD=zsh
+
+# Use default colors for ls
+export LSCOLORS=
+export LS_COLORS=
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
 
 if command -v nvr > /dev/null; then
-  export EDITOR=$(which nvr)\ --remote-wait-silent
+  export EDITOR="$(which nvr) --remote-tab-wait-silent"
 elif command -v nvim > /dev/null; then
   export EDITOR=$(which nvim)
 else
   export EDITOR=$(which vim)
 fi
 
+if [ -z $LC_CTYPE ]; then
+  export LC_CTYPE=en_NZ.UTF-8
+fi
+
 # https://youtu.be/tBoLDpTWVOM
 alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 alias cos='sftp -P 2222 php.mmc.school.nz:/201BH/benjamindavies' # School server
+alias gcalcli='gcalcli --client-id 991880063730-lu4otp4132sugbed4ut8adqjdjfnkrqe.apps.googleusercontent.com --client-secret evW8BVRQuAtM4U4XzqRG54iv'
 alias restart='clear && exec zsh'
 
 # Function to bulk convert md to pdf

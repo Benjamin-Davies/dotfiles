@@ -8,7 +8,6 @@ import colors
 
 mod = 'mod4'
 
-background = '/usr/share/backgrounds/christmas/ChristmasTux2007_2560x1600.png'
 term = 'kitty'
 
 @hook.subscribe.startup_once
@@ -21,7 +20,7 @@ def autostart_once():
 @hook.subscribe.startup
 def autostart():
     call('xrdb ~/.Xresources', shell=True)
-    call('feh --bg-fill ' + background, shell=True)
+    call('~/.fehbg', shell=True)
     Popen('picom', shell=True)
 
 def lazyDmenu(cmd='dmenu_config'):
@@ -66,7 +65,7 @@ keys = [
 
     # Media
     Key([], 'XF86AudioPlay', lazy.spawn('mpc toggle')),
-    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 1 toggle')),
+    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute 0 toggle')),
     Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume 0 -2%')),
     Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume 0 +2%')),
 
@@ -80,7 +79,8 @@ keys = [
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
 ]
 
-groups = [Group(str(i)) for i in range(1, 10)]
+# Groups 1-9 and 0
+groups = [Group(str(i % 10)) for i in range(1, 11)]
 
 for i in groups:
     keys.extend([
@@ -91,7 +91,7 @@ for i in groups:
 layouts = [
     layout.MonadTall(
         ratio=0.55,
-        margin=32,
+        margin=16,
         border_width=0,
         ),
 ]
@@ -112,22 +112,27 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
+floating_layout = layout.Floating(
+    float_rules=[
+        {'wmclass': 'confirm'},
+        {'wmclass': 'dialog'},
+        {'wmclass': 'download'},
+        {'wmclass': 'error'},
+        {'wmclass': 'file_progress'},
+        {'wmclass': 'notification'},
+        {'wmclass': 'splash'},
+        {'wmclass': 'toolbar'},
+        {'wmclass': 'confirmreset'},  # gitk
+        {'wmclass': 'makebranch'},  # gitk
+        {'wmclass': 'maketag'},  # gitk
+        {'wname': 'branchdialog'},  # gitk
+        {'wname': 'pinentry'},  # GPG key password entry
+        {'wmclass': 'ssh-askpass'},  # ssh-askpass
+    ],
+    border_focus = '#5555ff',
+    border_normal = '#000000',
+    border_width = 3,
+)
 auto_fullscreen = True
 focus_on_window_activation = 'smart'
 widget_defaults={'font': 'InputSans', 'fontsize': 14, 'padding': 5}

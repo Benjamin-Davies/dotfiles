@@ -3,7 +3,8 @@
 from subprocess import PIPE, Popen, call
 from sys import argv
 
-apps = [('Discord', 'https://discordapp.com/app'),
+apps = [('Contacts', 'https://contacts.google.com/'),
+        ('Discord', 'https://discordapp.com/app'),
         ('Facebook', 'https://facebook.com/'),
         ('Facebook Messenger', 'https://facebook.com/messages/'),
         ('Github', 'https://github.com/'),
@@ -11,6 +12,9 @@ apps = [('Discord', 'https://discordapp.com/app'),
         ('Gmail (School)', 'https://mail.google.com/mail/ca/u/1/'),
         ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
         ('NeverSSL', 'http://neverssl.com/'),
+        ('Planning Center Services', 'https://planningcenteronline.com/dashboard/0'),
+        ('Skype', 'https://web.skype.com/'),
+        ('Spotify', 'https://open.spotify.com/'),
         ('WhatsApp', 'https://web.whatsapp.com/'),
         ('YouTube', 'https://youtube.com/'),
         ]
