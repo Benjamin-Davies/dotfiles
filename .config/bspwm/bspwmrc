@@ -5,6 +5,7 @@ sxhkd &
 
 ./.fehbg
 picom &
+redshift -l -38:176 -t 5500:2500 &
 polybar main &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
