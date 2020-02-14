@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# Color Codes
+CSI=$(echo -ne '\e[')
+
+RESET="${CSI}m"
+BOLD="${CSI}1m"
+
+BK="${CSI}30m"
+R="${CSI}31m"
+G="${CSI}32m"
+Y="${CSI}33m"
+B="${CSI}34m"
+M="${CSI}35m"
+C="${CSI}36m"
+GY="${CSI}37m"
+
+
+# Username and Hostname
+echo "$BOLD$Y$(whoami)$GY@$Y$(hostname)$RESET"
+
+
+# OS/Distro
+# Borrowed from pfetch
+distro="Unknown OS"
+
+case $(uname) in
+  Linux*)
+    if command -v lsb_release > /dev/null
+    then
+      # lsb_release will give us the distro name
+      distro=$(lsb_release -sd)
+    elif [ -d /system/app ] \
+      && [ -d /system/priv-app ]
+    then
+      distro="Android"
+    else
+      distro="Linux"
+    fi
+  ;;
+
+  Darwin*)
+    distro = "macOS"
+  ;;
+esac
+
+distro=${distro##[\"\']}
+distro=${distro%%[\"\']}
+
+echo "  $BOLD$C$distro$RESET"
+
+
+# Date and time
+date +"    $GY%Y-$BOLD$B%m-%d$RESET $GY%G-${M}W%V-%u"
+date +"      $BOLD$G%H:%M$RESET$GY:%S %z %Z$RESET"

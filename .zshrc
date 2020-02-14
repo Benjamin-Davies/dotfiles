@@ -58,4 +58,4 @@ pdpdf() {
   done
 }
 
-~/.local/pfetch/pfetch
+myfetch
