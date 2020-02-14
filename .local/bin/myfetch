@@ -1,19 +1,17 @@
 #!/bin/sh
 
 # Color Codes
-CSI=$(echo -ne '\e[')
+RESET="[m"
+BOLD="[1m"
 
-RESET="${CSI}m"
-BOLD="${CSI}1m"
-
-BK="${CSI}30m"
-R="${CSI}31m"
-G="${CSI}32m"
-Y="${CSI}33m"
-B="${CSI}34m"
-M="${CSI}35m"
-C="${CSI}36m"
-GY="${CSI}37m"
+BK="[30m"
+R="[31m"
+G="[32m"
+Y="[33m"
+B="[34m"
+M="[35m"
+C="[36m"
+GY="[37m"
 
 
 # Username and Hostname
