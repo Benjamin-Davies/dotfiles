@@ -8,6 +8,8 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
 plugins=(
+  docker
+  docker-compose
   git
   vi-mode
   zsh-autosuggestions
