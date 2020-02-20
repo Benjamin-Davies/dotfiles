@@ -10,7 +10,7 @@ module-margin = 2
 line-size = 3
 
 font-0 = FiraSans-Regular:pixelsize=15
-background = #122637
+background = #00000000
 foreground = #ffffff
 
 modules-left = workspaces title
