@@ -14,7 +14,8 @@ super + {comma,period}
 
 # other apps
 super + c
-  google-chrome-stable
+  # https://youtu.be/Y_X1w04ZUQk
+  google-chrome-stable https://distrowatch.com/table.php?distribution=arch
 super + e
   thunar
 super + F1
