@@ -13,9 +13,8 @@ super + {comma,period}
   dmenu_{config,www} -i
 
 # other apps
-# https://youtu.be/Y_X1w04ZUQk
 super + c
-  google-chrome-stable "https://distrowatch.com/table.php?distribution=arch"
+  google-chrome-stable
 super + e
   thunar
 super + F1
