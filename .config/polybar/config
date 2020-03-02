@@ -14,7 +14,7 @@ background = #00000000
 foreground = #ffffff
 
 modules-left = workspaces title
-modules-right = pulseaudio battery date time
+modules-right = pulseaudio backlight battery date time
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -28,11 +28,17 @@ type = internal/xwindow
 
 [module/pulseaudio]
 type = internal/pulseaudio
-label-volume = Volume: %percentage%%
-label-muted = Muted
+label-volume = V %percentage%%
+label-muted = M
+
+[module/backlight]
+type = internal/xbacklight
+label = L %percentage%%
 
 [module/battery]
 type = internal/battery
+label-charging = C %percentage%%
+label-discharging = B %percentage%%
 
 [module/date]
 type = internal/date
