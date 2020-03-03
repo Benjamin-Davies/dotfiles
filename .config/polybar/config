@@ -5,11 +5,12 @@ screenchange-reload = true
 bottom = true
 
 height = 40
-padding = 5
-module-margin = 2
+padding = 2
+module-margin = 1
 line-size = 3
 
-font-0 = FiraSans-Regular:pixelsize=15
+font-0 = FiraCode-Regular:pixelsize=15
+font-1 = FiraSans-Regular:pixelsize=15
 background = #00000000
 foreground = #ffffff
 
@@ -20,29 +21,34 @@ modules-right = pulseaudio backlight battery date time
 type = internal/xworkspaces
 label-active = " %name% "
 label-active-foreground = #3bcf1d
+label-active-font = 2
 label-empty = " %name% "
 label-empty-foreground = #5555ff
+label-empty-font = 2
 
 [module/title]
 type = internal/xwindow
+label = %title:0:80:...%
+label-font = 2
 
 [module/pulseaudio]
 type = internal/pulseaudio
-label-volume = V %percentage%%
+label-volume = V %percentage:2%%
 label-muted = M
 
 [module/backlight]
 type = internal/xbacklight
-label = L %percentage%%
+label = L %percentage:2%%
 
 [module/battery]
 type = internal/battery
-label-charging = C %percentage%%
-label-discharging = B %percentage%%
+label-charging = C %percentage:2%%
+label-discharging = B %percentage:2%%
 
 [module/date]
 type = internal/date
 label = %date%
+label-font = 2
 date = %a %d %b
 
 [module/time]
