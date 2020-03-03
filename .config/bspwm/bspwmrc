@@ -29,4 +29,5 @@ redshift -l -38:176 -t 5500:2500 &
 # Delayed to let picom start first
 # to avoid flickering
 sleep .5s
-polybar main &
+# -r restart on config change
+polybar main -r &
