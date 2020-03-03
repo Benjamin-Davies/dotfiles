@@ -28,6 +28,13 @@ XF86Audio{Lower,Raise}Volume
 XF86MonBrightness{Down,Up}
   xbacklight {-,+} 5
 
+XF86HomePage
+  google-chrome-stable --new-window https://moodle.mmc.school.nz/login/
+XF86Mail
+  google-chrome-stable --new-window https://mail.google.com/mail/u/0/
+XF86Calculator
+  qalculate-gtk
+
 # power and lock
 super + {_,shift + }F4
   {poweroff,reboot}
