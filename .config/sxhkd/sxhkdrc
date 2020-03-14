@@ -34,6 +34,8 @@ XF86Mail
   google-chrome-stable --new-window https://mail.google.com/mail/u/0/
 {XF86Calculator,XF86LaunchB}
   qalculate-gtk
+XF86KbdBrightness{Down,Up}
+  scrot {-zu,-z}
 
 # power and lock
 super + {_,shift + }F4
