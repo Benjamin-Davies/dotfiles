@@ -9,8 +9,13 @@ padding = 2
 module-margin = 1
 line-size = 3
 
+<<<<<<< Updated upstream
 font-0 = FiraCode-Regular:pixelsize=15
 font-1 = FiraSans-Regular:pixelsize=15
+=======
+font-0 = FiraSans-Regular:pixelsize=15
+font-1 = FiraMono-Regular:pixelsize=15
+>>>>>>> Stashed changes
 background = #00000000
 foreground = #ffffff
 
