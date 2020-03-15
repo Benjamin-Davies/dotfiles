@@ -20,6 +20,7 @@ Plug '907th/vim-auto-save'
 let g:auto_save = 1
 
 " Integration
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
