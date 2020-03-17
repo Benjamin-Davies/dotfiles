@@ -10,21 +10,16 @@ name = run(
     capture_output=True,
 ).stdout
 name = name.decode('utf-8')
+name = name.split('\n')[1]
+name = name.split()[0]
 
-# In case we are not connected to any network
-if len(name) > 1:
-    name = name.split('\n')[1]
-    name = name.split()[0]
-
-    connectivity = run(
-        ['nmcli', 'general', 'status'],
-        capture_output=True,
-    ).stdout
-    connectivity = connectivity.decode('utf-8')
-    connectivity = connectivity.split('\n')[1]
-    connectivity = connectivity.split()[1]
-else:
-    connectivity = 'nm not running'
+connectivity = run(
+    ['nmcli', 'general', 'status'],
+    capture_output=True,
+).stdout
+connectivity = connectivity.decode('utf-8')
+connectivity = connectivity.split('\n')[1]
+connectivity = connectivity.split()[1]
 
 monitor = Popen(
     ['nmcli', 'monitor'],
