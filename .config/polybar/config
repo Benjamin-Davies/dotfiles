@@ -33,8 +33,9 @@ label-font = 2
 
 [module/network]
 type = custom/script
-exec = nmcli connection show --active | cut -d ' ' -f 1 | tail -n +2
-interval = 1
+exec = nmstatus
+tail = true
+click-left = dmenu_net
 
 [module/pulseaudio]
 type = internal/pulseaudio

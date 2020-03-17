@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+
+from subprocess import run, PIPE, Popen
+from sys import stdout
+from time import sleep
+import re
+
+name = run(
+    ['nmcli', 'connection', 'show', '--active'],
+    capture_output=True,
+).stdout
+name = name.decode('utf-8')
+name = name.split('\n')[1]
+name = name.split()[0]
+
+connectivity = run(
+    ['nmcli', 'general', 'status'],
+    capture_output=True,
+).stdout
+connectivity = connectivity.decode('utf-8')
+connectivity = connectivity.split('\n')[1]
+connectivity = connectivity.split()[1]
+
+monitor = Popen(
+    ['nmcli', 'monitor'],
+    stdout=PIPE,
+)
+
+name_change = re.compile(r"^'(.*)' is now the primary connection\n$")
+connectivity_change = re.compile(r"^Connectivity is now '(.*)'\n$")
+
+def poll():
+    line = monitor.stdout.readline()
+    line = line.decode('utf-8')
+
+    match = name_change.match(line)
+    if match:
+        global name
+        name, = match.groups()
+        return True
+
+    match = connectivity_change.match(line)
+    if match:
+        global connectivity
+        connectivity, = match.groups()
+        return True
+
+def show():
+    stdout.write(f'{name}({connectivity})\n')
+    stdout.flush()
+
+show()
+
+while True:
+    if poll():
+        show()
