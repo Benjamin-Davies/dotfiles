@@ -15,7 +15,7 @@ background = #00000000
 foreground = #ffffff
 
 modules-left = workspaces title
-modules-right = pulseaudio backlight battery date time
+modules-right = network pulseaudio backlight battery date time
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -30,6 +30,11 @@ label-empty-font = 2
 type = internal/xwindow
 label = %title:0:50:...%
 label-font = 2
+
+[module/network]
+type = custom/script
+exec = nmcli connection show --active | cut -d ' ' -f 1 | tail -n +2
+interval = 1
 
 [module/pulseaudio]
 type = internal/pulseaudio
