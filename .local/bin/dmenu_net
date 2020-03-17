@@ -3,5 +3,5 @@
 nmcli c show \
   | cut -d ' ' -f 1 \
   | tail -n +2 \
-  | dmenu -i \
+  | dmenu $@ \
   | xargs nmcli c up

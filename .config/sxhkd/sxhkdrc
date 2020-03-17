@@ -9,8 +9,8 @@ super + Return
 # program launcher
 super + {_,shift + }space
   rofi -show {drun,run} -i
-super + {comma,period}
-  dmenu_{config,www} -i
+super + {n,comma,period}
+  dmenu_{net,config,www} -i
 
 # other apps
 super + c
