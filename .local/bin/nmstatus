@@ -51,7 +51,16 @@ def poll():
         return True
 
 def show():
-    stdout.write(f'{name}({connectivity})\n')
+    if connectivity == 'none':
+        conn = 'X'
+    elif connectivity == 'limited':
+        conn = '?'
+    elif connectivity == 'full':
+        conn = '\u2713'
+    else:
+        conn = f'({connectivity})'
+
+    stdout.write(f'{name} {conn}\n')
     stdout.flush()
 
 show()
