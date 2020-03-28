@@ -79,7 +79,8 @@ keys = [
     Key([mod], 's', lazyBrowser('https://moodle.mmc.school.nz', profile=1)),
 ]
 
-groups = [Group(str(i)) for i in range(1, 10)]
+# Groups 1-9 and 0
+groups = [Group(str(i % 10)) for i in range(1, 11)]
 
 for i in groups:
     keys.extend([
@@ -94,15 +95,6 @@ layouts = [
         border_width=0,
         ),
 ]
-
-# Replace the defaults for floating windows
-new_defaults = []
-for key, value, desc in layout.Floating.defaults:
-    if key == 'border_focus': value = '#5555ff'
-    elif key == 'border_normal': value = '#000000'
-    elif key == 'border_width': value = 3
-    new_defaults.append((key, value, desc))
-layout.Floating.defaults = new_defaults
 
 screens = []
 
@@ -120,22 +112,27 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
+floating_layout = layout.Floating(
+    float_rules=[
+        {'wmclass': 'confirm'},
+        {'wmclass': 'dialog'},
+        {'wmclass': 'download'},
+        {'wmclass': 'error'},
+        {'wmclass': 'file_progress'},
+        {'wmclass': 'notification'},
+        {'wmclass': 'splash'},
+        {'wmclass': 'toolbar'},
+        {'wmclass': 'confirmreset'},  # gitk
+        {'wmclass': 'makebranch'},  # gitk
+        {'wmclass': 'maketag'},  # gitk
+        {'wname': 'branchdialog'},  # gitk
+        {'wname': 'pinentry'},  # GPG key password entry
+        {'wmclass': 'ssh-askpass'},  # ssh-askpass
+    ],
+    border_focus = '#5555ff',
+    border_normal = '#000000',
+    border_width = 3,
+)
 auto_fullscreen = True
 focus_on_window_activation = 'smart'
 widget_defaults={'font': 'InputSans', 'fontsize': 14, 'padding': 5}

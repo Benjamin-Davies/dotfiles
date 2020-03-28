@@ -2,44 +2,59 @@
 screenchange-reload = true
 
 [bar/main]
-bottom = false
+bottom = true
 
-height = 48
-padding = 5
-module-margin = 2
+height = 40
+padding = 2
+module-margin = 1
 line-size = 3
 
-border-size = 16
-border-bottom-size = 0
-
-font-0 = FiraSans-Regular:pixelsize=15
-background = #122637
+font-0 = FiraCode-Regular:pixelsize=15
+font-1 = FiraSans-Regular:pixelsize=15
+background = #00000000
 foreground = #ffffff
 
 modules-left = workspaces title
-modules-right = pulseaudio battery date time
+modules-right = network pulseaudio backlight battery date time
 
 [module/workspaces]
 type = internal/xworkspaces
 label-active = " %name% "
 label-active-foreground = #3bcf1d
+label-active-font = 2
 label-empty = " %name% "
 label-empty-foreground = #5555ff
+label-empty-font = 2
 
 [module/title]
 type = internal/xwindow
+label = %title:0:50:...%
+label-font = 2
+
+[module/network]
+type = custom/script
+exec = nmstatus
+tail = true
+click-left = dmenu_net
 
 [module/pulseaudio]
 type = internal/pulseaudio
-label-volume = Volume: %percentage%%
-label-muted = Muted
+label-volume = V%percentage:3%%
+label-muted = M
+
+[module/backlight]
+type = internal/xbacklight
+label = L%percentage:3%%
 
 [module/battery]
 type = internal/battery
+label-charging = C%percentage:3%%
+label-discharging = B%percentage:3%%
 
 [module/date]
 type = internal/date
 label = %date%
+label-font = 2
 date = %a %d %b
 
 [module/time]

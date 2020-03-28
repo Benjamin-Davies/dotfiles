@@ -1,21 +1,21 @@
 " Leader commands
 " Inspired by Doom Emacs
 let mapleader = "\<Space>"
-nmap <Leader>b :Buffers<CR>
-" \d to insert date header (used in notes)
-nmap <Leader>d "=strftime('### %Y-%m-%dT%H:%M')<CR>p
-nmap <Leader>ff :Files<CR>
-nmap <Leader>fh :History<CR>
+nmap <Leader><Space> :Buffers<CR>
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
 nmap <Leader>g :Git<CR>
-nmap <Leader>h :Helptags!<CR>
+nmap <Leader>H :Helptags!<CR>
+nmap <Leader>h :History<CR>
+nmap <Leader>: :History:<CR>
 nmap <Leader>l :BLines<CR>
 nmap <Leader>m :Marks<CR>
 nmap <Leader>s :Filetypes<CR>
 nmap <Leader>w <C-W>
+" \d to insert date header (used in notes)
+nmap <Leader>d "=strftime('### %Y-%m-%dT%H:%M')<CR>p
 " \z to kill the current buffer and switch to the last use one
 nmap <Leader>z :bprevious\|bdelete! #<CR>
-nmap <Leader><Space> :GFiles<CR>
-nmap <Leader>: :History:<CR>
 
 " coc
 " Mostly copied from https://github.com/neoclide/coc.nvim/blob/b59c1dffb48370c342b63106a0d47970e5347b42/Readme.md
@@ -77,11 +77,11 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>

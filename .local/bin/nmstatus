@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+
+from subprocess import run, PIPE, Popen
+from sys import stdout
+from time import sleep
+import re
+
+name = run(
+    ['nmcli', 'connection', 'show', '--active'],
+    capture_output=True,
+).stdout
+name = name.decode('utf-8')
+
+# In case we are not connected to any network
+if len(name) > 1:
+    name = name.split('\n')[1]
+    name = name.split()[0]
+
+    connectivity = run(
+        ['nmcli', 'general', 'status'],
+        capture_output=True,
+    ).stdout
+    connectivity = connectivity.decode('utf-8')
+    connectivity = connectivity.split('\n')[1]
+    connectivity = connectivity.split()[1]
+else:
+    connectivity = 'nm not running'
+
+monitor = Popen(
+    ['nmcli', 'monitor'],
+    stdout=PIPE,
+)
+
+name_change = re.compile(r"^(.*): connection profile changed\n$")
+connectivity_change = re.compile(r"^Connectivity is now '(.*)'\n$")
+
+def poll():
+    line = monitor.stdout.readline()
+    line = line.decode('utf-8')
+
+    match = name_change.match(line)
+    if match:
+        global name
+        name, = match.groups()
+        return True
+
+    match = connectivity_change.match(line)
+    if match:
+        global connectivity
+        connectivity, = match.groups()
+        return True
+
+def show():
+    if connectivity == 'none':
+        conn = 'X'
+    elif connectivity == 'limited':
+        conn = '?'
+    elif connectivity == 'full':
+        conn = '\u2713'
+    else:
+        conn = f'({connectivity})'
+
+    stdout.write(f'{name} {conn}\n')
+    stdout.flush()
+
+show()
+
+while True:
+    if poll():
+        show()
