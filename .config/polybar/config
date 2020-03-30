@@ -2,13 +2,13 @@
 screenchange-reload = true
 
 [bar/main]
-height = 32
+height = 36
 padding = 2
 module-margin = 1
 line-size = 3
 
-font-0 = FiraCode-Regular:pixelsize=14
-font-1 = FiraSans-Regular:pixelsize=14
+font-0 = FiraCode-Regular:pixelsize=15
+font-1 = FiraSans-Regular:pixelsize=16
 background = #cc000000
 foreground = #ffffff
 
