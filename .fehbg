@@ -1,3 +1,2 @@
 #!/bin/sh
-# https://raw.githubusercontent.com/LukeSmithxyz/wallpapers/master/Etc/dusk.png
-feh --no-fehbg --bg-fill '/usr/share/backgrounds/dusk.png' 
+feh --no-fehbg --bg-fill '/usr/share/backgrounds/sheep.jpg' 
