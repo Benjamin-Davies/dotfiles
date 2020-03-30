@@ -3,7 +3,8 @@
 from subprocess import PIPE, Popen, call
 from sys import argv
 
-apps = [('Contacts', 'https://contacts.google.com/'),
+apps = [('Calendar', 'https://calendar.google.com/calendar/r'),
+        ('Contacts', 'https://contacts.google.com/'),
         ('Discord', 'https://discordapp.com/app'),
         ('Facebook', 'https://facebook.com/'),
         ('Facebook Messenger', 'https://facebook.com/messages/'),
