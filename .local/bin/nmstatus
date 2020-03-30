@@ -31,7 +31,7 @@ monitor = Popen(
     stdout=PIPE,
 )
 
-name_change = re.compile(r"^'(.*)' is now the primary connection\n$")
+name_change = re.compile(r"^(.*): connection profile changed\n$")
 connectivity_change = re.compile(r"^Connectivity is now '(.*)'\n$")
 
 def poll():
