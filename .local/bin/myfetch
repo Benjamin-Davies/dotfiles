@@ -2,7 +2,6 @@
 
 # Color Codes
 RESET="[m"
-BOLD="[1m"
 
 BK="[30m"
 R="[31m"
@@ -14,40 +13,12 @@ C="[36m"
 GY="[37m"
 
 
-# Username and Hostname
-echo "$BOLD$Y$(whoami)$GY@$Y$(hostname)$RESET"
+# mm-dd Www-d
+#
+# username@host
+#   * hh:mm *
 
-
-# OS/Distro
-# Borrowed from pfetch
-distro="Unknown OS"
-
-case $(uname) in
-  Linux*)
-    if command -v lsb_release > /dev/null
-    then
-      # lsb_release will give us the distro name
-      distro=$(lsb_release -sd)
-    elif [ -d /system/app ] \
-      && [ -d /system/priv-app ]
-    then
-      distro="Android"
-    else
-      distro="Linux"
-    fi
-  ;;
-
-  Darwin*)
-    distro = "macOS"
-  ;;
-esac
-
-distro=${distro##[\"\']}
-distro=${distro%%[\"\']}
-
-echo "  $BOLD$C$distro$RESET"
-
-
-# Date and time
-date +"    $GY%Y-$BOLD$B%m-%d$RESET $GY%G-${M}W%V-%u"
-date +"      $BOLD$G%H:%M$RESET$GY:%S %z %Z$RESET"
+date +"$B%m-%d	W%V-%u"
+echo
+echo "$G$(whoami)$GY@$G$(hostname)"
+date +"  $Y* $R%H:%M $Y*$RESET"
