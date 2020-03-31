@@ -8,9 +8,9 @@ module-margin = 1
 line-size = 3
 
 font-0 = FiraCode-Regular:pixelsize=15
-font-1 = FiraSans-Regular:pixelsize=16
-background = #cc000000
-foreground = #ffffff
+font-1 = FiraSans-Regular:pixelsize=15
+background = #161718
+foreground = #dfdfdf
 
 modules-left = workspaces title
 modules-right = network pulseaudio backlight battery date time
@@ -18,10 +18,10 @@ modules-right = network pulseaudio backlight battery date time
 [module/workspaces]
 type = internal/xworkspaces
 label-active = " %name% "
-label-active-foreground = #3bcf1d
+label-active-foreground = #86c38a
 label-active-font = 2
 label-empty = " %name% "
-label-empty-foreground = #5555ff
+label-empty-foreground = #85befd
 label-empty-font = 2
 
 [module/title]
