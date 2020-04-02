@@ -10,11 +10,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-let uname = substitute(system('uname'), '\n', '', '')
-if uname == 'Darwin'
-  set runtimepath+=/usr/local/opt/fzf
-endif
 
 Plug '907th/vim-auto-save'
 let g:auto_save = 1

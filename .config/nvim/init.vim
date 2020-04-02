@@ -29,10 +29,7 @@ hi VertSplit cterm=NONE ctermfg=2
 hi SignColumn ctermbg=NONE
 hi Pmenu ctermbg=0 ctermfg=5
 
-let $FZF_DEFAULT_OPTS = '
-      \ --color=fg:-1,bg:-1:hl:4
-      \ --color=fg+:-1,bg+:-1:hl+:2
-      \'
+let $FZF_DEFAULT_OPTS = '--color fg:-1,bg:-1,hl:4,fg+:-1,bg+:-1,hl+:2'
 
 let g:tex_flavor = "latex"
 au FileType html,markdown,text,tex setl spell
