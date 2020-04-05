@@ -1,14 +1,27 @@
 #!/bin/sh
 
+# Monitors
 ./.screenlayout/main.sh
 
-# Bspwm config
 MONITORS=$(xrandr -q | grep ' connected' | cut -d' ' -f1 | tac)
-for m in $MONITORS; do
-  i=$(echo $m | cut -c1)
-  bspc monitor $m -d ${i}I ${i}II ${i}III ${i}IV ${i}V
-done
+m_len=$(echo $MONITORS | wc -w)
+if test $m_len -gt 1; then
+  d_per_m=$((10 / m_len))
+  for m in $MONITORS; do
+    c=$(echo $m | cut -c1)
+    bspc monitor $m -d $({
+      n=1
+      while test $n -le $d_per_m; do
+        echo $c$n
+        n=$((n + 1))
+      done
+    })
+  done
+else
+  bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+fi
 
+# Bspwm config
 bspc config border_width         3
 bspc config window_gap          24
 
