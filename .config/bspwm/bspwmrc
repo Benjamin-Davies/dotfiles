@@ -1,7 +1,13 @@
 #!/bin/sh
 
+./.screenlayout/main.sh
+
 # Bspwm config
-bspc monitor -d I II III IV V VI VII VIII IX X
+MONITORS=$(xrandr -q | grep ' connected' | cut -d' ' -f1 | tac)
+for m in $MONITORS; do
+  i=$(echo $m | cut -c1)
+  bspc monitor $m -d ${i}I ${i}II ${i}III ${i}IV ${i}V
+done
 
 bspc config border_width         3
 bspc config window_gap          24
@@ -30,4 +36,6 @@ redshift -l -38:176 -t 5500:2500 &
 # to avoid flickering
 sleep .1s
 # -r restart on config change
-polybar main -r &
+for m in $MONITORS; do
+  MONITOR=$m polybar main -r &
+done

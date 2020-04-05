@@ -2,6 +2,7 @@
 screenchange-reload = true
 
 [bar/main]
+monitor = ${env:MONITOR:}
 height = 36
 padding = 2
 module-margin = 1
