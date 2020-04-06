@@ -30,7 +30,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc config normal_border_color   '#bbbbbb'
-bspc config active_border_color   '#3e953a'
+bspc config active_border_color   '#85befd'
 bspc config focused_border_color  '#000000'
 
 # Important keyboard stuff
