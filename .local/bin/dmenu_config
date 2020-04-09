@@ -4,6 +4,8 @@ from subprocess import PIPE, Popen, call
 from sys import argv
 
 apps = [('Bspwm', '~/.config/bspwm/bspwmrc'),
+        ('Dmenu Config', '~/.local/bin/dmenu_config'),
+        ('Dmenu Web', '~/.local/bin/dmenu_www'),
         ('Kitty', '~/.config/kitty/kitty.conf'),
         ('Neovim', '~/.config/nvim/init.vim'),
         ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),

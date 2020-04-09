@@ -3,6 +3,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Sensible defaults
 Plug 'tpope/vim-sensible'
 
+" Pretty
+Plug 'ap/vim-css-color'
+
 " Because I'm lazy
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
