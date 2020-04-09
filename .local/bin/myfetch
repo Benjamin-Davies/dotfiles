@@ -12,13 +12,11 @@ M="[35m"
 C="[36m"
 GY="[37m"
 
-
 # mm-dd Www-d
-#
-# username@host
-#   * hh:mm *
+#  * hh:mm *
+date +"$B%m-%d W%V-%u"
+date +" $Y* $R%H:%M $Y*"
 
-date +"$B%m-%d	W%V-%u"
-echo
-echo "$G$(whoami)$GY@$G$(hostname)"
-date +"  $Y* $R%H:%M $Y*$RESET"
+# Ducktales quote
+echo "$G"
+fortune -s ducktales
