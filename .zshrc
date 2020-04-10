@@ -30,6 +30,8 @@ export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
 # Use default colors for ls
 export LSCOLORS=
 export LS_COLORS=
+# And light grey for autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
