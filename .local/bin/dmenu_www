@@ -3,13 +3,14 @@
 from subprocess import PIPE, Popen, call
 from sys import argv
 
-apps = [('Calendar', 'https://calendar.google.com/calendar/r'),
+apps = [('Bible', 'https://my.bible.com/bible/'),
+        ('Calendar', 'https://calendar.google.com/calendar/r'),
         ('Contacts', 'https://contacts.google.com/'),
         ('Discord', 'https://discordapp.com/app'),
         ('DreamCatcher', 'https://app.dreamcatcher.school.nz/'),
         ('Education Perfect (EP)', 'https://educationperfect.com/app/'),
         ('Facebook', 'https://facebook.com/'),
-        ('Facebook Messenger', 'https://messenger.com/'),
+        ('Messenger', 'https://messenger.com/'),
         ('GitHub', 'https://github.com/'),
         ('GitLab', 'https://gitlab.com/'),
         ('Gmail', 'https://mail.google.com/mail/ca/u/0/'),
