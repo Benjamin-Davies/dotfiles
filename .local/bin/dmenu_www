@@ -5,6 +5,7 @@ from sys import argv
 
 apps = [('Bible', 'https://my.bible.com/bible/'),
         ('Calendar', 'https://calendar.google.com/calendar/r'),
+        ('Classroom', 'https://classroom.google.com/u/1/h'),
         ('Contacts', 'https://contacts.google.com/'),
         ('Discord', 'https://discordapp.com/app'),
         ('DreamCatcher', 'https://app.dreamcatcher.school.nz/'),
