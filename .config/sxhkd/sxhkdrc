@@ -8,9 +8,9 @@ super + Return
 
 # program launcher
 super + {_,shift + }space
-  rofi -show {drun,run} -i
+  kitty-menu {drun,run}
 super + {n,comma,period}
-  dmenu_{net,config,www} -i
+  kitty-menu {net,config,www}
 
 # other apps
 super + c

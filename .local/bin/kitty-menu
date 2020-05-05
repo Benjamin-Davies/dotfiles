@@ -1,0 +1,160 @@
+#!/usr/bin/env python3
+
+from subprocess import run
+from sys import argv
+from tempfile import NamedTemporaryFile
+
+kitty_args = '--class kitty-menu'
+fzf_args = '--color fg:-1,bg:-1,hl:4,fg+:-1,bg+:-1,hl+:2'
+
+def run_lines(args):
+    p = run(args, shell=True, capture_output=True, text=True)
+    return p.stdout.split('\n')
+
+class Mode:
+    def __init__(self):
+        self.options = [
+            ('Foo', 'foo'),
+            ('Bar', 'bar'),
+            ('Baz', 'baz'),
+        ]
+
+    def get_options(self):
+        return (name for name, _ in self.options)
+
+    def get_prompt(self):
+        return f'{self.__class__.__name__[:-4].lower()}> '
+
+    def use_result(self, result):
+        for name, value in self.options:
+            if name == result:
+                return self.use_value(value)
+
+    def use_value(self, value):
+        print(value)
+
+class RunMode(Mode):
+    def __init__(self):
+        self.options = [(c, c) for c in run_lines('compgen -c')]
+
+    def use_value(self, value):
+        run(value, shell=True)
+
+class DRunMode(RunMode):
+    def __init__(self):
+        from glob import glob
+        from itertools import chain
+        from configparser import ConfigParser
+
+        def parse_desktop_file(file):
+            parser = ConfigParser(interpolation=None)
+            parser.read(file)
+            return (parser.get('Desktop Entry', 'Name'),
+                    parser.get('Desktop Entry', 'Exec'))
+
+        desktop_files = chain(
+            glob('/usr/share/applications/*.desktop'),
+            glob('/usr/local/share/applications/*.desktop'),
+            glob('.local/share/applications/*.desktop'),
+        )
+        self.options = (parse_desktop_file(file) for file in desktop_files)
+
+class NetMode(Mode):
+    def __init__(self):
+        lines = run_lines('nmcli c show')
+        first_line = lines[0]
+        uuid_start = first_line.index('UUID')
+        uuid_end = first_line.index('TYPE')
+        self.options = [(line[:uuid_start] + line[uuid_end:],
+                         line[uuid_start:uuid_end-1])
+                        for line in lines[1:-1]]
+
+    def use_value(self, value):
+        run(f'nmcli c up {value}', shell=True)
+
+class ConfigMode(Mode):
+    def __init__(self):
+        self.options = [
+            ('Bspwm', '~/.config/bspwm/bspwmrc'),
+            ('Dmenu Config', '~/.local/bin/dmenu_config'),
+            ('Dmenu Web', '~/.local/bin/dmenu_www'),
+            ('Kitty', '~/.config/kitty/kitty.conf'),
+            ('Neovim', '~/.config/nvim/init.vim'),
+            ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
+            ('Neovim Plugins', '~/.config/nvim/plugins.vim'),
+            ('Picom', '~/.config/picom.conf'),
+            ('Polybar', '~/.config/polybar/config'),
+            ('Qtile', '~/.config/qtile/config.py'),
+            ('SSH', '~/.ssh/config'),
+            ('Sxhkd', '~/.config/sxhkd/sxhkdrc'),
+            ('Tmux', '~/.tmux.conf'),
+            ('XMonad', '~/.config/xmonad/xmonad.hs'),
+            ('Xresources', '~/.Xresources'),
+            ('Zsh', '~/.zshrc'),
+            ('Scripts', '~/.local/bin/'),
+        ]
+
+    def use_value(self, value):
+        run(f'kitty nvim {value}', shell=True)
+
+class WwwMode(Mode):
+    def __init__(self):
+        self.options = [
+            ('Bible', 'https://my.bible.com/bible/'),
+            ('Calendar', 'https://calendar.google.com/calendar/r'),
+            ('Classroom', 'https://classroom.google.com/u/1/h'),
+            ('Contacts', 'https://contacts.google.com/'),
+            ('Discord', 'https://discordapp.com/app'),
+            ('DreamCatcher', 'https://app.dreamcatcher.school.nz/'),
+            ('Education Perfect (EP)', 'https://educationperfect.com/app/'),
+            ('Facebook', 'https://facebook.com/'),
+            ('Messenger', 'https://messenger.com/'),
+            ('GitHub', 'https://github.com/'),
+            ('GitLab', 'https://gitlab.com/'),
+            ('Gmail', 'https://mail.google.com/mail/ca/u/0/'),
+            ('Gmail School', 'https://mail.google.com/mail/ca/u/1/'),
+            ('Google Drive', 'https://drive.google.com/drive/u/0/'),
+            ('Google Drive School', 'https://drive.google.com/drive/u/1/'),
+            ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
+            ('NeverSSL', 'http://neverssl.com/'),
+            ('Planning Center Services', 'https://planningcenteronline.com/dashboard/0'),
+            ('Pushbullet', 'https://pushbullet.com/'),
+            ('Skype', 'https://web.skype.com/'),
+            ('Spotify', 'https://open.spotify.com/'),
+            ('WhatsApp', 'https://web.whatsapp.com/'),
+            ('YouTube', 'https://youtube.com/'),
+        ]
+
+    def use_value(self, value):
+        run(f'google-chrome-stable --new-window --profile-directory=Default --app={value}', shell=True)
+
+
+modes = {
+    'test': Mode,
+    'run': RunMode,
+    'drun': DRunMode,
+    'net': NetMode,
+    'config': ConfigMode,
+    'www': WwwMode,
+}
+
+if len(argv) == 5 and argv[1] == '--prompt':
+
+    # Usage: kitty-menu --prompt <prompt> <options file> <result file>
+    run(f'fzf {fzf_args} --prompt "{argv[2]}" < {argv[3]} > {argv[4]}', shell=True)
+
+else:
+
+    # Usage: kitty-menu
+    mode = modes[argv[1]]()
+
+    with NamedTemporaryFile(mode='w') as i, NamedTemporaryFile(mode='r') as o:
+        for s in mode.get_options():
+            i.write(f'{s}\n')
+        i.flush()
+
+        run(f'kitty {kitty_args} {argv[0]} --prompt "{mode.get_prompt()}" {i.name} {o.name}', shell=True)
+
+        result = o.read()[:-1]
+
+    mode.use_result(result)

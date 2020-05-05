@@ -1,7 +1,0 @@
-#!/bin/sh
-
-nmcli c show \
-  | cut -d ' ' -f 1 \
-  | tail -n +2 \
-  | dmenu $@ \
-  | xargs nmcli c up
