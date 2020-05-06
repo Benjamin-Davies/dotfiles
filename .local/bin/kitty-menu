@@ -76,9 +76,8 @@ class ConfigMode(Mode):
     def __init__(self):
         self.options = [
             ('Bspwm', '~/.config/bspwm/bspwmrc'),
-            ('Dmenu Config', '~/.local/bin/dmenu_config'),
-            ('Dmenu Web', '~/.local/bin/dmenu_www'),
             ('Kitty', '~/.config/kitty/kitty.conf'),
+            ('Kitty Menu', '~/.local/bin/kitty-menu'),
             ('Neovim', '~/.config/nvim/init.vim'),
             ('Neovim Keymaps', '~/.config/nvim/keymaps.vim'),
             ('Neovim Plugins', '~/.config/nvim/plugins.vim'),
