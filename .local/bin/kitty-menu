@@ -112,6 +112,8 @@ class WwwMode(Mode):
             ('GitLab', 'https://gitlab.com/'),
             ('Gmail', 'https://mail.google.com/mail/ca/u/0/'),
             ('Gmail School', 'https://mail.google.com/mail/ca/u/1/'),
+            ('Google Docs', 'https://docs.google.com/document/u/0/'),
+            ('Google Docs School', 'https://docs.google.com/document/u/1/'),
             ('Google Drive', 'https://drive.google.com/drive/u/0/'),
             ('Google Drive School', 'https://drive.google.com/drive/u/1/'),
             ('MMC Moodle', 'https://moodle.mmc.school.nz/login/index.php'),
