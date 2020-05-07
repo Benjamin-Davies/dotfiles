@@ -153,8 +153,16 @@ class WwwMode(Mode):
 
     def use_value(self, value):
         profile_index, url = value
-        profile = 'Default' if profile_index == 0 else f'"Profile {profile_index}"'
-        run(f'google-chrome-stable --new-window --profile-directory={profile} --app={url}', shell=True)
+        if profile_index == 0:
+            profile = 'Default'
+        else:
+            profile = f'Profile {profile_index}'
+        run([
+            'google-chrome-stable',
+            '--new-window',
+            f'--profile-directory={profile}',
+            f'--app={url}',
+        ])
 
 
 modes = {
