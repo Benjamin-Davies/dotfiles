@@ -5,8 +5,9 @@ nmap <Leader><Space> :Buffers<CR>
 nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
 nmap <Leader>g :Git<CR>
-nmap <Leader>H :Helptags!<CR>
+nmap <Leader>G :Goyo<CR>
 nmap <Leader>h :History<CR>
+nmap <Leader>H :Helptags!<CR>
 nmap <Leader>: :History:<CR>
 nmap <Leader>l :BLines<CR>
 nmap <Leader>m :Marks<CR>

@@ -1,6 +1,8 @@
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/keymaps.vim
 
+colorscheme my-light
+
 " Allow filetype detection
 filetype plugin indent on
 
@@ -23,17 +25,5 @@ set shortmess+=c
 " Always show the column on the left for error messages
 set signcolumn=yes
 
-hi StatusLine cterm=bold ctermfg=11
-hi StatusLineNC cterm=bold ctermfg=13
-hi VertSplit cterm=NONE ctermfg=2
-hi SignColumn ctermbg=NONE
-hi Pmenu ctermbg=0 ctermfg=5
-
-let $FZF_DEFAULT_OPTS = '--color fg:-1,bg:-1,hl:4,fg+:-1,bg+:-1,hl+:2'
-
 let g:tex_flavor = "latex"
 au FileType html,markdown,text,tex setl spell
-
-" nohls after incsearch
-au CmdlineEnter /,\? :set hlsearch
-au CmdlineLeave /,\? :set nohlsearch

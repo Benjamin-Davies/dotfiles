@@ -5,6 +5,7 @@ Plug 'tpope/vim-sensible'
 
 " Pretty
 Plug 'ap/vim-css-color'
+Plug 'junegunn/goyo.vim'
 
 " Because I'm lazy
 Plug 'tpope/vim-surround'
@@ -26,7 +27,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'mattn/emmet-vim'
-Plug 'glacambre/firenvim'
 
 call plug#end()
 

@@ -57,7 +57,7 @@ class DRunMode(RunMode):
             glob('/usr/local/share/applications/*.desktop'),
             glob('.local/share/applications/*.desktop'),
         )
-        self.options = (parse_desktop_file(file) for file in desktop_files)
+        self.options = [parse_desktop_file(file) for file in desktop_files]
 
 class NetMode(Mode):
     def __init__(self):
@@ -111,6 +111,8 @@ class WwwMode(Mode):
              (0, 'https://discordapp.com/app')),
             ('DreamCatcher',
              (1, 'https://app.dreamcatcher.school.nz/')),
+            ('Duolingo',
+             (0, 'https://duolingo.com/learn')),
             ('Education Perfect',
              (1, 'https://educationperfect.com/app/')),
             ('Facebook',
@@ -133,6 +135,8 @@ class WwwMode(Mode):
              (0, 'https://drive.google.com/drive/u/0/')),
             ('Google Drive School',
              (1, 'https://drive.google.com/drive/u/0/')),
+            ('Google Photos',
+             (0, 'https://photos.google.com/')),
             ('MMC Moodle',
              (1, 'https://moodle.mmc.school.nz/login/index.php')),
             ('NeverSSL',
