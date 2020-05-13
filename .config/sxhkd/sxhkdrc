@@ -13,8 +13,8 @@ super + {n,comma,period}
   kitty-menu {net,config,www}
 
 # other apps
-super + c
-  google-chrome-stable
+super + {_,shift + }c
+  google-chrome-stable --new-window --profile-directory={Default,'Profile 1'}
 super + e
   thunar
 super + F1

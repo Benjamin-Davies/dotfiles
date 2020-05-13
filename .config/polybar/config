@@ -16,6 +16,9 @@ foreground = #dfdfdf
 modules-left = workspaces title
 modules-right = network pulseaudio backlight battery date time
 
+tray-position = right
+tray-maxsize = 22
+
 [module/workspaces]
 type = internal/xworkspaces
 label-active = " %name% "

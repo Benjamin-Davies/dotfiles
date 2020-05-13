@@ -44,6 +44,8 @@ sxhkd &
 xsetroot -cursor_name left_ptr
 picom &
 redshift -l -38:176 -t 5500:3500 &
+google-chrome --no-startup-window &
+slack -us &
 
 # Later pretty stuff
 
