@@ -32,6 +32,8 @@ export LSCOLORS=
 export LS_COLORS=
 # And light grey for autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+# Skip compression for AUR packages
+export PKGEXT=.pkg.tar
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
