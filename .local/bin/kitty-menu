@@ -135,6 +135,8 @@ class WwwMode(Mode):
              (0, 'https://drive.google.com/drive/u/0/')),
             ('Google Drive School',
              (1, 'https://drive.google.com/drive/u/0/')),
+            ('Google Keep',
+             (0, 'https://keep.google.com/')),
             ('Google Photos',
              (0, 'https://photos.google.com/')),
             ('MMC Moodle',
