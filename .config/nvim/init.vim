@@ -1,7 +1,7 @@
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/keymaps.vim
 
-colorscheme my-light
+"colorscheme my-light
 
 " Allow filetype detection
 filetype plugin indent on
