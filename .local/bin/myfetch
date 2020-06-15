@@ -14,9 +14,5 @@ GY="[37m"
 
 # mm-dd Www-d
 #  * hh:mm *
-date +"$B%m-%d W%V-%u"
-date +" $Y* $R%H:%M $Y*"
-
-# Ducktales quote
-echo "$G"
-fortune -s ducktales
+date +"$G%m-%d W%V-%u"
+date +" $M* $Y%H:%M $M*"
