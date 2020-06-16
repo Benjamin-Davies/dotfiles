@@ -151,6 +151,8 @@ class WwwMode(Mode):
              (0, 'https://web.skype.com/')),
             ('Spotify',
              (0, 'https://open.spotify.com/')),
+            ('Trello',
+             (0, 'https://trello.com/')),
             ('WhatsApp',
              (0, 'https://web.whatsapp.com/')),
             ('YouTube',
