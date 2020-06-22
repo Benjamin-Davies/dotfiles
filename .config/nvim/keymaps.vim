@@ -1,20 +1,24 @@
 " Leader commands
 " Inspired by Doom Emacs
 let mapleader = "\<Space>"
-nmap <Leader><Space> :Buffers<CR>
-nmap <Leader>f :GFiles<CR>
-nmap <Leader>F :Files<CR>
+nmap <Leader>l :CocList<CR>
+
+nmap <Leader><Space> :CocList buffers<CR>
+
+nmap <Leader>e :CocList extensions<CR>
+nmap <Leader>f :CocList gfiles<CR>
+nmap <Leader>F :CocList files<CR>
 nmap <Leader>g :Git<CR>
 nmap <Leader>G :Goyo<CR>
-nmap <Leader>h :History<CR>
-nmap <Leader>H :Helptags!<CR>
-nmap <Leader>: :History:<CR>
-nmap <Leader>l :BLines<CR>
-nmap <Leader>m :Marks<CR>
-nmap <Leader>s :Filetypes<CR>
+nmap <Leader>h :CocList cmdhistory<CR>
+nmap <Leader>H :CocList helptags<CR>
+nmap <Leader>m :CocList marks<CR>
+nmap <Leader>s :CocList filetypes<CR>
+
+nmap <Leader>p :bprevious<CR>
 nmap <Leader>w <C-W>
 " \d to insert date header (used in notes)
-nmap <Leader>d "=strftime('### %Y-%m-%dT%H:%M')<CR>p
+nmap <Leader>d "=strftime('! %m-%d W%V-%u')<CR>p
 " \z to kill the current buffer and switch to the last use one
 nmap <Leader>z :bprevious\|bdelete! #<CR>
 

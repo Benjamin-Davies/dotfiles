@@ -14,9 +14,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
 Plug '907th/vim-auto-save'
 let g:auto_save = 1
 
@@ -30,4 +27,17 @@ Plug 'mattn/emmet-vim'
 
 call plug#end()
 
-let g:coc_global_extensions = [ 'coc-python', 'coc-rls', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-lists', 'coc-git' ]
+let g:coc_global_extensions = [
+      \ 'coc-git',
+      \ 'coc-lists',
+      \
+      \ 'coc-css',
+      \ 'coc-json',
+      \ 'coc-python',
+      \ 'coc-rls',
+      \ 'coc-tsserver',
+      \
+      \ 'coc-eslint',
+      \ 'coc-tslint',
+      \ 'coc-prettier',
+      \ ]
