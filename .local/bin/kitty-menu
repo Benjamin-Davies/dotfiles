@@ -49,8 +49,9 @@ class DRunMode(RunMode):
         def parse_desktop_file(file):
             parser = ConfigParser(interpolation=None)
             parser.read(file)
-            return (parser.get('Desktop Entry', 'Name'),
-                    parser.get('Desktop Entry', 'Exec'))
+            exe = parser.get('Desktop Entry', 'Exec')
+            exe = ' '.join(s for s in exe.split(' ') if s[0] != '%')
+            return (parser.get('Desktop Entry', 'Name'), exe)
 
         desktop_files = chain(
             glob('/usr/share/applications/*.desktop'),
