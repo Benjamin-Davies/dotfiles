@@ -1,0 +1,15 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "Cobalt2",
+    "window.zoomLevel": 0,
+    "files.autoSave": "afterDelay",
+    "git.enableSmartCommit": true,
+    "editor.fontFamily": "'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 16,
+    "editor.fontLigatures": true,
+    "debug.console.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    "debug.onTaskErrors": "showErrors",
+    "git.confirmSync": false,
+    "git.autofetch": true
+}
