@@ -25,7 +25,7 @@ else
   export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 fi
 
-export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.deno/bin:./node_modules/.bin:$PATH"
 
 # Use default colors for ls
 export LSCOLORS=
