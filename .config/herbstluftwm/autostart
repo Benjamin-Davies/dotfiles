@@ -15,13 +15,20 @@ hc keyunbind --all
 
 # keybindings
 # if you have a super key you will be much happier with Mod set to Mod4
-Mod=Mod1    # Use alt as the main modifier
-#Mod=Mod4   # Use the super key as the main modifier
+#Mod=Mod1   # Use alt as the main modifier
+Mod=Mod4    # Use the super key as the main modifier
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
+
+# spawning applications
 hc keybind $Mod-Return spawn "${TERMINAL:-kitty}" # use your $TERMINAL with kitty as fallback
+hc keybind $Mod-space spawn rofi -show drun
+hc keybind $Mod-Shift-space spawn rofi -show run
+hc keybind $Mod-Tab spawn rofi -show window
+hc keybind $Mod-c spawn google-chrome-stable
+hc keybind $Mod-v spawn code
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -52,7 +59,7 @@ hc keybind $Mod-o       split   right   0.5
 hc keybind $Mod-Control-space split explode
 
 # resizing frames and floating clients
-resizestep=0.02
+resizestep=0.05
 hc keybind $Mod-Control-h       resize left +$resizestep
 hc keybind $Mod-Control-j       resize down +$resizestep
 hc keybind $Mod-Control-k       resize up +$resizestep
@@ -89,10 +96,10 @@ hc keybind $Mod-p pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Mod-space                                                           \
-            or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
-               , cycle_layout +1
+#hc keybind $Mod-space                                                           \
+#            or , and . compare tags.focus.curframe_wcount = 2                   \
+#                     . cycle_layout +1 vertical horizontal max vertical grid    \
+#               , cycle_layout +1
 
 # mouse
 hc mouseunbind --all
@@ -102,10 +109,10 @@ hc mousebind $Mod-Button3 resize
 
 # focus
 hc keybind $Mod-BackSpace   cycle_monitor
-hc keybind $Mod-Tab         cycle_all +1
-hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-c cycle
-hc keybind $Mod-i jumpto urgent
+hc keybind Mod1-Tab         cycle_all +1
+hc keybind Mod1-Shift-Tab   cycle_all -1
+#hc keybind $Mod-c cycle
+#hc keybind $Mod-i jumpto urgent
 
 # theme
 hc attr theme.tiling.reset 1

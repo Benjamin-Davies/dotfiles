@@ -1,2 +1,2 @@
 rofi.terminal: kitty
-rofi.theme: /usr/share/rofi/themes/Arc.rasi
+rofi.theme: /usr/share/rofi/themes/sidebar.rasi
