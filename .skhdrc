@@ -1,5 +1,0 @@
-cmd - return : open -a Terminal
-
-cmd + ctrl - c : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory=Default --new-window chrome://newtab
-cmd + ctrl - y : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory=Default --new-window https://youtube.com/
-cmd + ctrl - s : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory=Profile\ 1 --new-window https://moodle.mmc.school.nz/login

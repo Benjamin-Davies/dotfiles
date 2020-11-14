@@ -1,8 +1,6 @@
 {
     "window.menuBarVisibility": "toggle",
-    "workbench.colorTheme": "Cobalt2",
     "window.zoomLevel": 0,
-    "files.autoSave": "afterDelay",
     "git.enableSmartCommit": true,
     "editor.fontFamily": "'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
@@ -30,5 +28,20 @@
     },
     "editor.tabSize": 2,
     "diffEditor.ignoreTrimWhitespace": false,
-    "telemetry.enableTelemetry": false
+    "telemetry.enableTelemetry": false,
+    "git.defaultCloneDirectory": "~/src/",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "terminal.integrated.rendererType": "dom",
+    "workbench.colorTheme": "MacOS Modern Dark - Xcode Catalina",
+    "files.autoSave": "onFocusChange",
+    "workbench.editor.enablePreview": false,
+    "window.restoreFullscreen": true,
+    "window.restoreWindows": "none",
+    "editor.renameOnType": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.titleBarStyle": "native",
+    "window.nativeTabs": true
 }

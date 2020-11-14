@@ -26,6 +26,7 @@ else
 fi
 
 export PATH="$HOME/.local/bin:$HOME/.deno/bin:./node_modules/.bin:$PATH"
+export EDITOR=$(which vim)
 
 # Use default colors for ls
 export LSCOLORS=
@@ -37,14 +38,6 @@ export PKGEXT=.pkg.tar
 
 if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
-fi
-
-if command -v nvr > /dev/null; then
-  export EDITOR="$(which nvr) --remote-tab-wait-silent"
-elif command -v nvim > /dev/null; then
-  export EDITOR=$(which nvim)
-else
-  export EDITOR=$(which vim)
 fi
 
 if [ -z $LC_CTYPE ]; then
