@@ -7,3 +7,7 @@ set expandtab
 set number relativenumber
 set splitbelow splitright
 set hidden
+
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-surround'
+call plug#end()
