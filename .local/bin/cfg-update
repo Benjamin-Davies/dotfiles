@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
 # Make sure that we don't show the user's entire home dir
