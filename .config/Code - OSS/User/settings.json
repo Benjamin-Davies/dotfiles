@@ -35,13 +35,12 @@
     "terminal.integrated.rendererType": "dom",
     "workbench.colorTheme": "MacOS Modern Dark - Xcode Catalina",
     "files.autoSave": "onFocusChange",
+    "workbench.editor.showTabs": false,
     "workbench.editor.enablePreview": false,
     "window.restoreFullscreen": true,
     "window.restoreWindows": "none",
     "editor.renameOnType": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "window.titleBarStyle": "native",
-    "window.nativeTabs": true
+    "explorer.confirmDragAndDrop": false
 }
