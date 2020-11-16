@@ -21,7 +21,7 @@ export PATH="$HOME/.local/bin:$HOME/.deno/bin:./node_modules/.bin:$PATH"
 export EDITOR=$(which vim)
 # Very minimal prompt: > or # for root
 export prompt='
-%(!.#.>) '
+%(0?..%F{magenta}%?)%(!.#.>) '
 # Use light grey for autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 # Hide untracked files in Git
@@ -61,8 +61,6 @@ if [ -z $LC_CTYPE ]; then
 fi
 # Skip compression for AUR packages
 export PKGEXT=.pkg.tar
-# Disable macOS shell resume
-export SHELL_SESSIONS_DISABLE=1
 
 # Lets show some pretty stuff
 myfetch
