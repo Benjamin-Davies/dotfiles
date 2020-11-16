@@ -12,7 +12,5 @@ M="[35m"
 C="[36m"
 GY="[37m"
 
-# mm-dd Www-d
-#  * hh:mm *
-date +"$G%m-%d W%V-%u"
-date +" $M* $Y%H:%M $M*"
+# Colourized ISO Date
+date +"$Y%Y-$G%m-%d $C%H:%M$B:%S"
