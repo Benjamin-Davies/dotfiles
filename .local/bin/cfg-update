@@ -4,13 +4,11 @@ alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 # Make sure that we don't show the user's entire home dir
 cfg config --local status.showUntrackedFiles no
 
-cfg stash push
 cfg pull
 cfg submodule update --init --remote --depth=1
 cfg commit -a -m "Update submodules"
 cfg push
 cfg status
-cfg stash pop
 
 echo "Updating Vim plugins" \
   | nvim -c PlugUpdate -c ':qa!' -
