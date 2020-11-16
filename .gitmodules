@@ -13,3 +13,9 @@
 [submodule ".local/kitty-themes"]
 	path = .local/kitty-themes
 	url = https://github.com/dexpota/kitty-themes.git
+[submodule ".vim/pack/tpope/start/vim-repeat"]
+	path = .vim/pack/tpope/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule ".vim/pack/tpope/start/vim-surround"]
+	path = .vim/pack/tpope/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
