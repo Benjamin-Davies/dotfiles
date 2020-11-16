@@ -10,6 +10,3 @@ cfg submodule update --init --remote --depth=1
 cfg commit -a -m "Update submodules"
 cfg push
 cfg status
-
-echo "Updating Vim plugins" \
-  | vim -c PlugUpdate -c ':qa!' -
