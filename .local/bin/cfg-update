@@ -12,4 +12,4 @@ cfg push
 cfg status
 
 echo "Updating Vim plugins" \
-  | nvim -c PlugUpdate -c ':qa!' -
+  | vim -c PlugUpdate -c ':qa!' -
