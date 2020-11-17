@@ -27,8 +27,7 @@ hc keybind $Mod-Return spawn "${TERMINAL:-kitty}" # use your $TERMINAL with kitt
 hc keybind $Mod-space spawn rofi -show drun
 hc keybind $Mod-Shift-space spawn rofi -show run
 hc keybind $Mod-Tab spawn rofi -show window
-hc keybind $Mod-c spawn google-chrome-stable
-hc keybind $Mod-v spawn code
+hc keybind $Mod-b spawn firefox
 
 # basic movement in tiling and floating mode
 # focusing clients
