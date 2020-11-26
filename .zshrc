@@ -21,7 +21,7 @@ export PATH="$HOME/.local/bin:$HOME/.deno/bin:./node_modules/.bin:$PATH"
 export EDITOR=$(which vim)
 # Very minimal prompt: > or # for root
 export prompt='
-%(0?..%F{magenta}%?)%(!.#.>) '
+%(0?..%F{magenta}%?)%(!.#.>) %f'
 # Use light grey for autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 # Hide untracked files in Git
