@@ -26,6 +26,8 @@ export prompt='
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 # Hide untracked files in Git
 export DISABLE_UNTRACKED_FILES_DIRTY='true'
+# Politely ask Microsoft not to spy on us
+export DOTNET_CLI_TELEMETRY_OPTOUT='true'
 
 # open is a useful command on macOS
 # Lets get it on Linux as well
