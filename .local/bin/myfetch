@@ -13,4 +13,4 @@ C="[36m"
 GY="[37m"
 
 # Colourized ISO Date
-date +"$Y%Y-$G%m-%d $C%H:%M$B:%S"
+date +"$Y%Y-$G%m-%d $C%H:%M$B:%S$RESET"
