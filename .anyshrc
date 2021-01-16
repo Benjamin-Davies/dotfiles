@@ -6,6 +6,8 @@ export PATH="$HOME/.local/bin:$HOME/.deno/bin:./node_modules/.bin:$PATH"
 # If in doubt use good old fashioned VIM
 export EDITOR=vim
 # Very minimal prompt: > or # for root
+export prompt='
+%(0?..%F{magenta}%?)%(!.#.>) %f'
 export PS1='
 \$ '
 # Hide untracked files in Git
