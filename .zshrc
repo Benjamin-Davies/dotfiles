@@ -8,6 +8,7 @@ plugins=(
   docker
   docker-compose
   git
+  github
   vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting
