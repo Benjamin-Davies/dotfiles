@@ -28,32 +28,23 @@
     },
     "editor.tabSize": 2,
     "diffEditor.ignoreTrimWhitespace": false,
-<<<<<<< Updated upstream
-    "telemetry.enableTelemetry": false,
-=======
->>>>>>> Stashed changes
     "git.defaultCloneDirectory": "~/src/",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "latex-workshop.view.pdf.viewer": "tab",
     "terminal.integrated.rendererType": "dom",
-<<<<<<< Updated upstream
-    "workbench.colorTheme": "MacOS Modern Dark - Xcode Catalina",
-=======
-    "workbench.colorTheme": "Cobalt2",
+    "workbench.colorTheme": "MacOS Modern Dark - Xcode Civic",
     "vscode_vibrancy.type": "sidebar",
     "vscode_vibrancy.opacity": 0.5,
->>>>>>> Stashed changes
     "files.autoSave": "onFocusChange",
     "workbench.editor.showTabs": false,
-    "workbench.editor.enablePreview": false,
     "window.restoreFullscreen": true,
     "window.restoreWindows": "none",
     "editor.renameOnType": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false
-<<<<<<< Updated upstream
+    "explorer.confirmDragAndDrop": false,
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "remote.restoreForwardedPorts": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.donotVerifyTags": true
 }
-=======
-}
->>>>>>> Stashed changes
