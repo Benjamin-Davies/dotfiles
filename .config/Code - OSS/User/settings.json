@@ -46,5 +46,8 @@
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "remote.restoreForwardedPorts": true,
     "liveServer.settings.donotShowInfoMsg": true,
-    "liveServer.settings.donotVerifyTags": true
+    "liveServer.settings.donotVerifyTags": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
