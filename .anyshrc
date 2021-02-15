@@ -30,13 +30,6 @@ alias dcdu='docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --
 # Restart the current shell (keeps env)
 alias restart='clear && exec $0'
 
-# Function to bulk convert md to pdf
-pdpdf() {
-  for file in "$@"; do
-    pandoc "$file" -o "$file".pdf -V header-includes:'\renewcommand{\familydefault}{\sfdefault}'
-  done
-}
-
 # Some distros do weird things
 # Use default colors for ls
 export LSCOLORS=

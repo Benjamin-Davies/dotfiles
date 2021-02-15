@@ -1,0 +1,21 @@
+#!/bin/sh
+# Bulk convert md to pdf
+
+set -e
+
+if [ $# -lt 1 ]; then
+  args="$PWD"
+else
+  args="$@"
+fi
+
+files=$(find $args -name '*.md')
+
+for path in $files; do
+  dirname=${path%/*}
+  basename=${path##*/}
+  noext=${basename%.*}
+  echo "Converting $path"
+
+  pandoc "$dirname/$basename" -o "$dirname/$noext.pdf"
+done
