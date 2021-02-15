@@ -2,7 +2,7 @@
     "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 0,
     "git.enableSmartCommit": true,
-    "editor.fontFamily": "'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Jetbrains Mono', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
     "editor.fontLigatures": true,
     "debug.console.fontSize": 15,
@@ -32,7 +32,7 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "latex-workshop.view.pdf.viewer": "tab",
     "terminal.integrated.rendererType": "dom",
-    "workbench.colorTheme": "MacOS Modern Dark - Xcode Civic",
+    "workbench.colorTheme": "Owlet (Default)",
     "vscode_vibrancy.type": "sidebar",
     "vscode_vibrancy.opacity": 0.5,
     "files.autoSave": "onFocusChange",
@@ -48,6 +48,11 @@
     "liveServer.settings.donotShowInfoMsg": true,
     "liveServer.settings.donotVerifyTags": true,
     "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }
