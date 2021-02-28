@@ -28,3 +28,6 @@
 [submodule ".local/oh-my-bash"]
 	path = .local/oh-my-bash
 	url = https://github.com/ohmybash/oh-my-bash.git
+[submodule ".config/alacritty/dracula"]
+	path = .config/alacritty/dracula
+	url = https://github.com/dracula/alacritty.git

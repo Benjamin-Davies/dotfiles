@@ -32,7 +32,6 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "latex-workshop.view.pdf.viewer": "tab",
     "terminal.integrated.rendererType": "dom",
-    "workbench.colorTheme": "Owlet (Default)",
     "vscode_vibrancy.type": "sidebar",
     "vscode_vibrancy.opacity": 0.5,
     "files.autoSave": "onFocusChange",
@@ -54,5 +53,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "workbench.colorTheme": "Dracula"
 }
