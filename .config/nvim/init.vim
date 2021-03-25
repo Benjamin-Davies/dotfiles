@@ -1,8 +1,6 @@
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/keymaps.vim
 
-colorscheme my-light
-
 " Allow filetype detection
 filetype plugin indent on
 
@@ -27,3 +25,10 @@ set signcolumn=yes
 
 let g:tex_flavor = "latex"
 au FileType html,markdown,text,tex setl spell
+
+" Aesthetic
+colorscheme dracula
+set guifont=SF\ Mono:h16
+
+" Neovide
+let g:neovide_cursor_vfx_mode = "pixiedust"
