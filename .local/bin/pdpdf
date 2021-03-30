@@ -9,12 +9,12 @@ else
   args="$@"
 fi
 
-files=$(find $args -name '*.md')
+files="$(find $args -name '*.md')"
 
-for path in $files; do
-  dirname=${path%/*}
-  basename=${path##*/}
-  noext=${basename%.*}
+for path in "$files"; do
+  dirname="${path%/*}"
+  basename="${path##*/}"
+  noext="${basename%.*}"
   echo "Converting $path"
 
   pandoc "$dirname/$basename" -o "$dirname/$noext.pdf"

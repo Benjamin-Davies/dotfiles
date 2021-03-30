@@ -19,6 +19,12 @@ if command -v xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
 
+# Use nvr as the EDITOR if it is installed and we are within nvim
+if command -v nvr > /dev/null && \
+    [ ! -z $NVIM_LISTEN_ADDRESS ]; then
+  export EDITOR='nvr --remote-wait'
+fi
+
 # Command to access my dotfiles repo
 # Stored in ~/dotfiles.git to avoid being seen by git all the time
 alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'

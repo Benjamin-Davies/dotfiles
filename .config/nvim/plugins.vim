@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 
 " Pretty
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
 
