@@ -14,4 +14,5 @@ cmd + alt - s : open -a Spotify
 cmd + alt - u : open -a Musescore\ 3
 cmd + alt - v : open -a Visual\ Studio\ Code
 cmd + shift + alt - v : open -a Neovide
+cmd + alt - n : open -a Neovide
 cmd + alt - w : /Applications/Firefox.app/Contents/MacOS/firefox -P work
