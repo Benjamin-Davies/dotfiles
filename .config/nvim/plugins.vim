@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'mattn/emmet-vim'
+Plug 'jpalardy/vim-slime'
 
 call plug#end()
 
@@ -42,3 +43,5 @@ let g:coc_global_extensions = [
       \ 'coc-tslint',
       \ 'coc-prettier',
       \ ]
+
+let g:slime_target='neovim'
