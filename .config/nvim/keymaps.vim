@@ -90,3 +90,10 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 "nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"xnoremap <silent> <space>r <Plug>(SendToTerm)
+"nnoremap <silent> <space>r <Plug>(SendToTerm)
+"onoremap <silent> <space>r <Plug>(SendToTerm)
+"nnoremap <silent> <space>rr <Plug>(SendToTermLine)
+
+command SendToTerm normal <Plug>(SendToTerm)

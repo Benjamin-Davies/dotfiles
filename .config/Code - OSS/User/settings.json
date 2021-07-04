@@ -61,5 +61,6 @@
     },
     "workbench.colorTheme": "Dracula",
     "workbench.productIconTheme": "fluent-icons",
-    "workbench.iconTheme": "file-icons-colourless"
+    "workbench.iconTheme": "file-icons-colourless",
+    "workbench.startupEditor": "none"
 }

@@ -1,21 +1,19 @@
-#!/bin/sh
-# Bulk convert md to pdf
+#!/usr/bin/env python3
 
-set -e
+from subprocess import run, PIPE
+import sys
+from os import path
 
-if [ $# -lt 1 ]; then
-  args="$PWD"
-else
-  args="$@"
-fi
+args = sys.argv[1:]
+if len(args) < 1: args = ['.']
+args = [path.abspath(p) for p in args]
 
-files="$(find $args -name '*.md')"
+find_cmd = run(['find'] + args + ['-name', '*.md'], stdout=PIPE, text=True)
+in_files = find_cmd.stdout.splitlines()
 
-for path in "$files"; do
-  dirname="${path%/*}"
-  basename="${path##*/}"
-  noext="${basename%.*}"
-  echo "Converting $path"
+for in_file in in_files:
+    out_file = in_file[:-3] + '.pdf'
 
-  pandoc "$dirname/$basename" -o "$dirname/$noext.pdf"
-done
+    print('Converting', path.relpath(in_file))
+
+    run(['pandoc', in_file, '-o', out_file])
