@@ -27,5 +27,9 @@ let g:tex_flavor = "latex"
 au FileType html,markdown,text,tex setl spell
 
 " Aesthetic
-colorscheme dracula
-set guifont=SF\ Mono:h16
+if exists("g:neovide")
+      colorscheme dracula
+      set guifont=SF\ Mono:h16
+else
+      colorscheme my-light
+endif
