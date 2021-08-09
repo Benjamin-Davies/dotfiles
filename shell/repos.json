@@ -1,0 +1,34 @@
+[
+  {
+    "path": ".local/oh-my-bash",
+    "repo": "https://github.com/ohmybash/oh-my-bash.git"
+  },
+  {
+    "path": ".local/oh-my-zsh",
+    "repo": "https://github.com/robbyrussell/oh-my-zsh.git"
+  },
+  {
+    "path": ".local/zsh-custom/plugins/zsh-autosuggestions",
+    "repo": "https://github.com/zsh-users/zsh-autosuggestions.git"
+  },
+  {
+    "path": ".local/zsh-custom/plugins/zsh-syntax-highlighting",
+    "repo": "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+  },
+  {
+    "path": ".vim/pack/sheerun/start/vim-polyglot",
+    "repo": "https://github.com/sheerun/vim-polyglot.git"
+  },
+  {
+    "path": ".vim/pack/tpope/start/vim-repeat",
+    "repo": "https://github.com/tpope/vim-repeat.git"
+  },
+  {
+    "path": ".vim/pack/tpope/start/vim-sensible",
+    "repo": "https://github.com/tpope/vim-sensible.git"
+  },
+  {
+    "path": ".vim/pack/tpope/start/vim-surround",
+    "repo": "https://github.com/tpope/vim-surround.git"
+  }
+]

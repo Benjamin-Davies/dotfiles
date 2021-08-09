@@ -1,0 +1,10 @@
+[
+  {
+    "path": ".config/alacritty/dracula",
+    "repo": "https://github.com/dracula/alacritty.git"
+  },
+  {
+    "path": ".local/kitty-themes",
+    "repo": "https://github.com/dexpota/kitty-themes.git"
+  }
+]
