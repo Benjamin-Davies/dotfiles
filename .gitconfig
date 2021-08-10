@@ -1,7 +1,1 @@
-[user]
-	email = bentendavies@gmail.com
-	name = Benjamin-Davies
-[pull]
-	rebase = false
-[credential]
-	helper = store
+/Users/benjamindavies/dotfiles/shell/gitconfig

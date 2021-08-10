@@ -1,1 +1,1 @@
-../../../.local/vim-plug/plug.vim
+/Users/benjamindavies/dotfiles/devel/config/nvim/autoload/plug.vim

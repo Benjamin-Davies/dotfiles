@@ -1,1 +1,1 @@
-SHELL_SESSIONS_DISABLE=1
+/Users/benjamindavies/dotfiles/shell/zshenv

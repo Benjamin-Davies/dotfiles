@@ -1,16 +1,1 @@
-#!/bin/sh
-set -e
-
-if [ -f "$HOME/.ssh/id_rsa" ]; then
-  url=git@github.com:Benjamin-Davies/dotfiles.git
-else
-  url=https://github.com/Benjamin-Davies/dotfiles.git
-fi
-
-cd $HOME
-git clone --bare $url
-
-alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
-cfg checkout -f master
-$HOME/.local/bin/cfg-update
-zsh
+/Users/benjamindavies/dotfiles/shell/local/bin/cfg-init

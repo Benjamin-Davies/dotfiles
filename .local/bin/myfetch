@@ -1,16 +1,1 @@
-#!/bin/sh
-
-# Color Codes
-RESET="[m"
-
-BK="[30m"
-R="[31m"
-G="[32m"
-Y="[33m"
-B="[34m"
-M="[35m"
-C="[36m"
-GY="[37m"
-
-# Colourized ISO Date
-date +"$Y%Y-$G%m-%d $C%H:%M$B:%S$RESET"
+/Users/benjamindavies/dotfiles/shell/local/bin/myfetch
