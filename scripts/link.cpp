@@ -72,7 +72,7 @@ void link_file(fs::path src, fs::path dest, std::vector<std::string> &linked)
       return;
     }
 
-    fs::remove(dest);
+    fs::remove_all(dest);
   }
 
   fs::create_symlink(src, dest);
@@ -98,7 +98,7 @@ void link_directory(fs::path src, fs::path dest, std::vector<std::string> &linke
       child.insert(child.begin(), '.');
     }
 
-    if (entry.is_directory())
+    if (!entry.is_symlink() && entry.is_directory())
     {
       link_directory(entry.path(), dest / child, linked, false);
     }
