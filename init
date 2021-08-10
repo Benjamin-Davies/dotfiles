@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+export DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+SAVE_CWD="$(pwd)"
+
+cd "$DOTFILES"
+make
+
+cd "$SAVE_CWD"
+$DOTFILES/build/link $@
