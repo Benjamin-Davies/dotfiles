@@ -25,9 +25,6 @@ if command -v nvr > /dev/null && \
   export EDITOR='nvr --remote-wait'
 fi
 
-# Command to access my dotfiles repo
-# Stored in ~/dotfiles.git to avoid being seen by git all the time
-alias cfg='git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 # Our school SFTP server is kinda fussy
 alias cos='sftp -P 2222 php.mmc.school.nz:/201COS/benjamindavies'
 # More docker-compose aliases

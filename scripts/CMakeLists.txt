@@ -9,3 +9,8 @@ add_executable(link
   link.cpp
   util.cpp
   )
+
+add_executable(unlink
+  unlink.cpp
+  util.cpp
+  )

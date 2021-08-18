@@ -10,5 +10,3 @@ make
 
 cd "$SAVE_CWD"
 $DOTFILES/build/link $@
-
-exec zsh
