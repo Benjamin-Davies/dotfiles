@@ -25,6 +25,7 @@ namespace fs
     operator std::string() const;
     path operator/(path) const;
     path operator/(std::string) const;
+    path operator/(const char *) const;
     bool operator==(path) const;
 
   private:
@@ -59,7 +60,7 @@ namespace fs
       return *this;
     }
 
-    path path();
+    fs::path path();
 
     bool is_directory();
     bool is_symlink();
