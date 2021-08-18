@@ -7,5 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(link
   link.cpp
+  fs.cpp
   util.cpp
   )

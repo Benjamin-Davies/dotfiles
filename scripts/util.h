@@ -1,10 +1,8 @@
 #pragma once
 
-#include <filesystem>
+#include "fs.h"
 #include <string>
 #include <vector>
-
-namespace fs = std::filesystem;
 
 std::vector<std::string> collect_args(int argc, char **argv);
 
