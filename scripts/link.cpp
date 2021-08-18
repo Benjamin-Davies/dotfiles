@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 
@@ -24,13 +25,15 @@ int main(int argc, char **argv)
   // If still nothing then link default (dependent on platform)
   if (to_link.size() == 0)
   {
-    to_link = {"shell"};
+    to_link = {
+        "shell",
 #ifdef __APPLE__
-    to_link.push_back("macos");
+        "macos",
 #endif
 #ifdef __linux__
-    to_link.push_back("linux");
+        "linux",
 #endif
+    };
   }
 
   // If all specified, link all
@@ -58,7 +61,7 @@ int main(int argc, char **argv)
   append_lines_unique(dotfiles / "categories.linked.txt", to_link);
 }
 
-void link_file(fs::path src, fs::path dest, std::vector<std::string> &linked)
+void link_file(fs::path src, fs::path dest)
 {
   if (fs::exists(dest))
   {
@@ -76,7 +79,6 @@ void link_file(fs::path src, fs::path dest, std::vector<std::string> &linked)
   }
 
   fs::create_symlink(src, dest);
-  linked.push_back(dest);
 }
 
 void link_directory(fs::path src, fs::path dest, std::vector<std::string> &linked, bool top_level)
@@ -104,7 +106,9 @@ void link_directory(fs::path src, fs::path dest, std::vector<std::string> &linke
     }
     else
     {
-      link_file(entry.path(), dest / child, linked);
+      link_file(entry.path(), dest / child);
     }
+
+    linked.push_back(dest / child);
   }
 }

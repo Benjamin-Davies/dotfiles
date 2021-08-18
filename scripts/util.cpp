@@ -53,6 +53,23 @@ void append_lines_unique(fs::path path, std::vector<std::string> &lines)
   }
 }
 
+void remove_lines_unique(fs::path path, std::vector<std::string> &lines)
+{
+  auto existing = read_lines(path);
+  std::unordered_set set(lines.begin(), lines.end());
+
+  std::ofstream os(path, std::ios::out);
+
+  for (auto &line : existing)
+  {
+    if (set.find(line) == set.end())
+    {
+      os << line << std::endl;
+      set.insert(line);
+    }
+  }
+}
+
 bool confirm(std::string prompt)
 {
   std::string input;
