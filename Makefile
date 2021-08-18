@@ -7,7 +7,7 @@ all: build/CMakeCache.txt
 
 build/CMakeCache.txt: scripts/CMakeLists.txt
 	mkdir -p build
-	cd build && cmake -G "$(BUILD_TYPE)" ../scripts
+	cd build && cmake -G "$(BUILD_TYPE)" -DCMAKE_BUILD_TYPE=Debug ../scripts
 	touch build/CMakeLists.txt
 
 clean:

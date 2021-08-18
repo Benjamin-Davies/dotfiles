@@ -16,8 +16,7 @@ namespace fs
   {
   public:
     path(char *str) : m_str(str) {}
-    path(std::string str) : m_str(str) {}
-    path(std::string &str) : m_str(str) {}
+    path(const std::string &str) : m_str(str) {}
 
     std::string filename();
     std::string native() const { return m_str; }
@@ -107,6 +106,7 @@ namespace fs
   bool is_symlink(const path &);
   bool is_directory(const path &);
   path read_symlink(const path &);
+  void remove(const path &, std::error_code &);
   void remove_all(const path &);
 
 }

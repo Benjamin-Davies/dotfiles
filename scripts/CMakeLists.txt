@@ -13,5 +13,6 @@ add_executable(link
 
 add_executable(unlink
   unlink.cpp
+  fs.cpp
   util.cpp
   )

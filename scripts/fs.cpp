@@ -103,17 +103,16 @@ namespace fs
   void create_directories(const path &path)
   {
     // https://stackoverflow.com/a/2336245/10530876
-    std::cerr << "create dirs: " << path << std::endl;
     const auto &str = path.native();
     for (auto p = str.begin() + 1; p != str.end(); ++p)
     {
       if (*p == '/')
       {
         std::string parent(str.begin(), p);
-        mkdir(parent.c_str(), S_IRWXU);
+        mkdir(parent.c_str(), 0766);
       }
     }
-    int res = mkdir(path.c_str(), S_IRWXU);
+    int res = mkdir(path.c_str(), 0766);
   }
 
   void create_symlink(const path &a, const path &b)
@@ -124,7 +123,8 @@ namespace fs
 
   bool exists(const path &path)
   {
-    return access(path.c_str(), F_OK) == 0;
+    int res = access(path.c_str(), F_OK);
+    return res == 0;
   }
 
   bool is_symlink(const path &path)
@@ -148,6 +148,20 @@ namespace fs
     ssize_t nchars = readlink(path.c_str(), buffer, sizeof(buffer));
     assert(nchars < sizeof(buffer) && nchars > 0);
     return std::string(buffer, buffer + nchars);
+  }
+
+  void remove(const path &path, std::error_code &)
+  {
+    if (is_directory(path))
+    {
+      int res = rmdir(path.c_str());
+      assert(!res);
+    }
+    else
+    {
+      int res = unlink(path.c_str());
+      assert(!res);
+    }
   }
 
   void remove_all(const path &path)
