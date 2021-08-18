@@ -1,6 +1,11 @@
 #pragma once
 
+#ifdef USE_FS_POLYFILL
 #include "fs.h"
+#else
+#include <filesystem>
+namespace fs = std::filesystem;
+#endif
 
 #include <cassert>
 #include <string>

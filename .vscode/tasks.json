@@ -8,6 +8,11 @@
       "type": "shell",
       "command": "make",
       "problemMatcher": [],
+      "options": {
+        "env": {
+          "CMAKE_BUILD_TYPE": "Debug"
+        }
+      },
       "group": {
         "kind": "build",
         "isDefault": true
