@@ -86,7 +86,7 @@ namespace fs
 
   path directory_entry::path()
   {
-    std::string name(m_entry->d_name, m_entry->d_name + m_entry->d_namlen);
+    std::string name(m_entry->d_name);
     return m_path / name;
   }
 
