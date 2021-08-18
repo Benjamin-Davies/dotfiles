@@ -1,4 +1,4 @@
-// #ifdef USE_FS_POLYFILL
+#ifdef USE_FS_POLYFILL
 
 #include <cassert>
 #include <iostream>
@@ -211,4 +211,4 @@ namespace fs
 
 }
 
-// #endif
+#endif
