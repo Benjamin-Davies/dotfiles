@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test-linux:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        use_polyfills: [TRUE, FALSE]
+
+    env:
+      DOTFILES: ${{ github.workspace }}
+      HOME: ${{ github.workspace }}/test-home
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create Home Directory
+      run: mkdir -p $HOME
+    - name: Init
+      run: ./shell/local/bin/cfg-init
+      env:
+        CMAKE_BUILD_TYPE: Debug
+        USE_FS_POLYFILL: ${{ matrix.use_polyfills }}
