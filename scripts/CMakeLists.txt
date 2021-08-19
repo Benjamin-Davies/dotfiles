@@ -28,14 +28,27 @@ endif()
 
 # Add executables
 
+if (USE_FS_POLYFILL)
+
+  add_library(shared OBJECT
+    fs.cpp
+    util.cpp
+    )
+
+else()
+
+  add_library(shared OBJECT
+    util.cpp
+    )
+
+endif()
+
 add_executable(link
   link.cpp
-  fs.cpp
-  util.cpp
+  $<TARGET_OBJECTS:shared>
   )
 
 add_executable(unlink
   unlink.cpp
-  fs.cpp
-  util.cpp
+  $<TARGET_OBJECTS:shared>
   )
