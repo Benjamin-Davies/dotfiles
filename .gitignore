@@ -2,3 +2,4 @@
 
 build/
 *.linked.txt
+*.linked-repos.txt

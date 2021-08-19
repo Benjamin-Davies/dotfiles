@@ -13,10 +13,12 @@ namespace fs = std::filesystem;
 
 std::vector<std::string> collect_args(int argc, char **argv);
 
-std::vector<std::string> read_lines(fs::path);
+std::vector<std::string> read_lines(const fs::path &);
 
-void append_lines_unique(fs::path, std::vector<std::string> &);
+std::vector<std::vector<std::string>> read_tsv(const fs::path &);
 
-void remove_lines_unique(fs::path, std::vector<std::string> &);
+void append_lines_unique(const fs::path &, std::vector<std::string> &);
+
+void remove_lines_unique(const fs::path &, std::vector<std::string> &);
 
 bool confirm(std::string);

@@ -176,13 +176,11 @@ namespace fs
   {
     if (is_directory(path))
     {
-      int res = rmdir(path.c_str());
-      assert(!res);
+      rmdir(path.c_str());
     }
     else
     {
-      int res = unlink(path.c_str());
-      assert(!res);
+      unlink(path.c_str());
     }
   }
 
@@ -200,7 +198,6 @@ namespace fs
       }
 
       int res = rmdir(path.c_str());
-      assert(!res);
     }
     else
     {
