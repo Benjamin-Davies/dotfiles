@@ -19,16 +19,12 @@ if (NOT USE_FS_POLYFILL)
 
 endif()
 
+# Add targets
+
 if (USE_FS_POLYFILL)
 
   message("Using <filesystem> polyfill")
   add_compile_definitions(USE_FS_POLYFILL)
-
-endif()
-
-# Add executables
-
-if (USE_FS_POLYFILL)
 
   add_library(shared OBJECT
     fs.cpp
