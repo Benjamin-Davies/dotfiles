@@ -14,3 +14,6 @@ GY="[37m"
 
 # Colourized ISO Date
 date +"$Y%Y-$G%m-%d $C%H:%M$B:%S$RESET"
+
+# Username and hostname
+echo $M$(whoami)$Y@$(hostname)
