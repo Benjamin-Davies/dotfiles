@@ -7,7 +7,7 @@
       "label": "Make",
       "type": "shell",
       "command": "make",
-      "problemMatcher": [],
+      "problemMatcher": ["$gcc"],
       "options": {
         "env": {
           "CMAKE_BUILD_TYPE": "Debug"

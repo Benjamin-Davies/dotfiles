@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <unordered_set>
@@ -21,7 +22,7 @@ std::vector<std::string> collect_args(int argc, char **argv)
   return args;
 }
 
-std::vector<std::string> read_lines(fs::path path)
+std::vector<std::string> read_lines(const fs::path &path)
 {
   if (!fs::exists(path))
     return {};
@@ -36,7 +37,36 @@ std::vector<std::string> read_lines(fs::path path)
   return lines;
 }
 
-void append_lines_unique(fs::path path, std::vector<std::string> &lines)
+std::vector<std::vector<std::string>> read_tsv(const fs::path &path)
+{
+  auto lines = read_lines(path);
+
+  std::vector<std::vector<std::string>> rows;
+  rows.reserve(lines.size());
+
+  std::transform(lines.begin(), lines.end(),
+                 std::back_inserter(rows),
+                 [](const std::string &line)
+                 {
+                   std::vector<std::string> cols;
+                   auto start = line.begin();
+                   auto pos = line.begin();
+                   for (; pos < line.end(); pos++)
+                   {
+                     if (*pos == '\t')
+                     {
+                       cols.push_back(std::string(start, pos));
+                       start = pos + 1;
+                     }
+                   }
+                   cols.push_back(std::string(start, pos));
+                   return cols;
+                 });
+
+  return rows;
+}
+
+void append_lines_unique(const fs::path &path, std::vector<std::string> &lines)
 {
   auto existing = read_lines(path);
   std::unordered_set set(existing.begin(), existing.end());
@@ -53,7 +83,7 @@ void append_lines_unique(fs::path path, std::vector<std::string> &lines)
   }
 }
 
-void remove_lines_unique(fs::path path, std::vector<std::string> &lines)
+void remove_lines_unique(const fs::path &path, std::vector<std::string> &lines)
 {
   auto existing = read_lines(path);
   std::unordered_set set(lines.begin(), lines.end());

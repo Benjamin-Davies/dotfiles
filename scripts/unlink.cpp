@@ -35,22 +35,37 @@ int main(int argc, char **argv)
   std::sort(to_unlink.begin(), to_unlink.end());
   assert(std::includes(cats.begin(), cats.end(), to_unlink.begin(), to_unlink.end()));
 
-  // Link
+  // Unlink
   std::error_code err;
   for (auto &cat : to_unlink)
   {
-    auto path = dotfiles / (cat + ".linked.txt");
-    auto linked = read_lines(path);
-
-    for (auto &file : linked)
+    // Files
     {
-      fs::remove(file, err);
-      if (err) {
-        std::cerr << "Did not remove " << file << ": " << err.message() << std::endl;
+      auto path = dotfiles / (cat + ".linked.txt");
+      auto linked = read_lines(path);
+
+      for (auto &file : linked)
+      {
+        fs::remove(file, err);
+        if (err)
+        {
+          std::cerr << "Did not remove " << file << ": " << err.message() << std::endl;
+        }
       }
+
+      fs::remove(path, err);
     }
 
-    fs::remove(path, err);
+    // Repos
+    {
+      auto path = dotfiles / (cat + ".linked-repos.txt");
+      auto linked = read_lines(path);
+
+      for (auto &file : linked)
+      {
+        fs::remove_all(file);
+      }
+    }
   }
 
   // Record that they have been unlinked

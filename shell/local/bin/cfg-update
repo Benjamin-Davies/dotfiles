@@ -5,9 +5,24 @@ set -e
 export DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 SAVE_CWD="$(pwd)"
 
+# Pull and rebuild
 cd "$DOTFILES"
+
+echo -- Updating dotfiles repo
 git pull
+
+echo -- Re-compiling scripts
 make
 
+# Re-link
+echo -- Re-linking
 cd "$SAVE_CWD"
 $DOTFILES/build/link $@
+
+# Update repos
+cd "$DOTFILES"
+for repo in $(cat *.linked-repos.txt); do
+  echo -- Updating repo: $repo
+  cd $repo
+  git pull
+done

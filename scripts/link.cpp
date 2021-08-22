@@ -5,6 +5,7 @@
 #include "util.h"
 
 void link_directory(fs::path src, fs::path dest, std::vector<std::string> &linked, bool top_level = true);
+void link_repos(fs::path src, fs::path dest, std::vector<std::string> &linked);
 
 int main(int argc, char **argv)
 {
@@ -55,6 +56,10 @@ int main(int argc, char **argv)
     std::vector<std::string> linked;
     link_directory(dotfiles / cat, home, linked);
     append_lines_unique(dotfiles / (cat + ".linked.txt"), linked);
+
+    std::vector<std::string> linked_repos;
+    link_repos(dotfiles / cat, home, linked_repos);
+    append_lines_unique(dotfiles / (cat + ".linked-repos.txt"), linked_repos);
   }
 
   // Record that they have been linked
@@ -89,11 +94,8 @@ void link_directory(fs::path src, fs::path dest, std::vector<std::string> &linke
   {
     std::string child = entry.path().filename();
 
-    if (child == "repos.json")
-    {
-      std::cerr << "TODO: link repos" << std::endl;
+    if (top_level && child == "repos.txt")
       continue;
-    }
 
     if (top_level)
     {
@@ -110,5 +112,26 @@ void link_directory(fs::path src, fs::path dest, std::vector<std::string> &linke
     }
 
     linked.push_back(dest / child);
+  }
+}
+
+void link_repos(fs::path src, fs::path dest, std::vector<std::string> &linked)
+{
+  auto repos = read_tsv(src / "repos.txt");
+  for (auto &repo : repos)
+  {
+    auto &url = repo[0];
+    auto path = dest / repo[1];
+
+    if (!fs::exists(path))
+    {
+      std::cerr << "Cloning " << url << std::endl;
+
+      std::string cmd = "git clone " + url + " " + path.native();
+      int res = std::system(cmd.c_str());
+    }
+
+    if (fs::exists(path / ".git"))
+      linked.push_back(path);
   }
 }

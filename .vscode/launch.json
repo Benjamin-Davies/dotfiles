@@ -5,6 +5,56 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "(gdb) Launch link",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/link",
+      "args": ["shell"],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [
+        {
+          "name": "DOTFILES",
+          "value": "${workspaceFolder}"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "Make"
+    },
+    {
+      "name": "(gdb) Launch unlink",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/unlink",
+      "args": ["shell"],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [
+        {
+          "name": "DOTFILES",
+          "value": "${workspaceFolder}"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "Make"
+    },
+    {
       "name": "(lldb) Launch link",
       "type": "cppdbg",
       "request": "launch",

@@ -1,5 +1,3 @@
-#ifdef USE_FS_POLYFILL
-
 #include <cassert>
 #include <iostream>
 
@@ -10,6 +8,21 @@
 
 namespace fs
 {
+
+  bool ignore_filename(std::string name)
+  {
+    return name == "." || name == "..";
+  }
+
+  dirent *_readdir(DIR *dir)
+  {
+    dirent *e;
+    do
+    {
+      e = readdir(dir);
+    } while (e && ignore_filename(e->d_name));
+    return e;
+  }
 
   std::string path::filename()
   {
@@ -28,6 +41,14 @@ namespace fs
   }
 
   path path::operator/(std::string other) const
+  {
+    if (*m_str.end() == '/')
+      return path(m_str + other);
+    else
+      return path(m_str + "/" + other);
+  }
+
+  path path::operator/(const char *other) const
   {
     if (*m_str.end() == '/')
       return path(m_str + other);
@@ -54,10 +75,7 @@ namespace fs
   directory_iterator::iterator directory_iterator::begin() const
   {
     // Consume . and ..
-    readdir(m_dir);
-    readdir(m_dir);
-
-    auto entry = readdir(m_dir);
+    auto entry = _readdir(m_dir);
     return iterator(m_path, m_dir, entry ? std::optional(directory_entry(m_path, entry)) : std::nullopt);
   }
 
@@ -73,7 +91,7 @@ namespace fs
 
   directory_iterator::iterator &directory_iterator::iterator::operator++()
   {
-    auto entry = readdir(m_dir);
+    auto entry = _readdir(m_dir);
     if (entry)
       m_current = directory_entry(m_path, entry);
     else
@@ -156,13 +174,11 @@ namespace fs
   {
     if (is_directory(path))
     {
-      int res = rmdir(path.c_str());
-      assert(!res);
+      rmdir(path.c_str());
     }
     else
     {
-      int res = unlink(path.c_str());
-      assert(!res);
+      unlink(path.c_str());
     }
   }
 
@@ -180,7 +196,6 @@ namespace fs
       }
 
       int res = rmdir(path.c_str());
-      assert(!res);
     }
     else
     {
@@ -190,5 +205,3 @@ namespace fs
   }
 
 }
-
-#endif

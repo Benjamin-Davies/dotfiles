@@ -1,6 +1,5 @@
 {
     "window.menuBarVisibility": "toggle",
-    "window.zoomLevel": 0,
     "git.enableSmartCommit": true,
     "editor.fontFamily": "'Jetbrains Mono', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
@@ -43,7 +42,6 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "remote.restoreForwardedPorts": true,
     "liveServer.settings.donotShowInfoMsg": true,
     "liveServer.settings.donotVerifyTags": true,
