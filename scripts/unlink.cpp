@@ -65,6 +65,8 @@ int main(int argc, char **argv)
       {
         fs::remove_all(file);
       }
+
+      fs::remove(path, err);
     }
   }
 
