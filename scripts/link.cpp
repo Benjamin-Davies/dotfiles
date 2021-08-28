@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 
 void link_file(fs::path src, fs::path dest)
 {
-  if (fs::exists(dest))
+  if (fs::exists(dest) || fs::is_symlink(dest))
   {
     if (fs::is_symlink(dest) && fs::read_symlink(dest) == src)
     {
