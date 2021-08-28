@@ -61,6 +61,18 @@ modifier = ["modkey", "Control"]
 key = "l"
 
 [[keybind]]
+command = "Execute"
+value = "poweroff"
+modifier = ["modkey"]
+key = "F4"
+
+[[keybind]]
+command = "Execute"
+value = "reboot"
+modifier = ["modkey", "Shift"]
+key = "F4"
+
+[[keybind]]
 command = "MoveToLastWorkspace"
 modifier = ["modkey", "Shift"]
 key = "w"
