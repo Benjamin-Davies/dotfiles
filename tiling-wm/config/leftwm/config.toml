@@ -33,6 +33,12 @@ modifier = ["modkey", "Mod1"]
 key = "b"
 
 [[keybind]]
+command = "Execute"
+value = "code"
+modifier = ["modkey", "Mod1"]
+key = "v"
+
+[[keybind]]
 command = "CloseWindow"
 modifier = ["modkey"]
 key = "q"
