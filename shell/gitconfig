@@ -7,6 +7,6 @@
 [credential]
 	helper = store
 [commit]
-	gpgsign = false
+	gpgsign = true
 [log]
 	showSignature = true
