@@ -26,7 +26,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'mattn/emmet-vim'
 Plug 'jpalardy/vim-slime'
-Plug '~/src/coc-mb'
+if filereadable(expand('~/src/coc-mb/package.json'))
+  Plug '~/src/coc-mb'
+endif
 
 call plug#end()
 
