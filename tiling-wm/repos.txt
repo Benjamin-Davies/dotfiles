@@ -1,2 +1,1 @@
 https://github.com/dracula/rofi.git	.local/rofi-dracula-theme
-https://github.com/AethanFoot/leftwm-theme-dracula-rounded.git	.config/leftwm/themes/dracula-rounded
