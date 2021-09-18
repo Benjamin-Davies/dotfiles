@@ -13,6 +13,7 @@ nmap <Leader>G :Goyo<CR>
 nmap <Leader>h :CocList cmdhistory<CR>
 nmap <Leader>H :CocList helptags<CR>
 nmap <Leader>m :CocList marks<CR>
+nmap <Leader>M :CocList mb<CR>
 nmap <Leader>s :CocList filetypes<CR>
 
 nmap <Leader>p :bprevious<CR>
