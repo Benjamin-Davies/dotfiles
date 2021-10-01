@@ -8,9 +8,12 @@ rc map normal $mod Q close
 rc map normal $mod+Shift Q exit
 rc map normal $mod R spawn ~/.config/river/init
 rc map normal $mod L spawn "dm-tool lock"
+rc map normal $mod F4 spawn poweroff
+rc map normal $mod+Shift F4 spawn reboot
 
 # Programs
 rc map normal $mod Return spawn alacritty
+rc map normal $mod E spawn nautilus
 rc map normal $mod+Mod1 B spawn firefox
 rc map normal $mod+Mod1 V spawn code
 rc map normal $mod Space spawn fuzzel
