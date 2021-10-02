@@ -9,3 +9,6 @@ rivertile &
 
 pkill waybar
 waybar &
+
+pkill mako
+mako &

@@ -7,7 +7,7 @@ rc focus-follows-cursor normal
 # Set background and border color
 rc background-color 0x282a36
 rc border-color-focused 0xbd93f9
-rc border-color-unfocused 0xff79c6
+rc border-color-unfocused 0x282a36
 
 # Set repeat rate
 rc set-repeat 50 300
@@ -22,6 +22,21 @@ rc float-filter-add title "popup title with spaces"
 rc csd-filter-add app-id "gedit"
 
 rc default-layout rivertile
+
+# Fuzzy-searcher prompt
+export fuzzel_flags=" \
+  --font=monospace:size=14 \
+  --terminal='alacritty -e' \
+  --width=50 \
+  --horizontal-pad=8 \
+  --background=282a36ff \
+  --text-color=f8f8f2ff \
+  --selection-color=44475aff \
+  --selection-text-color=f8f8f2ff \
+  --border-width=2 \
+  --border-radius=0 \
+  --border-color=bd93f9ff \
+  "
 
 # Subscripts
 ~/.config/river/keybindings

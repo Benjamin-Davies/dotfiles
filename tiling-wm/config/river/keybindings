@@ -14,9 +14,9 @@ rc map normal $mod+Shift F4 spawn reboot
 # Programs
 rc map normal $mod Return spawn alacritty
 rc map normal $mod E spawn nautilus
-rc map normal $mod+Mod1 B spawn firefox
+rc map normal $mod+Mod1 B spawn "MOZ_ENABLE_WAYLAND=1 firefox"
 rc map normal $mod+Mod1 V spawn code
-rc map normal $mod Space spawn fuzzel
+rc map normal $mod Space spawn "fuzzel $fuzzel_flags"
 
 # Switch and reorder
 rc map normal $mod J focus-view next
