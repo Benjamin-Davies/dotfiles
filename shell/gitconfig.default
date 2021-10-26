@@ -8,5 +8,3 @@
 	helper = store
 [commit]
 	gpgsign = true
-[log]
-	showSignature = true
