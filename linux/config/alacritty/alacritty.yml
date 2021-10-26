@@ -2,7 +2,7 @@ import:
   - ~/.config/alacritty/dracula/dracula.yml
 
 scrolling:
-  history: 0
+  history: 10000
 
 font:
   normal:
@@ -11,3 +11,10 @@ font:
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
+
+window:
+  padding:
+    x: 5
+    y: 5
+
+background_opacity: 0.8

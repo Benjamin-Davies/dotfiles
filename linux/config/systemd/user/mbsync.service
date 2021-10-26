@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync Mail
+
+[Service]
+Type=oneshot
+ExecStart=/bin/env mbsync -aV

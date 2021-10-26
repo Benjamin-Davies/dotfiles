@@ -1,2 +1,1 @@
-rofi.terminal: kitty
-rofi.theme: /usr/share/rofi/themes/sidebar.rasi
+rofi.terminal: alacritty

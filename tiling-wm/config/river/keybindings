@@ -1,0 +1,111 @@
+#!/bin/sh
+alias rc=riverctl
+
+mod=Mod4
+
+# Control
+rc map normal $mod Q close
+rc map normal $mod+Shift Q exit
+rc map normal $mod R spawn ~/.config/river/init
+rc map normal $mod L spawn "dm-tool lock"
+rc map normal $mod F4 spawn poweroff
+rc map normal $mod+Shift F4 spawn reboot
+
+# Programs
+rc map normal $mod Return spawn alacritty
+rc map normal $mod E spawn nautilus
+rc map normal $mod+Mod1 B spawn "MOZ_ENABLE_WAYLAND=1 firefox"
+rc map normal $mod+Mod1 V spawn code
+rc map normal $mod Space spawn "fuzzel $fuzzel_flags"
+
+# Switch and reorder
+rc map normal $mod J focus-view next
+rc map normal $mod K focus-view previous
+rc map normal $mod+Shift J swap next
+rc map normal $mod+Shift K swap previous
+rc map normal $mod+Shift Return zoom
+
+# Monitors (unused currently)
+rc map normal $mod Period focus-output next
+rc map normal $mod Comma focus-output previous
+rc map normal $mod+Shift Period send-to-output next
+rc map normal $mod+Shift Comma send-to-output previous
+
+# Layout settings
+rc map normal $mod+Mod1 H send-layout-cmd rivertile "main-ratio -0.05"
+rc map normal $mod+Mod1 L send-layout-cmd rivertile "main-ratio +0.05"
+rc map normal $mod+Shift H send-layout-cmd rivertile "main-count +1"
+rc map normal $mod+Shift L send-layout-cmd rivertile "main-count -1"
+
+# Floating movements
+rc map normal $mod+Mod1 H move left 100
+rc map normal $mod+Mod1 J move down 100
+rc map normal $mod+Mod1 K move up 100
+rc map normal $mod+Mod1 L move right 100
+
+rc map normal $mod+Mod1+Control H snap left
+rc map normal $mod+Mod1+Control J snap down
+rc map normal $mod+Mod1+Control K snap up
+rc map normal $mod+Mod1+Control L snap right
+
+rc map normal $mod+Mod1+Shift H resize horizontal -100
+rc map normal $mod+Mod1+Shift J resize vertical 100
+rc map normal $mod+Mod1+Shift K resize vertical -100
+rc map normal $mod+Mod1+Shift L resize horizontal 100
+
+rc map-pointer normal $mod BTN_LEFT move-view
+rc map-pointer normal $mod BTN_RIGHT resize-view
+
+# Tags
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+    rc map normal $mod $i set-focused-tags $tags
+    rc map normal $mod+Shift $i set-view-tags $tags
+    rc map normal $mod+Control $i toggle-focused-tags $tags
+    rc map normal $mod+Shift+Control $i toggle-view-tags $tags
+done
+
+all_tags=$(((1 << 32) - 1))
+rc map normal $mod 0 set-focused-tags $all_tags
+rc map normal $mod+Shift 0 set-view-tags $all_tags
+rc map normal $mod D set-focused-tags $((1 << 10))
+
+# Window state
+rc map normal $mod F toggle-fullscreen
+rc map normal $mod+Shift F toggle-float
+
+# Move master panel
+rc map normal $mod Up    send-layout-cmd rivertile "main-location top"
+rc map normal $mod Right send-layout-cmd rivertile "main-location right"
+rc map normal $mod Down  send-layout-cmd rivertile "main-location bottom"
+rc map normal $mod Left  send-layout-cmd rivertile "main-location left"
+
+# Declare a passthrough mode. This mode has only a single mapping to return to
+# normal mode. This makes it useful for testing a nested wayland compositor
+rc declare-mode passthrough
+rc map normal $mod F11 enter-mode passthrough
+rc map passthrough $mod F11 enter-mode normal
+
+# Various media key mapping examples for both normal and locked mode which do
+# not have a modifier
+for mode in normal locked
+do
+    # Eject the optical drive
+    rc map $mode None XF86Eject spawn 'eject -T'
+
+    # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
+    rc map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
+    rc map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
+    rc map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
+
+    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+    rc map $mode None XF86AudioMedia spawn 'playerctl play-pause'
+    rc map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
+    rc map $mode None XF86AudioPrev  spawn 'playerctl previous'
+    rc map $mode None XF86AudioNext  spawn 'playerctl next'
+
+    # Control screen backlight brighness with light (https://github.com/haikarainen/light)
+    rc map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
+    rc map $mode None XF86MonBrightnessDown spawn 'light -U 5'
+done

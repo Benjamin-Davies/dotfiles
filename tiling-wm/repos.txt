@@ -1,0 +1,1 @@
+https://github.com/dracula/rofi.git	.local/rofi-dracula-theme

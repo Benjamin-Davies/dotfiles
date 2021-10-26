@@ -1,0 +1,48 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: #282a36;
+  color: #f8f8f2;
+}
+
+button {
+  color: inherit;
+}
+
+button:hover {
+  background: none;
+  box-shadow: none;
+  color: inherit;
+}
+
+#tags button {
+  padding: 0 5px;
+}
+
+#tags button.focused {
+  background-color: #bd93f8;
+}
+
+#tags button.urgent {
+  background-color: #ff79c6;
+}
+
+#clock,
+#network,
+#pulseaudio {
+  padding: 0 10px;
+  margin: 0 4px;
+  color: #ffffff;
+  background-color: #44475a;
+}
+
+#network.disconnected,
+#pulseaudio.muted {
+  background-color: #ff79c6;
+}

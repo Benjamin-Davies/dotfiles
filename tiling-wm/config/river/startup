@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Background programs
+pkill swaybg
+swaybg -i /usr/share/backgrounds/city.jpg &
+
+pkill rivertile
+rivertile &
+
+pkill waybar
+waybar &
+
+pkill mako
+mako &

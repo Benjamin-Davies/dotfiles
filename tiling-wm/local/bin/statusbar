@@ -1,0 +1,26 @@
+#!/bin/sh
+
+ETH_NAME=eno1
+WIFI_NAME=wlp2s0
+
+DATE_FORMAT="+%d %b %H:%M"
+
+while true; do
+
+  if ip addr show $ETH_NAME | grep -c "state UP"; then
+    NET="eth"
+  elif ip addr show $WIFI_NAME | grep -c "state UP"; then
+    NET="wifi"
+  else
+    NET="none"
+  fi
+
+  DATE="$(date "$DATE_FORMAT")"
+
+  STATUSBAR="| $NET | $DATE"
+
+  xsetroot -name "$STATUSBAR"
+
+  sleep 10s
+
+done

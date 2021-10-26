@@ -1,2 +1,1 @@
 https://github.com/dracula/alacritty.git	.config/alacritty/dracula
-https://github.com/dexpota/kitty-themes.git	.local/kitty-themes
