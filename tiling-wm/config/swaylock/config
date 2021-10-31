@@ -1,5 +1,5 @@
 ignore-empty-password
-grace=5s
+grace=10s
 fade-in=0.2s
 indicator-idle-visible
 
