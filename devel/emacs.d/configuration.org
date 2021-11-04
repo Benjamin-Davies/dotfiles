@@ -1,5 +1,4 @@
 * TODO
-** TODO Org Indent Mode by default
 ** TODO Vim Surround
 ** TODO Follow Symlinks By Default
 * Personalization
@@ -229,4 +228,12 @@ This replaces the built-in undo functionality with a more sane tree-based system
 		("C-c C-c s" . lsp-rust-analyzer-status))
     :config
     (setq rustic-format-on-save t))
+#+END_SRC
+
+** Org Mode
+
+Enable org-indent-mode by default
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook 'org-indent-mode)
 #+END_SRC
