@@ -1,3 +1,14 @@
+* TODO
+** TODO Leader Key - Helm?
+*** DONE SPC g - Magit
+*** TODO SPC f - Fuzzy Git Files
+*** TODO SPC F - Fuzzy Files
+*** TODO SPC SPC - Fuzzy Buffers
+*** TODO Maybe some others from my vim config
+** TODO Relative Line Numbers
+** TODO Save on change focus
+** TODO Org Indent Mode by default
+** TODO Hide scrollbars in daemon mode
 * Personalization
 ** Welcome Message
 
@@ -18,7 +29,9 @@
 
 #+END_SRC
 
-** Hide a bunch of gui things
+** Window Settings
+
+Hide a bunch of gui things
 
 #+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)
@@ -43,6 +56,14 @@ At the moment I am happy using the default font (DejaVu Sans Mono) on my system.
     (load-theme 'dracula t))
 #+END_SRC
 
+** Leader Key
+
+This is later bound to SPC in Evil Normal State.
+
+#+BEGIN_SRC emacs-lisp
+  (define-prefix-command 'leader-map)
+#+END_SRC
+
 ** Linux Specific
 
 Hide window decorations.
@@ -54,7 +75,7 @@ Hide window decorations.
 
 ** macOS Specific
 
-   Larger font and fullscreen binding.
+Larger font and fullscreen binding.
 
 #+BEGIN_SRC emacs-lisp
 (if (eq system-type 'darwin)
@@ -68,10 +89,12 @@ Hide window decorations.
   (use-package evil
     :ensure
     :init
+
     :custom
     (evil-want-keybinding nil)
     :config
     (require 'evil)
+    (define-key evil-normal-state-map (kbd "SPC") leader-map)
     (evil-mode 1))
 
   (use-package evil-collection
@@ -104,7 +127,9 @@ This replaces the built-in undo functionality with a more sane tree-based system
 
 #+BEGIN_SRC emacs-lisp
   (use-package magit
-    :ensure)
+    :ensure
+    :bind (:map leader-map
+		("g" . magit)))
 #+END_SRC
 
 ** Completions
