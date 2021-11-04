@@ -50,6 +50,8 @@ At the moment I am happy using the default font (DejaVu Sans Mono) on my system.
   (use-package evil
     :ensure
     :init
+    :custom
+    (evil-want-keybinding nil)
     :config
     (require 'evil)
     (evil-mode 1))
