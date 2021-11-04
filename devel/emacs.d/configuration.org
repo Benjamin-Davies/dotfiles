@@ -8,7 +8,8 @@
 ** TODO Relative Line Numbers
 ** TODO Save on change focus
 ** TODO Org Indent Mode by default
-** TODO Hide scrollbars in daemon mode
+** TODO Vim Surround
+** TODO Follow Symlinks By Default
 * Personalization
 ** Welcome Message
 
@@ -35,8 +36,12 @@ Hide a bunch of gui things
 
 #+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)
-  (scroll-bar-mode -1)
   (tool-bar-mode -1) 
+
+  ;; Hide the scrollbars in the initial frame
+  (scroll-bar-mode -1)
+  ;; Hide the scrollbars in frames created by the server
+  (add-hook 'server-after-make-frame-hook (lambda () (scroll-bar-mode -1)))
 #+END_SRC
 
 ** Font Size
