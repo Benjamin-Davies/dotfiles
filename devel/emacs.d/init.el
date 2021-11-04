@@ -25,7 +25,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-collection undo-tree use-package rustic magit lsp-ui fzf evil dracula-theme company))
+   '(helm-ls-git helm evil-collection undo-tree use-package rustic magit lsp-ui fzf evil dracula-theme company))
  '(warning-suppress-log-types '(((package reinitialization)) (comp)))
  '(warning-suppress-types '((comp))))
 (custom-set-faces

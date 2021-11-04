@@ -1,10 +1,4 @@
 * TODO
-** TODO Leader Key - Helm?
-*** DONE SPC g - Magit
-*** TODO SPC f - Fuzzy Git Files
-*** TODO SPC F - Fuzzy Files
-*** TODO SPC SPC - Fuzzy Buffers
-*** TODO Maybe some others from my vim config
 ** TODO Relative Line Numbers
 ** TODO Save on change focus
 ** TODO Org Indent Mode by default
@@ -109,14 +103,26 @@ Larger font and fullscreen binding.
     (evil-collection-init))
 #+END_SRC
 
-* General Plugins
-** Fuzzy Search
+* Helm
+
+Fuzzy Search
 
 #+BEGIN_SRC emacs-lisp
-  (use-package fzf
-    :ensure)
+  (use-package helm
+    :ensure
+    :bind (:map leader-map
+		("SPC" . helm-buffers-list)
+		("F" . helm-find-files))
+    :config
+    (helm-mode 1))
+
+  (use-package helm-ls-git
+    :ensure
+    :bind (:map leader-map
+		("f" . helm-browse-project)))
 #+END_SRC
 
+* Other General Plugins
 ** Undo Tree
 
 This replaces the built-in undo functionality with a more sane tree-based system.
