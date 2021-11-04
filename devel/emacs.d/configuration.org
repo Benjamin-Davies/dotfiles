@@ -24,7 +24,6 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1) 
-  (setq default-frame-alist '((undecorated . t)))
 #+END_SRC
 
 ** Font Size
@@ -42,6 +41,25 @@ At the moment I am happy using the default font (DejaVu Sans Mono) on my system.
     :ensure
     :config
     (load-theme 'dracula t))
+#+END_SRC
+
+** Linux Specific
+
+Hide window decorations.
+
+#+BEGIN_SRC emacs-lisp
+  (if (eq system-type 'gnu/linux)
+   (setq default-frame-alist '((undecorated . t))))
+#+END_SRC
+
+** macOS Specific
+
+   Larger font and fullscreen binding.
+
+#+BEGIN_SRC emacs-lisp
+(if (eq system-type 'darwin)
+    (progn (set-face-attribute 'default nil :height 140)
+           (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)))
 #+END_SRC
 
 * Evil Mode
