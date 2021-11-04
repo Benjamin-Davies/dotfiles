@@ -1,5 +1,4 @@
 * TODO
-** TODO Save on change focus
 ** TODO Org Indent Mode by default
 ** TODO Vim Surround
 ** TODO Follow Symlinks By Default
@@ -86,6 +85,12 @@ Larger font and fullscreen binding.
 #+BEGIN_SRC emacs-lisp
   (global-display-line-numbers-mode)
   (setq display-line-numbers 'relative)
+#+END_SRC
+
+** Save on Lost Focus
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'focus-out-hook (lambda () (interactive) (save-some-buffers t)))
 #+END_SRC
 
 * Evil Mode
