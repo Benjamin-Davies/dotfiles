@@ -1,5 +1,4 @@
 * TODO
-** TODO Relative Line Numbers
 ** TODO Save on change focus
 ** TODO Org Indent Mode by default
 ** TODO Vim Surround
@@ -82,13 +81,19 @@ Larger font and fullscreen binding.
            (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)))
 #+END_SRC
 
+** Relative Line Numbers
+
+#+BEGIN_SRC emacs-lisp
+  (global-display-line-numbers-mode)
+  (setq display-line-numbers 'relative)
+#+END_SRC
+
 * Evil Mode
 
 #+BEGIN_SRC emacs-lisp
   (use-package evil
     :ensure
     :init
-
     :custom
     (evil-want-keybinding nil)
     :config
