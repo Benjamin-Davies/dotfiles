@@ -1,5 +1,4 @@
 * TODO
-** TODO Vim Surround
 ** TODO Follow Symlinks By Default
 * Personalization
 ** Welcome Message
@@ -110,6 +109,11 @@ Larger font and fullscreen binding.
     :ensure t
     :config
     (evil-collection-init))
+
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode 1))
 #+END_SRC
 
 * Helm
