@@ -5,16 +5,16 @@
 
 #+BEGIN_SRC emacs-lisp
   (setq initial-scratch-message
-	(concat
-	 ";; This buffer is for text that is not saved, and for Lisp evaluation.\n"
-	 ";; To create a file, visit it with C-x C-f and enter text in its buffer.\n"
-	 ";;\n"
-	 ";; __          __  _                            \n"
-	 ";; \\ \\        / / | |                           \n"
-	 ";;  \\ \\  /\\  / /__| | ___ ___  _ __ ___   ___   \n"
-	 ";;   \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\  \n"
-	 ";;    \\  /\\  /  __/ | (_| (_) | | | | | |  __/_ \n"
-	 ";;     \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___(_)\n"))
+        (concat
+         ";; This buffer is for text that is not saved, and for Lisp evaluation.\n"
+         ";; To create a file, visit it with C-x C-f and enter text in its buffer.\n"
+         ";;\n"
+         ";; __          __  _                            \n"
+         ";; \\ \\        / / | |                           \n"
+         ";;  \\ \\  /\\  / /__| | ___ ___  _ __ ___   ___   \n"
+         ";;   \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\  \n"
+         ";;    \\  /\\  /  __/ | (_| (_) | | | | | |  __/_ \n"
+         ";;     \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___(_)\n"))
 
   ;; Leave this here, or package.el will just add it again.
 
@@ -65,7 +65,7 @@ Hide window decorations.
 
 #+BEGIN_SRC emacs-lisp
   (if (eq system-type 'gnu/linux)
-   (setq default-frame-alist '((undecorated . t))))
+      (setq default-frame-alist '((undecorated . t))))
 #+END_SRC
 
 ** macOS Specific
@@ -73,9 +73,9 @@ Hide window decorations.
 Larger font and fullscreen binding.
 
 #+BEGIN_SRC emacs-lisp
-(if (eq system-type 'darwin)
-    (progn (set-face-attribute 'default nil :height 140)
-           (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)))
+  (if (eq system-type 'darwin)
+      (progn (set-face-attribute 'default nil :height 140)
+             (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)))
 #+END_SRC
 
 ** Relative Line Numbers
@@ -89,6 +89,13 @@ Larger font and fullscreen binding.
 
 #+BEGIN_SRC emacs-lisp
   (add-hook 'focus-out-hook (lambda () (interactive) (save-some-buffers t)))
+#+END_SRC
+
+** Spaces and ABSOLUTELY NO TABS
+
+#+BEGIN_SRC emacs-lisp
+  (setq c-basic-offset 2)
+  (setq-default indent-tabs-mode nil)
 #+END_SRC
 
 * Evil Mode
