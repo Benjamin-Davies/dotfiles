@@ -120,6 +120,19 @@ void link_repos(fs::path src, fs::path dest, std::vector<std::string> &linked)
   auto repos = read_tsv(src / "repos.txt");
   for (auto &repo : repos)
   {
+    if (repo.size() != 2)
+    {
+      std::cerr << "Warning linking repos: Expected 2 columns in tsv row, skipping" << std::endl;
+      std::cerr << "cells:" << std::endl;
+      for (auto &cell : repo)
+      {
+        std::cerr << "\t" << cell << std::endl;
+      }
+      std::cerr << "src: " << src << std::endl;
+      std::cerr << "dest: " << dest << std::endl;
+      continue;
+    }
+
     auto &url = repo[0];
     auto path = dest / repo[1];
 
@@ -127,7 +140,7 @@ void link_repos(fs::path src, fs::path dest, std::vector<std::string> &linked)
     {
       std::cerr << "Cloning " << url << std::endl;
 
-      std::string cmd = "git clone " + url + " " + path.native();
+      std::string cmd = "git clone --depth=1 " + url + " " + path.native();
       int res = std::system(cmd.c_str());
     }
 
