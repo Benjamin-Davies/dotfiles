@@ -111,28 +111,29 @@ Larger font and fullscreen binding.
     (evil-collection-init))
 
   (use-package evil-surround
+    :after evil
     :ensure t
     :config
     (global-evil-surround-mode 1))
 #+END_SRC
 
-* Helm
+* Navigation
 
-Fuzzy Search
+** Search
 
 #+BEGIN_SRC emacs-lisp
   (use-package helm
     :ensure
     :bind (:map leader-map
-		("SPC" . helm-buffers-list)
-		("F" . helm-find-files))
+                ("SPC" . helm-buffers-list)
+                ("F" . helm-find-files))
     :config
     (helm-mode 1))
 
   (use-package helm-ls-git
     :ensure
     :bind (:map leader-map
-		("f" . helm-browse-project)))
+                ("f" . helm-browse-project)))
 #+END_SRC
 
 * Other General Plugins
@@ -153,7 +154,7 @@ This replaces the built-in undo functionality with a more sane tree-based system
   (use-package magit
     :ensure
     :bind (:map leader-map
-		("g" . magit)))
+                ("g" . magit)))
 #+END_SRC
 
 ** Completions
@@ -166,29 +167,29 @@ This replaces the built-in undo functionality with a more sane tree-based system
     ;; (company-begin-commands nil) ;; uncomment to disable popup
     :bind
     (:map company-active-map
-	  ("C-n". company-select-next)
-	  ("C-p". company-select-previous)
-	  ("M-<". company-select-first)
-	  ("M->". company-select-last))
+          ("C-n". company-select-next)
+          ("C-p". company-select-previous)
+          ("M-<". company-select-first)
+          ("M->". company-select-last))
     (:map company-mode-map
-	  ("<tab>". tab-indent-or-complete)
-	  ("TAB". tab-indent-or-complete)))
+          ("<tab>". tab-indent-or-complete)
+          ("TAB". tab-indent-or-complete)))
 
   (defun check-expansion ()
     (save-excursion
       (if (looking-at "\\_>") t
-	(backward-char 1)
-	(if (looking-at "\\.") t
-	  (backward-char 1)
-	  (if (looking-at "::") t nil)))))
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "::") t nil)))))
 
   (defun tab-indent-or-complete ()
     (interactive)
     (if (minibufferp)
-	(minibuffer-complete)
+        (minibuffer-complete)
       (if (check-expansion)
-	  (company-complete-common)
-	(indent-for-tab-command))))
+          (company-complete-common)
+        (indent-for-tab-command))))
 #+END_SRC
 
 ** Language Server
@@ -222,16 +223,23 @@ This replaces the built-in undo functionality with a more sane tree-based system
   (use-package rustic
     :ensure
     :bind (:map rustic-mode-map
-		("M-j" . lsp-ui-imenu)
-		("M-?" . lsp-find-references)
-		("C-c C-c l" . flycheck-list-errors)
-		("C-c C-c a" . lsp-execute-code-action)
-		("C-c C-c r" . lsp-rename)
-		("C-c C-c q" . lsp-workspace-restart)
-		("C-c C-c Q" . lsp-workspace-shutdown)
-		("C-c C-c s" . lsp-rust-analyzer-status))
+                ("M-j" . lsp-ui-imenu)
+                ("M-?" . lsp-find-references)
+                ("C-c C-c l" . flycheck-list-errors)
+                ("C-c C-c a" . lsp-execute-code-action)
+                ("C-c C-c r" . lsp-rename)
+                ("C-c C-c q" . lsp-workspace-restart)
+                ("C-c C-c Q" . lsp-workspace-shutdown)
+                ("C-c C-c s" . lsp-rust-analyzer-status))
     :config
     (setq rustic-format-on-save t))
+#+END_SRC
+
+** TypeScript
+
+#+BEGIN_SRC emacs-lisp
+  (use-package tide
+    :ensure)
 #+END_SRC
 
 ** Org Mode

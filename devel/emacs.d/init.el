@@ -24,8 +24,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(helm-ls-git helm evil-collection undo-tree use-package rustic magit lsp-ui fzf evil dracula-theme company))
+   '(helm-projectile projectile evil-surround tide helm-ls-git helm evil-collection undo-tree use-package rustic magit lsp-ui fzf evil dracula-theme company))
  '(warning-suppress-log-types '(((package reinitialization)) (comp)))
  '(warning-suppress-types '((comp))))
 (custom-set-faces
