@@ -1,3 +1,6 @@
+# Don't do anything smart for dumb terminals
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 ZSH="$HOME/.local/oh-my-zsh"
 ZSH_CUSTOM="$HOME/.local/zsh-custom"
 
