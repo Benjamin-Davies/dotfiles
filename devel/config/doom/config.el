@@ -19,8 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+ (setq doom-font (font-spec
+                  :family "Fira Code"
+                  :size (if IS-MAC 15 12)
+                  );:weight 'semi-light)
+       doom-variable-pitch-font (font-spec
+                                 :family "Fira Sans"
+                                 :size (if IS-MAC 16 13)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -51,11 +56,8 @@
 ;; This will open documentation for it, including demos of how they are used.
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.-  (if (eq system-type 'gnu/linux)
+;; they are implemented.
 
-;; TODO: Comment
-(when (eq system-type 'gnu/linux)
+;; Hide window borders
+(when IS-LINUX
   (add-to-list 'default-frame-alist '(undecorated . t)))
-
-(when (eq system-type 'darwin)
-  (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen))
