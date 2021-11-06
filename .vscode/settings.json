@@ -68,5 +68,13 @@
     "typeinfo": "cpp",
     "valarray": "cpp",
     "cerrno": "cpp"
+  },
+  "cmake.debugConfig": {
+    "environment": [
+      {
+        "name": "DOTFILES",
+        "value": "${workspaceFolder}"
+      }
+    ]
   }
 }
