@@ -61,3 +61,7 @@
 ;; Hide window borders
 (when IS-LINUX
   (add-to-list 'default-frame-alist '(undecorated . t)))
+
+;; Use native fullscreen on macOS
+(when IS-MAC
+  (setq ns-use-native-fullscreen t))
