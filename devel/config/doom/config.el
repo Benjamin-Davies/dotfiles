@@ -65,3 +65,7 @@
 ;; Use native fullscreen on macOS
 (when IS-MAC
   (setq ns-use-native-fullscreen t))
+
+;; t disables errors, as this file is per-computer
+;; (I don't need to publish my email settings)
+(load "mail.el" t)
