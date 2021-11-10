@@ -34,7 +34,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/notes/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -68,4 +68,4 @@
 
 ;; t disables errors, as this file is per-computer
 ;; (I don't need to publish my email settings)
-(load "mail.el" t)
+(load "~/.config/doom/mail.el" t)
