@@ -66,6 +66,33 @@
 (when IS-MAC
   (setq ns-use-native-fullscreen t))
 
+(defun bd/email-account (type label address &optional default?)
+  "Helper function to simplify email account definitions"
+  (set-email-account!
+   label
+   (flet ((folder (sub-folder)
+                  (concat "/" address sub-folder)))
+     (cl-case type
+       (:gmail  `((mu4e-sent-folder     . ,(folder "/[Gmail]/Sent Mail"))
+                  (mu4e-drafts-folder   . ,(folder "/[Gmail]/Drafts"))
+                  (mu4e-trash-folder    . ,(folder "/[Gmail]/Bin"))
+                  (mu4e-refile-folder   . ,(folder "/[Gmail]/All mail"))
+                  (smtpmail-smtp-server . "smtp.gmail.com")
+                  (smtpmail-smtp-user   . ,address)))
+       (:office `((mu4e-sent-folder     . ,(folder "/Sent Items"))
+                  (mu4e-drafts-folder   . ,(folder "/Drafts"))
+                  (mu4e-trash-folder    . ,(folder "/Deleted Items"))
+                  (mu4e-refile-folder   . ,(folder "/All mail"))
+                  (smtpmail-smtp-server . "smtp.office365.com")
+                  (smtpmail-smtp-user   . ,address)))))
+   default?))
+
 ;; t disables errors, as this file is per-computer
 ;; (I don't need to publish my email settings)
 (load "~/.config/doom/mail.el" t)
+
+(defun bd/notes (&optional arg)
+  "Open my notes folder"
+  (interactive "P")
+  (projectile-switch-project-by-name "~/notes/" arg))
+(map! :leader :desc "Notes" :n "o n" #'bd/notes)
