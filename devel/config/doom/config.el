@@ -94,5 +94,7 @@
 (defun bd/notes (&optional arg)
   "Open my notes folder"
   (interactive "P")
+  ;; Projectile is lazy-loaded
+  (require 'projectile)
   (projectile-switch-project-by-name "~/notes/" arg))
 (map! :leader :desc "Notes" :n "o n" #'bd/notes)
