@@ -66,12 +66,14 @@
 (when IS-MAC
   (setq ns-use-native-fullscreen t))
 
+;; Email stuff
+(defvar bd/spam-folders '())
 (defun bd/email-account (type label address &optional default?)
   "Helper function to simplify email account definitions"
-  (set-email-account!
-   label
-   (flet ((folder (sub-folder)
-                  (concat "/" address sub-folder)))
+  (flet ((folder (sub-folder)
+                 (concat "/" address sub-folder)))
+    (set-email-account!
+     label
      (cl-case type
        (:gmail  `((mu4e-sent-folder     . ,(folder "/[Gmail]/Sent Mail"))
                   (mu4e-drafts-folder   . ,(folder "/[Gmail]/Drafts"))
@@ -84,13 +86,49 @@
                   (mu4e-trash-folder    . ,(folder "/Deleted Items"))
                   (mu4e-refile-folder   . ,(folder "/All mail"))
                   (smtpmail-smtp-server . "smtp.office365.com")
-                  (smtpmail-smtp-user   . ,address)))))
-   default?))
+                  (smtpmail-smtp-user   . ,address))))
+     default?)
+    (add-to-list 'bd/spam-folders
+                 (cl-case type
+                   (:gmail (folder "/[Gmail]/Spam"))
+                   (:office (folder "/Junk\\ Items"))))))
 
+;; Load user specific mail config
 ;; t disables errors, as this file is per-computer
 ;; (I don't need to publish my email settings)
-(load "~/.config/doom/mail.el" t)
+(when (load "~/.config/doom/mail.el" t)
 
+  (defvar bd/!spam-filter
+    (mapconcat (lambda (folder) (concat " AND NOT maildir:" folder))
+               bd/spam-folders
+               ""))
+  (defun bd/!spam (filter)
+    (concat filter bd/!spam-filter))
+
+  ;; Only show notifications for non-spam/trash emails
+  (setq mu4e-alert-interesting-mail-query
+        (bd/!spam "flag:unread AND NOT flag:trashed"))
+
+  ;; Only show unread mail etc. for non-spam emails
+  (setq mu4e-bookmarks
+        `(( :name  "Unread messages"
+            :query ,(bd/!spam "flag:unread AND NOT flag:trashed")
+            :key ?u)
+          ( :name "Today's messages"
+            :query ,(bd/!spam "date:today..now")
+            :key ?t)
+          ( :name "Last 7 days"
+            :query ,(bd/!spam "date:7d..now")
+            :hide-unread t
+            :key ?w)
+          ( :name "Messages with images"
+            :query ,(bd/!spam "mime:image/*")
+            :key ?p)))
+
+  ;; Load mu4e on startup to get notifications
+  (require 'mu4e))
+
+;; Shortcut to open my notes dir as a project
 (defun bd/notes (&optional arg)
   "Open my notes folder"
   (interactive "P")
