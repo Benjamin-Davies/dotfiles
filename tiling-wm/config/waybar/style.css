@@ -1,18 +1,20 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 14px;
+  font-family: 'Fira Mono', monospace;
+  font-size: 13px;
   min-height: 0;
 }
 
 window#waybar {
   background-color: #282a36;
   color: #f8f8f2;
+  border-top: 1px solid #b2b2b2;
 }
 
 button {
   color: inherit;
+  margin-top: 1px;
 }
 
 button:hover {
@@ -22,11 +24,12 @@ button:hover {
 }
 
 #tags button {
-  padding: 0 5px;
+  padding: 0;
 }
 
 #tags button.focused {
   background-color: #bd93f8;
+  background-color: #44475a;
 }
 
 #tags button.urgent {
@@ -36,10 +39,8 @@ button:hover {
 #clock,
 #network,
 #pulseaudio {
-  padding: 0 10px;
-  margin: 0 4px;
+  margin: 1px 10px 0;
   color: #ffffff;
-  background-color: #44475a;
 }
 
 #network.disconnected,
