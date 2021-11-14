@@ -1,8 +1,8 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: 'Fira Mono', monospace;
-  font-size: 13px;
+  font-family: 'Fira Mono', 'Symbols Nerd Font', monospace;
+  font-size: 16px;
   min-height: 0;
 }
 
@@ -14,7 +14,6 @@ window#waybar {
 
 button {
   color: inherit;
-  margin-top: 1px;
 }
 
 button:hover {
@@ -24,12 +23,15 @@ button:hover {
 }
 
 #tags button {
-  padding: 0;
+  margin-top: 1px;
+  padding: 3px 3px 0;
 }
 
 #tags button.focused {
   background-color: #bd93f8;
   background-color: #44475a;
+  border-bottom: 1px solid #f8f8f2;
+  padding-top: 4px;
 }
 
 #tags button.urgent {
@@ -39,11 +41,6 @@ button:hover {
 #clock,
 #network,
 #pulseaudio {
-  margin: 1px 10px 0;
-  color: #ffffff;
-}
-
-#network.disconnected,
-#pulseaudio.muted {
-  background-color: #ff79c6;
+  margin: 1px 12px 0;
+  padding: 3px 0 0;
 }
