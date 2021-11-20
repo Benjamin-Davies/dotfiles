@@ -34,7 +34,7 @@ with open(input_file) as f:
 Name={title}
 GenericName=Web App
 Icon=firefox
-Exec=/usr/bin/env firefox {url}
+Exec=/usr/bin/env firefox --new-window {url}
 """)
 
 print(f"Generated {count} files in {output_dir}")
