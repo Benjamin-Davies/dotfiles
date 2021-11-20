@@ -127,12 +127,3 @@
 
   ;; Load mu4e on startup to get notifications
   (require 'mu4e))
-
-;; Shortcut to open my notes dir as a project
-(defun bd/notes (&optional arg)
-  "Open my notes folder"
-  (interactive "P")
-  ;; Projectile is lazy-loaded
-  (require 'projectile)
-  (projectile-switch-project-by-name "~/notes/" arg))
-(map! :leader :desc "Notes" :n "o n" #'bd/notes)
