@@ -1,14 +1,15 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 14px;
+  font-family: 'Fira Mono', 'Symbols Nerd Font', monospace;
+  font-size: 16px;
   min-height: 0;
 }
 
 window#waybar {
   background-color: #282a36;
   color: #f8f8f2;
+  border-top: 1px solid #b2b2b2;
 }
 
 button {
@@ -22,11 +23,15 @@ button:hover {
 }
 
 #tags button {
-  padding: 0 5px;
+  margin-top: 1px;
+  padding: 3px 3px 0;
 }
 
 #tags button.focused {
   background-color: #bd93f8;
+  background-color: #44475a;
+  border-bottom: 1px solid #f8f8f2;
+  padding-top: 4px;
 }
 
 #tags button.urgent {
@@ -36,13 +41,6 @@ button:hover {
 #clock,
 #network,
 #pulseaudio {
-  padding: 0 10px;
-  margin: 0 4px;
-  color: #ffffff;
-  background-color: #44475a;
-}
-
-#network.disconnected,
-#pulseaudio.muted {
-  background-color: #ff79c6;
+  margin: 1px 12px 0;
+  padding: 3px 0 0;
 }

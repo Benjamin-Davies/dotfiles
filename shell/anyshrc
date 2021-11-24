@@ -32,6 +32,7 @@ alias dcu='docker-compose up --build'
 alias dcdu='docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build'
 # Restart the current shell (keeps env)
 alias restart='clear && exec $0'
+alias ec='emacsclient --tty'
 
 # Some distros do weird things
 # Use default colors for ls

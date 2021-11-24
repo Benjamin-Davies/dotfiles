@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+
+from os import getenv, makedirs
+from re import sub
+from shutil import rmtree
+
+# NOTE This does not support XDG_CONFIG_HOME and friends
+input_file = getenv("HOME") + "/.config/web-desktop-entries"
+output_dir = getenv("HOME") + "/.local/share/applications/web/"
+count = 0
+
+rmtree(output_dir, ignore_errors=True)
+makedirs(output_dir)
+
+def skip_line(line):
+    return len(line) <= 1 or line.startswith("#")
+
+def parse_line(line):
+    index = line.index(" ")
+    # Python reads lines with \n at the end
+    return line[:index], line[index+1:-1]
+
+def filenamify(title):
+    return sub(r"\W", "-", title.lower())
+
+with open(input_file) as f:
+    for line in f:
+        if skip_line(line):
+            continue
+        count += 1
+        url, title = parse_line(line)
+        with open(output_dir + filenamify(title) + ".desktop", "w") as output:
+            output.write(f"""[Desktop Entry]
+Name={title}
+GenericName=Web App
+Icon=firefox
+Exec=/usr/bin/env firefox --new-window {url}
+""")
+
+print(f"Generated {count} files in {output_dir}")

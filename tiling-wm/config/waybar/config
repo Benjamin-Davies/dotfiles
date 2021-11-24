@@ -1,23 +1,29 @@
 {
-    "height": 20,
+    "height": 28,
+    "position": "bottom",
 
     "modules-left": ["river/tags"],
     "modules-right": ["pulseaudio", "network", "clock"],
 
     "clock": {
-        "format": "{:%m-%d %H:%M}",
-        "format-alt": "{:%Y-%m-%d %H:%M:%S}"
+        "format": "{:%m-%d %H:%M} \uf017",
+        "tooltip-format": "{:%Y-%m-%d %H:%M:%S}"
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%)",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "{essid} \ufaa8",
+        "format-ethernet": "{ifname} \uf700",
+        "format-linked": "{ifname} \uf701",
+        "format-disconnected": "\ufaa9",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr} ({signalStrength}%)"
     },
     "pulseaudio": {
-        "format": "{volume}%",
-        "format-muted": "muted",
+        "format": "{volume}% {icon}",
+        "format-muted": "\ufc5d",
+        "format-icons": {
+            "default": ["\ufa7e", "\ufa7f", "\ufa7d"]
+        },
         "on-click": "pavucontrol"
     }
 }
