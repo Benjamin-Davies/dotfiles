@@ -4,9 +4,9 @@
 set -e
 
 # Sort common input
-dotfiles="${DOTFILES:-$HOME/dotfiles}"
-home="$HOME"
 os="$(uname)"
+home="$HOME"
+dotfiles="${DOTFILES:-$HOME/dotfiles}"
 
 command=$1
 if [ -z $command ]; then
@@ -82,6 +82,31 @@ link_directory() {
     done
 }
 
+link_repos() {
+    local src=$1
+
+    if [ ! -f "$src/repos.txt" ]; then
+        return
+    fi
+
+    cut -f 1 "$src/repos.txt" | mapfile -t urls
+    cut -f 2 "$src/repos.txt" | mapfile -t paths
+
+    for i in "${!urls[@]}"; do
+        local url="${urls[$i]}"
+        local path="$home/${paths[$i]}"
+
+        if [ ! -e $path ]; then
+            echo "Cloning $url"
+            git clone --depth=1 "$url" "$path"
+        fi
+
+        if [ -d "$path/.git" ]; then
+            linked_repos+=("$path")
+        fi
+    done
+}
+
 # Subcommand functions
 link() {
     # Link categories specified in args
@@ -122,8 +147,11 @@ link() {
     for cat in "${to_link[@]}"; do
         linked=()
         link_directory "$dotfiles/$cat" "$home"
-
         append_lines_unique "$dotfiles/$cat.linked.txt" "${linked[@]}"
+
+        linked_repos=()
+        link_repos "$dotfiles/$cat"
+        append_lines_unique "$dotfiles/$cat.linked-repos.txt" "${linked_repos[@]}"
     done
 }
 
