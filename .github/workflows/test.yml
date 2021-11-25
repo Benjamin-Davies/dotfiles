@@ -28,17 +28,11 @@ jobs:
     runs-on: macos-11
 
     env:
-      DOTFILES: ${{ github.workspace }}
-      HOME: ${{ github.workspace }}/test-home
+      HOME: ${{ github.workspace }}
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Create Home Directory
-      run: mkdir -p $HOME
-    - name: Init
-      run: ./shell/local/bin/cfg-init
-      env:
-        CMAKE_BUILD_TYPE: Debug
+    - name: Install
+      run: curl -L https://git.io/JMTjG | sh
     - name: Check config was successful
       run: |
         test -f $HOME/.zshrc
