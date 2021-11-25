@@ -19,9 +19,8 @@ They are split into the following categories (listed in `categories.txt`):
 * linux (default on Linux)
 * macos (default on macOS)
 * shell (default on all platforms)
+* ssh (SSH config to allow my public keys. **Don't** use this yourself)
 * tiling-wm
-
-**The default setup includes an ssh config allowing me remote access into the system.**
 
 To initialise the default setup for your system:
 
