@@ -218,7 +218,7 @@ help() {
     help    Show this help text
     link    Create symlinks and clone repos
     unlink  Delete symlinks and delete repos
-    update  Update the dotfiles repo,
+    update  Update the dotfiles repo and relink
 
 This command is designed to replace the old installation mechanism,
 and should not require any changes to config or state files.'
