@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+cd
+git clone https://github.com/Benjamin-Davies/dotfiles.git
+./dotfiles/shell/local/bin/cfg link
