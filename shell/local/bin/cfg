@@ -57,13 +57,13 @@ link_directory() {
     local dest="$2"
     local top_level=${3:-true}
 
-    mkdir -p dest
+    mkdir -p "$dest"
 
     for child in $(ls "$src"); do
         local entry="$src/$child"
 
         if [ $top_level = true ]; then
-            if [ $child = repos.txt ]; then
+            if [ "$child" = repos.txt ]; then
                 continue
             fi
 
@@ -167,7 +167,6 @@ update() {
 
     for repo in $(cat $(ls | grep '\.linked-repos\.txt$')); do
         echo -- Updating repo $repo
-        cd "$home"
         cd "$repo"
         git pull
     done
