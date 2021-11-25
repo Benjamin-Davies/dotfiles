@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - name: Install
-      run: curl https://git.io/JMTjG | sh
+      run: curl -L https://git.io/JMTjG | sh
     - name: Check config was successful
       run: |
         test -f $HOME/.zshrc
