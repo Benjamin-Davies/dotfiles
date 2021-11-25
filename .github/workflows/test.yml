@@ -11,23 +11,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        use_polyfills: [TRUE, FALSE]
-
     env:
-      DOTFILES: ${{ github.workspace }}
-      HOME: ${{ github.workspace }}/test-home
+      HOME: ${{ github.workspace }}
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Create Home Directory
-      run: mkdir -p $HOME
-    - name: Init
-      run: ./shell/local/bin/cfg-init
-      env:
-        CMAKE_BUILD_TYPE: Debug
-        USE_FS_POLYFILL: ${{ matrix.use_polyfills }}
+    - name: Install
+      run: curl https://git.io/JMTjG | sh
     - name: Check config was successful
       run: |
         test -f $HOME/.zshrc
