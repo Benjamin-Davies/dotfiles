@@ -5,6 +5,8 @@ set -e
 
 # Sort common input
 dotfiles="${DOTFILES:-$HOME/dotfiles}"
+home="$HOME"
+os="$(uname)"
 
 command=$1
 if [ -z $command ]; then
@@ -15,18 +17,131 @@ fi
 shift 1
 
 # Helper functions
+append_lines_unique() {
+    local file="$1"
+    shift 1
+
+    printf "%s\n" "$@" >> "$file"
+    sort -u -o "$file" "$file"
+}
+
+confirm() {
+    local message="$1"
+
+    echo "$message [y/n]"
+    read res
+    [ "$res" = y ]
+}
+
+link_file() {
+    local src="$1"
+    local dest="$2"
+
+    if [ -e "$dest" ] || [ -L "$dest" ]; then
+        if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
+            return
+        fi
+
+        if ! confirm "$dest already exists! Would you like to overwrite it?"; then
+            return
+        fi
+
+        rm -rf "$dest"
+    fi
+
+    ln -s "$src" "$dest"
+}
+
+link_directory() {
+    local src="$1"
+    local dest="$2"
+    local top_level=${3:-true}
+
+    mkdir -p dest
+
+    for child in $(ls "$src"); do
+        local entry="$src/$child"
+
+        if [ $top_level = true ]; then
+            if [ $child = repos.txt ]; then
+                continue
+            fi
+
+            # Modified after $entry is set so that entry contains path without dot
+            # I don't know if local is required, but just to be safe as this is recursive
+            local child=".$child"
+        fi
+
+        if [ ! -L "$entry" ] && [ -d "$entry" ]; then
+            link_directory "$entry" "$dest/$child" false
+        else
+            link_file "$entry" "$dest/$child"
+        fi
+
+        linked+=("$dest/$child")
+    done
+}
 
 # Subcommand functions
+link() {
+    # Link categories specified in args
+    local to_link=($@)
+
+    # If nothing is specified then relink
+    if [ ${#to_link[@]} -eq 0 ] && [ -f "$dotfiles/categories.linked.txt" ]; then
+        mapfile -t to_link < "$dotfiles/categories.linked.txt"
+    fi
+
+    # If still nothing then link default (depends on platform)
+    if [ ${#to_link[@]} -eq 0 ]; then
+        to_link=(shell)
+        case $os in
+            Darwin)
+                to_link+=(macos)
+                ;;
+            Linux)
+                to_link+=(linux)
+                ;;
+        esac
+    fi
+
+    # If all specified, link all categories
+    if [ "${to_link[*]}" = all ]; then
+        mapfile -t to_link < "$dotfiles/categories.txt"
+    fi
+
+    # Check that the specified categories exist
+    for cat in "${to_link[@]}"; do
+        if [ -z $(grep $cat "$dotfiles/categories.txt") ]; then
+            echo Category $cat does not exist
+            exit 1
+        fi
+    done
+
+    # Link
+    for cat in "${to_link[@]}"; do
+        linked=()
+        link_directory "$dotfiles/$cat" "$home"
+
+        append_lines_unique "$dotfiles/$cat.linked.txt" "${linked[@]}"
+    done
+}
+
 help() {
-    # TODO
-    echo TODO: Help text here
+    echo 'Available commands:
+    help    Show this help text
+    link    Create symlinks and clone repos
+    unlink  Delete symlinks and delete repos
+    update  Update the dotfiles repo,
+
+This command is designed to replace the old installation mechanism,
+and should not require any changes to config or state files.'
 }
 
 # Subcommands
 case $command in
-    help)
-        help
-        ;;
+    link) link $@ ;;
+    help) help ;;
     *)
         echo Command $command not recognized
         help
