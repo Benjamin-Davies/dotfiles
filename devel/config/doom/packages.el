@@ -49,5 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! evil-colemak-basics)
 (package! dired-subtree)
 (package! org-drill)
