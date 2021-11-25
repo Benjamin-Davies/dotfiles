@@ -89,9 +89,7 @@ link_repos() {
         return
     fi
 
-    mapfile -t repos < "$src/repos.txt"
-
-    for repo in "${repos[@]}"; do
+    while read repo; do
         local url="$(cut -f 1 <<< "$repo")"
         local path="$home/$(cut -f 2 <<< "$repo")"
 
@@ -103,7 +101,7 @@ link_repos() {
         if [ -d "$path/.git" ]; then
             linked_repos+=("$path")
         fi
-    done
+    done < "$src/repos.txt"
 }
 
 # Subcommand functions
@@ -113,7 +111,9 @@ link() {
 
     # If nothing is specified then relink
     if [ ${#to_link[@]} -eq 0 ] && [ -f "$dotfiles/categories.linked.txt" ]; then
-        mapfile -t to_link < "$dotfiles/categories.linked.txt"
+        while read cat; do
+            to_link+=($cat)
+        done < "$dotfiles/categories.linked.txt"
     fi
 
     # If still nothing then link default (depends on platform)
@@ -131,7 +131,10 @@ link() {
 
     # If all specified, link all categories
     if [ "${to_link[*]}" = all ]; then
-        mapfile -t to_link < "$dotfiles/categories.txt"
+        to_link=()
+        while read cat; do
+            to_link+=($cat)
+        done < "$dotfiles/categories.txt"
     fi
 
     # Check that the specified categories exist
