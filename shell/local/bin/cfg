@@ -157,6 +157,22 @@ link() {
     done
 }
 
+update() {
+    echo -- Updating dotfiles repo
+    cd "$dotfiles"
+    git pull
+
+    echo -- Re-linking
+    link
+
+    for repo in $(cat $(ls | grep '\.linked-repos\.txt$')); do
+        echo -- Updating repo $repo
+        cd "$home"
+        cd "$repo"
+        git pull
+    done
+}
+
 help() {
     echo 'Available commands:
     help    Show this help text
@@ -171,6 +187,7 @@ and should not require any changes to config or state files.'
 # Subcommands
 case $command in
     link) link $@ ;;
+    update) update $@ ;;
     help) help ;;
     *)
         echo Command $command not recognized
