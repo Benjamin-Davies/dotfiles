@@ -94,7 +94,7 @@ link_repos() {
         local path="$home/$(cut -f 2 <<< "$repo")"
 
         if [ ! -e $path ]; then
-            echo "Cloning $url"
+            echo -- Cloning $url
             git clone --depth=1 "$url" "$path"
         fi
 
