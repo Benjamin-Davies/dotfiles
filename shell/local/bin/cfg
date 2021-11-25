@@ -89,12 +89,11 @@ link_repos() {
         return
     fi
 
-    cut -f 1 "$src/repos.txt" | mapfile -t urls
-    cut -f 2 "$src/repos.txt" | mapfile -t paths
+    mapfile -t repos < "$src/repos.txt"
 
-    for i in "${!urls[@]}"; do
-        local url="${urls[$i]}"
-        local path="$home/${paths[$i]}"
+    for repo in "${repos[@]}"; do
+        local url="$(cut -f 1 <<< "$repo")"
+        local path="$home/$(cut -f 2 <<< "$repo")"
 
         if [ ! -e $path ]; then
             echo "Cloning $url"
