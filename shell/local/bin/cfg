@@ -157,6 +157,47 @@ link() {
     done
 }
 
+unlink() {
+    local to_unlink=($@)
+
+    # If nothing specified then don't unlink anything as this is destructive
+    if [ ${#to_unlink[@]} -eq 0 ]; then
+        echo No category specified for unlinking
+        echo To unlink all categories, use `cfg unlink all`
+        exit 1
+    fi
+
+    # If all specified, unlink all linked categories
+    if [ "${to_unlink[*]}" = all ]; then
+        while read cat; do
+            to_unlink+=($cat)
+        done < "$dotfiles/categories.linked.txt"
+    fi
+
+    # Check that the specified categories exist
+    for cat in "${to_unlink[@]}"; do
+        if [ -z $(grep $cat "$dotfiles/categories.txt") ]; then
+            echo Category $cat does not exist
+            exit 1
+        fi
+    done
+
+    # Unlink
+    for cat in "${to_unlink[@]}"; do
+        # Files
+        while read file; do
+            rm -f "$file"
+        done < "$dotfiles/$cat.linked.txt"
+        rm "$dotfiles/$cat.linked.txt"
+
+        # Repos
+        while read file; do
+            rm -rf "$file"
+        done < "$dotfiles/$cat.linked-repos.txt"
+        rm "$dotfiles/$cat.linked-repos.txt"
+    done
+}
+
 update() {
     echo -- Updating dotfiles repo
     cd "$dotfiles"
@@ -186,6 +227,7 @@ and should not require any changes to config or state files.'
 # Subcommands
 case $command in
     link) link $@ ;;
+    unlink) unlink $@ ;;
     update) update $@ ;;
     help) help ;;
     *)
