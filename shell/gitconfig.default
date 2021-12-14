@@ -7,4 +7,4 @@
 [credential]
 	helper = store
 [commit]
-	gpgsign = true
+	#gpgsign = true
