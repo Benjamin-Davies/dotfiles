@@ -12,3 +12,9 @@ hi StatusLine cterm=none ctermfg=15
 hi StatusLineNC cterm=none ctermfg=7
 hi VertSplit cterm=NONE ctermfg=3
 hi SignColumn ctermbg=NONE
+
+let mapleader=' '
+nnoremap <leader><space> :GFiles<CR>
+nnoremap <leader>gf :GFiles?<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>, :Buffers<CR>

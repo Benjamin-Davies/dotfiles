@@ -6,3 +6,5 @@ https://github.com/sheerun/vim-polyglot.git	.vim/pack/sheerun/start/vim-polyglot
 https://github.com/tpope/vim-repeat.git	.vim/pack/tpope/start/vim-repeat
 https://github.com/tpope/vim-sensible.git	.vim/pack/tpope/start/vim-sensible
 https://github.com/tpope/vim-surround.git	.vim/pack/tpope/start/vim-surround
+https://github.com/junegunn/fzf.git	.vim/pack/junegunn/start/fzf
+https://github.com/junegunn/fzf.vim.git	.vim/pack/junegunn/start/fzf.vim
