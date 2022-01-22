@@ -15,6 +15,10 @@ hi SignColumn ctermbg=NONE
 
 let mapleader=' '
 nnoremap <leader><space> :GFiles<CR>
-nnoremap <leader>gf :GFiles?<CR>
-nnoremap <leader>ff :Files<CR>
 nnoremap <leader>, :Buffers<CR>
+nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>bk :bd<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fs :w<CR>
+nnoremap <leader>gf :GFiles?<CR>
+nnoremap <leader>w <C-w>
