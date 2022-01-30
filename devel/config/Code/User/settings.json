@@ -35,7 +35,6 @@
     "vscode_vibrancy.type": "sidebar",
     "vscode_vibrancy.opacity": 0.5,
     "files.autoSave": "onFocusChange",
-    "workbench.editor.showTabs": false,
     "window.restoreFullscreen": true,
     "window.restoreWindows": "none",
     "editor.renameOnType": true,

@@ -1,0 +1,69 @@
+bar:
+  height: 32
+  location: bottom
+  background: 282a36ff
+
+  spacing: 12
+  margin: 12
+  border:
+    top-width: 1
+    color: b2b2b2ff
+
+  font: Fira Mono:pixelsize=16
+  foreground: f8f8f2ff
+
+  left:
+    - river:
+        title:
+          string:
+            left-margin: 12
+            text: "{title}"
+        content:
+          - map:
+              tag: occupied
+              values:
+                false:
+                  map:
+                    tag: focused
+                    values:
+                      true:
+                        string:
+                          text: "[{id}]"
+                      false:
+                        empty: {}
+
+                true:
+                  map:
+                    tag: state
+                    values:
+                      urgent:
+                        string:
+                          text: "!{id}!"
+                      focused:
+                        string:
+                          text: "[{id}]"
+                      unfocused:
+                        string:
+                          text: "_{id}_"
+                      invisible:
+                        string:
+                          text: " {id} "
+
+  right:
+    - alsa:
+        card: default
+        mixer: Master
+        content:
+          - map:
+              tag: muted
+              values:
+                true:
+                  string:
+                    text: "muted"
+                false:
+                  string:
+                    text: "{volume:hex}/{volume:max:hex}"
+
+    - clock:
+        content:
+          - string: {text: "{time}"}
