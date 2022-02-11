@@ -26,7 +26,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.tabSize": 2,
-    "diffEditor.ignoreTrimWhitespace": false,
     "git.defaultCloneDirectory": "~/src/",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "latex-workshop.view.pdf.viewer": "tab",
