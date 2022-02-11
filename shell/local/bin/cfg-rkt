@@ -1,0 +1,49 @@
+#!/usr/bin/env racket
+(module cfg-rkt racket/base
+
+  (define home-dir (string->path (getenv "HOME")))
+  (define dotfiles-dir (if (getenv "DOTFILES")
+                         (string->path (getenv "DOTFILES"))
+                         (build-path home-dir "dotfiles")))
+
+  (define (help . _)
+    (display "
+cfg-rkt - dotfiles linking script re-written in racket
+
+Available commands:
+    help    Show this help text
+    link    Create symlinks and clone repos
+    unlink  Delete symlinks and delete repos
+    update  Update the dotfiles repo and relink
+
+This script should be able to work in parallel with the old one, for now, but in the future the config and state files will be written/generated in lisp.
+"))
+
+  (define (link args)
+    (displayln "TODO: link cats"))
+
+  (define (unlink args)
+    (displayln "TODO: unlink cats"))
+
+  (define (update args)
+    (displayln "TODO: update cats"))
+
+  (define commands (hash "help" help
+                         "link" link
+                         "unlink" unlink
+                         "update" update))
+
+  (let [(args (vector->list (current-command-line-arguments)))]
+    (cond (null? args)
+      (displayln "no command specified")
+      (help)
+      (exit 1))
+    ((hash-ref commands (car args)
+               (lambda ()
+                 (display "unknown command: ")
+                 (displayln (car args))
+                 (help)
+                 (exit 1)))
+     (cdr args)))
+
+  )
