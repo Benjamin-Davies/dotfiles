@@ -1,11 +1,76 @@
 #!/usr/bin/env racket
 (module cfg-rkt racket/base
+  (require racket/block)
+  (require racket/file)
 
+  ; paths
   (define home-dir (string->path (getenv "HOME")))
   (define dotfiles-dir (if (getenv "DOTFILES")
                          (string->path (getenv "DOTFILES"))
                          (build-path home-dir "dotfiles")))
 
+  (define categories-file
+    (build-path dotfiles-dir "categories.txt"))
+  (define linked-categories-file
+    (build-path dotfiles-dir "categories.linked.txt"))
+
+  ; helpers
+  (define (read-lines path)
+    (with-input-from-file
+      path
+      (lambda ()
+        (let loop [(res (list))]
+          (let [(line (read-line))]
+            (if (eof-object? line)
+              res
+              (cons line (loop res))))))))
+
+  (define categories (read-lines categories-file))
+
+  (define (confirm . args)
+    (let retry []
+      (for [(arg args)]
+        (display arg))
+      (displayln " (y/n)")
+      (case (read)
+        ['y #t]
+        ['n #f]
+        [else (retry)])))
+
+  (define (link-file src dest)
+    (if (link-exists? dest)
+      dest
+      (if (or (file-exists? dest) (directory-exists? dest))
+        (when (confirm (path->string dest)
+                       " already exists? Would you like to overwrite it?")
+          (block
+            (delete-directory/files dest)
+            (make-file-or-directory-link src dest)
+            dest))
+        (block
+          (make-file-or-directory-link src dest)
+          dest))))
+
+  (define (link-dir src dest [top-level #t])
+    (unless (directory-exists? dest)
+      (make-directory dest))
+
+    (for/list [(child (directory-list src))]
+      (unless (and top-level
+                   (equal? child (string->path "repos.txt")))
+        (define src-child (build-path src child))
+        (define dest-child (build-path
+                             dest
+                             (if top-level
+                               (string-append "." (path->string child))
+                               child)))
+
+        (if (and (not (link-exists? src-child))
+                 (directory-exists? src-child))
+          (link-dir src-child dest-child #f)
+          (link-file src-child dest-child)))))
+
+  ; subcommands
   (define (help . _)
     (display "
 cfg-rkt - dotfiles linking script re-written in racket
@@ -19,8 +84,37 @@ Available commands:
 This script should be able to work in parallel with the old one, for now, but in the future the config and state files will be written/generated in lisp.
 "))
 
-  (define (link args)
-    (displayln "TODO: link cats"))
+  (define (link to-link)
+    ; if nothing is specified then relink
+    (when (and (null? to-link) (file-exists? linked-categories-file))
+      (set! to-link (read-lines linked-categories-file)))
+
+    ; if still nothing then link default
+    (when (null? to-link)
+      (set! to-link (list "shell"
+                          (case (system-type 'os*)
+                            ['macosx "macos"]
+                            ['linux "linux"]))))
+
+    ; if all specified, link all categories
+    (when (equal? to-link '("all"))
+      (set! to-link categories))
+
+    ; check that the specified categories exist
+    (for [(cat to-link)]
+      (unless (member cat categories)
+        (display "unknown category: ")
+        (displayln cat)
+        (exit 1)))
+
+    (writeln to-link)
+    (for [(cat to-link)]
+      (display cat)
+      (define linked (link-dir (build-path dotfiles-dir cat) home-dir))
+      (displayln linked)
+      (append-lines-unique (linked-files-file cat)
+                           ()))
+    (append-lines-unique linked-cats-file to-link))
 
   (define (unlink args)
     (displayln "TODO: unlink cats"))
@@ -33,8 +127,9 @@ This script should be able to work in parallel with the old one, for now, but in
                          "unlink" unlink
                          "update" update))
 
+  ; run subcommand
   (let [(args (vector->list (current-command-line-arguments)))]
-    (cond (null? args)
+    (when (null? args)
       (displayln "no command specified")
       (help)
       (exit 1))
@@ -44,6 +139,4 @@ This script should be able to work in parallel with the old one, for now, but in
                  (displayln (car args))
                  (help)
                  (exit 1)))
-     (cdr args)))
-
-  )
+     (cdr args))))

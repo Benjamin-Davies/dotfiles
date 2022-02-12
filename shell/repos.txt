@@ -8,3 +8,4 @@ https://github.com/tpope/vim-sensible.git	.vim/pack/tpope/start/vim-sensible
 https://github.com/tpope/vim-surround.git	.vim/pack/tpope/start/vim-surround
 https://github.com/junegunn/fzf.git	.vim/pack/junegunn/start/fzf
 https://github.com/junegunn/fzf.vim.git	.vim/pack/junegunn/start/fzf.vim
+https://github.com/jiangmiao/auto-pairs.git	.vim/pack/jiangmiao/start/auto-pairs
