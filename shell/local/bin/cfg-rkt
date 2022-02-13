@@ -19,8 +19,7 @@
   ;; helpers
   (define (read-lines path)
     (if (file-exists? path)
-        (with-input-from-file
-            path
+        (with-input-from-file path
           (lambda ()
             (let loop [(res '())]
               (let [(line (read-line))]
@@ -32,8 +31,15 @@
   (define (append-lines-unique path lines)
     (define existing (read-lines path))
     (define new (filter (lambda (line) (not (member line existing))) lines))
-    (with-output-to-file
-        path
+    (with-output-to-file path
+      (lambda () (for [(line new)] (displayln line)))
+      #:exists 'append))
+
+  (define (remove-lines path lines)
+    (define existing (read-lines path))
+    (delete-file path)
+    (define new (filter (lambda (line) (not (member line lines))) existing))
+    (with-output-to-file path
       (lambda () (for [(line new)] (displayln line)))
       #:exists 'append))
 
@@ -125,17 +131,38 @@ This script should be able to work in parallel with the old one, for now, but in
         (displayln cat)
         (exit 1)))
 
-    (writeln to-link)
     (for [(cat to-link)]
-      (display cat)
       (define linked (link-dir (build-path dotfiles-dir cat) home-dir))
-      (displayln linked)
       (append-lines-unique (linked-files-file cat)
                            (path-tree->strings linked)))
     (append-lines-unique linked-categories-file to-link))
 
-  (define (unlink args)
-    (displayln "TODO: unlink cats"))
+  (define (unlink to-unlink)
+    ;; if nothing specified then don't unlink anything as this is destructive
+    (when (null? to-unlink)
+      (displayln "no category specified for unlinking")
+      (displayln "to unlink all categories, use `cfg unlink all`")
+      (exit 1))
+
+    ;; if all specified, unlink all linked categories
+    (when (equal? to-unlink '("all"))
+      (set! to-unlink (read-lines linked-categories-file)))
+
+    ;; check that the specified categories exist
+    (for [(cat to-unlink)]
+      (unless (member cat categories)
+        (display "unknown category: ")
+        (displayln cat)
+        (exit 1)))
+
+    ;; unlink
+    (for [(cat to-unlink)]
+      ;; files
+      (let [(linked-file (linked-files-file cat))]
+        (for [(file (read-lines linked-file))]
+          (delete-file file))
+        (delete-file linked-file)))
+    (remove-lines linked-categories-file to-unlink))
 
   (define (update args)
     (displayln "TODO: update cats"))
