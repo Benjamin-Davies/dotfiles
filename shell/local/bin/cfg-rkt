@@ -3,27 +3,45 @@
   (require racket/block)
   (require racket/file)
 
-  ; paths
+  ;; paths
   (define home-dir (string->path (getenv "HOME")))
   (define dotfiles-dir (if (getenv "DOTFILES")
-                         (string->path (getenv "DOTFILES"))
-                         (build-path home-dir "dotfiles")))
+                           (string->path (getenv "DOTFILES"))
+                           (build-path home-dir "dotfiles")))
 
   (define categories-file
     (build-path dotfiles-dir "categories.txt"))
   (define linked-categories-file
     (build-path dotfiles-dir "categories.linked.txt"))
+  (define (linked-files-file cat)
+    (build-path dotfiles-dir (string-append cat ".linked.txt")))
 
-  ; helpers
+  ;; helpers
   (define (read-lines path)
-    (with-input-from-file
-      path
-      (lambda ()
-        (let loop [(res (list))]
-          (let [(line (read-line))]
-            (if (eof-object? line)
-              res
-              (cons line (loop res))))))))
+    (if (file-exists? path)
+        (with-input-from-file
+            path
+          (lambda ()
+            (let loop [(res '())]
+              (let [(line (read-line))]
+                (if (eof-object? line)
+                    res
+                    (cons line (loop res)))))))
+        '()))
+
+  (define (append-lines-unique path lines)
+    (define existing (read-lines path))
+    (define new (filter (lambda (line) (not (member line existing))) lines))
+    (with-output-to-file
+        path
+      (lambda () (for [(line new)] (displayln line)))
+      #:exists 'append))
+
+  (define (path-tree->strings tree)
+    (cond [(path? tree) (list (path->string tree))]
+          [(pair? tree) (append (path-tree->strings (car tree))
+                                (path-tree->strings (cdr tree)))]
+          [else '()]))
 
   (define categories (read-lines categories-file))
 
@@ -39,17 +57,17 @@
 
   (define (link-file src dest)
     (if (link-exists? dest)
-      dest
-      (if (or (file-exists? dest) (directory-exists? dest))
-        (when (confirm (path->string dest)
-                       " already exists? Would you like to overwrite it?")
-          (block
-            (delete-directory/files dest)
-            (make-file-or-directory-link src dest)
-            dest))
-        (block
-          (make-file-or-directory-link src dest)
-          dest))))
+        dest
+        (if (or (file-exists? dest) (directory-exists? dest))
+            (when (confirm (path->string dest)
+                           " already exists? Would you like to overwrite it?")
+              (block
+               (delete-directory/files dest)
+               (make-file-or-directory-link src dest)
+               dest))
+            (block
+             (make-file-or-directory-link src dest)
+             dest))))
 
   (define (link-dir src dest [top-level #t])
     (unless (directory-exists? dest)
@@ -60,17 +78,17 @@
                    (equal? child (string->path "repos.txt")))
         (define src-child (build-path src child))
         (define dest-child (build-path
-                             dest
-                             (if top-level
-                               (string-append "." (path->string child))
-                               child)))
+                            dest
+                            (if top-level
+                                (string-append "." (path->string child))
+                                child)))
 
         (if (and (not (link-exists? src-child))
                  (directory-exists? src-child))
-          (link-dir src-child dest-child #f)
-          (link-file src-child dest-child)))))
+            (link-dir src-child dest-child #f)
+            (link-file src-child dest-child)))))
 
-  ; subcommands
+  ;; subcommands
   (define (help . _)
     (display "
 cfg-rkt - dotfiles linking script re-written in racket
@@ -85,22 +103,22 @@ This script should be able to work in parallel with the old one, for now, but in
 "))
 
   (define (link to-link)
-    ; if nothing is specified then relink
+    ;; if nothing is specified then relink
     (when (and (null? to-link) (file-exists? linked-categories-file))
       (set! to-link (read-lines linked-categories-file)))
 
-    ; if still nothing then link default
+    ;; if still nothing then link default
     (when (null? to-link)
       (set! to-link (list "shell"
                           (case (system-type 'os*)
                             ['macosx "macos"]
                             ['linux "linux"]))))
 
-    ; if all specified, link all categories
+    ;; if all specified, link all categories
     (when (equal? to-link '("all"))
       (set! to-link categories))
 
-    ; check that the specified categories exist
+    ;; check that the specified categories exist
     (for [(cat to-link)]
       (unless (member cat categories)
         (display "unknown category: ")
@@ -113,8 +131,8 @@ This script should be able to work in parallel with the old one, for now, but in
       (define linked (link-dir (build-path dotfiles-dir cat) home-dir))
       (displayln linked)
       (append-lines-unique (linked-files-file cat)
-                           ()))
-    (append-lines-unique linked-cats-file to-link))
+                           (path-tree->strings linked)))
+    (append-lines-unique linked-categories-file to-link))
 
   (define (unlink args)
     (displayln "TODO: unlink cats"))
@@ -127,7 +145,7 @@ This script should be able to work in parallel with the old one, for now, but in
                          "unlink" unlink
                          "update" update))
 
-  ; run subcommand
+  ;; run subcommand
   (let [(args (vector->list (current-command-line-arguments)))]
     (when (null? args)
       (displayln "no command specified")
