@@ -78,3 +78,6 @@
       "D" #'org-drill-directory
       "r" #'org-drill-resume
       "t" #'org-drill-tree)
+
+(map! :map doom-leader-toggle-map
+      "C" #'company-mode)
