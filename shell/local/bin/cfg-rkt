@@ -100,14 +100,19 @@
 
   (define (link-repos dir)
     (define repos-file (build-path dir "repos.txt"))
-    (when (file-exists? repos-file)
-      (for/list [(line (read-lines repos-file))]
-        (define parts (string-split line))
-        (define url (car parts))
-        (define path (build-path home-dir (cadr parts)))
-        (unless (directory-exists? path)
-          (system* "/usr/bin/env" "git" "clone" "--depth=1" url (path->string path)))
-        path)))
+    (if (file-exists? repos-file)
+        (for/list [(line (read-lines repos-file))]
+          (define parts (string-split line))
+          (define url (car parts))
+          (define path (build-path home-dir (cadr parts)))
+          (unless (directory-exists? path)
+            (system* "/usr/bin/env" "git" "clone" "--depth=1" url (path->string path)))
+          path)
+        '()))
+
+  (define (git-pull repo)
+    (current-directory repo)
+    (system* "/usr/bin/env" "git" "pull"))
 
   ;; subcommands
   (define (help . _)
@@ -185,12 +190,22 @@ This script should be able to work in parallel with the old one, for now, but in
       ;; repos
       (let [(linked-file (linked-repos-file cat))]
         (for [(repo (read-lines linked-file))]
-          (when (directory-exists? file) (delete-directory/files file)))
+          (when (directory-exists? repo) (delete-directory/files repo)))
         (delete-file linked-file)))
     (remove-lines linked-categories-file to-unlink))
 
   (define (update args)
-    (displayln "TODO: update cats"))
+    (displayln "-- upating dotfiles repo")
+    (git-pull home-dir)
+    (displayln "-- re-linking")
+    (link '())
+    (for [(cat (read-lines linked-categories-file))]
+      (display "-- updating repos for ")
+      (displayln cat)
+      (for [(repo (read-lines (linked-repos-file cat)))]
+        (display "-- updating repo ")
+        (displayln repo)
+        (git-pull (string->path repo)))))
 
   (define commands (hash "help" help
                          "link" link
