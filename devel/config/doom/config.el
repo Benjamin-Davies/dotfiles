@@ -4,6 +4,10 @@
 ;; sync' after modifying this file!
 
 
+;;; Code:
+
+(setq IS-TERMUX (numberp (cl-search "com.termux" (getenv "PREFIX"))))
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Benjamin Davies"
@@ -29,7 +33,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-vibrant)
+(setq doom-theme (if IS-TERMUX 'doom-ir-black 'doom-vibrant))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
