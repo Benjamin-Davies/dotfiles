@@ -36,8 +36,7 @@
 (setq doom-theme 'doom-vibrant)
 
 (when IS-TERMUX
-  (setq doom-theme 'doom-ir-black)
-  (custom-set-faces! '(default :background "black")))
+  (setq doom-theme 'doom-homage-black))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
