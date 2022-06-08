@@ -91,3 +91,40 @@
 (use-package! telega
   :init
   (setq telega-server-libs-prefix "/usr"))
+
+;; Workaround for Org-Mode LaTeX Preview size
+;; https://karthinks.com/software/scaling-latex-previews-in-emacs/
+
+;; (setq org-preview-latex-default-process 'dvisvgm)
+                                        ;No blur when scaling
+
+(defun my/text-scale-adjust-latex-previews (&optional arg)
+  "Adjust the size of latex preview fragments when changing the buffer's text scale."
+  (pcase major-mode
+    ('latex-mode
+     (dolist (ov (overlays-in (point-min) (point-max)))
+       (if (eq (overlay-get ov 'category)
+               'preview-overlay)
+           (my/text-scale--resize-fragment ov))))
+    ('org-mode
+     (dolist (ov (overlays-in (point-min) (point-max)))
+       (if (eq (overlay-get ov 'org-overlay-type)
+               'org-latex-overlay)
+           (my/text-scale--resize-fragment ov))))))
+
+(defun my/text-scale--resize-fragment (ov)
+  (overlay-put
+   ov 'display
+   (cons 'image
+         (plist-put
+          (cdr (overlay-get ov 'display))
+          :scale (+ 1.0 (* 0.25 text-scale-mode-amount))))))
+
+(add-hook 'text-scale-mode-hook #'my/text-scale-adjust-latex-previews)
+;; Added by me
+(advice-add 'org-latex-preview :after #'my/text-scale-adjust-latex-previews)
+
+;; And from the comments
+;; Scales it by an additional 75%
+(setq my/org-latex-scale 1.75)
+(setq org-format-latex-options (plist-put org-format-latex-options :scale my/org-latex-scale))
