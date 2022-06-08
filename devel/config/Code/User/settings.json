@@ -49,9 +49,7 @@
     "editor.detectIndentation": false,
     "editor.tabSize": 4
   },
-  "workbench.colorTheme": "Dracula",
   "workbench.productIconTheme": "fluent-icons",
-  "workbench.iconTheme": "file-icons-colourless",
   "workbench.startupEditor": "none",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -60,6 +58,25 @@
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Adwaita Dark & default syntax highlighting",
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "Adwaita Dark & default syntax highlighting",
+  "workbench.preferredLightColorTheme": "Adwaita Light & default syntax highlighting",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.smoothScrolling": true,
+  "debug.toolBarLocation": "docked",
+  "workbench.iconTheme": null,
+  "testExplorer.useNativeTesting": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[dockercompose]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "bodil.prettier-toml"
+  },
+  "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
