@@ -34,6 +34,10 @@ alias dcdu='docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --
 alias restart='clear && exec $0'
 alias ec='emacsclient --tty'
 
+# Lol
+alias donker=docker
+alias shh=ssh
+
 # Some distros do weird things
 # Use default colors for ls
 export LSCOLORS=
