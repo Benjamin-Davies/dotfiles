@@ -9,11 +9,6 @@
   "debug.onTaskErrors": "showErrors",
   "git.confirmSync": false,
   "git.autofetch": true,
-  "files.exclude": {
-    "**/bin": true,
-    "**/node_modules": true,
-    "**/obj": true
-  },
   "editor.wordWrap": "on",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
