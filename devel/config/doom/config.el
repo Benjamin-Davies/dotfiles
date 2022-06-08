@@ -87,3 +87,7 @@
 
 (map! :map doom-leader-toggle-map
       "C" #'company-mode)
+
+(use-package! telega
+  :init
+  (setq telega-server-libs-prefix "/usr"))

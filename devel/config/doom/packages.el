@@ -52,3 +52,4 @@
 (package! evil-colemak-basics)
 (package! dired-subtree)
 (package! org-drill)
+(package! telega :recipe (:branch "release-0.8.0"))
