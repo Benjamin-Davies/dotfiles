@@ -13,5 +13,5 @@ chezmoi init --apply Benjamin-Davies
 ...otherwise run:
 
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply Benjamin-Davies
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply Benjamin-Davies
 ```
