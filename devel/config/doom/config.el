@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-(setq IS-TERMUX (numberp (cl-search "com.termux" (getenv "PREFIX"))))
+(defvar IS-TERMUX (numberp (cl-search "com.termux" (getenv "PREFIX"))))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -23,20 +23,50 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
- (setq doom-font (font-spec
-                  :family "Fira Code"
-                  :size 16)
-       doom-variable-pitch-font (font-spec
-                                 :family "Fira Sans"
-                                 :size 16))
+(setq doom-font (font-spec
+                 :family "Fira Code"
+                 :size 16)
+      doom-variable-pitch-font (font-spec
+                                :family "Fira Sans"
+                                :size 16))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-vibrant)
+(defvar my/light-theme 'doom-one-light)
+(defvar my/dark-theme 'doom-gruvbox)
+(defvar my/oled-theme 'doom-homage-black)
+
+(setq doom-theme my/light-theme)
 
 (when IS-TERMUX
-  (setq doom-theme 'doom-homage-black))
+  (setq doom-theme my/oled-theme))
+
+(when (and IS-LINUX (not IS-TERMUX))
+  (defun my/theme/follow-gnome-color-scheme (color-scheme)
+    "Use the given color scheme."
+    (cond
+         ((string-match-p color-scheme "default")
+          (load-theme my/light-theme))
+         ((string-match-p color-scheme "prefer-dark")
+          (load-theme my/dark-theme))
+         (t (message "I don't know how to handle scheme: %s" color-scheme))))
+
+  (defun my/theme/handle-dbus-event (namespace key value)
+    "Handler for FreeDesktop theme changes."
+    (when (and (string= namespace "org.gnome.desktop.interface") (string= key "color-scheme"))
+      (my/theme/follow-gnome-color-scheme (car value))))
+
+  (require 'dbus)
+
+  ;; (let ((color-scheme (dbus-call-method :session "org.freedesktop.portal" "/org/freedesktop/portal/desktop"
+  ;;                                       "org.freedesktop.impl.portal.Settings" "Read"
+  ;;                                       "org.gnome.desktop.interface" "color-scheme")))
+  ;;   (my/theme/follow-gnome-color-scheme color-scheme))
+
+  (dbus-register-signal :session "org.freedesktop.portal" "/org/freedesktop/portal/desktop"
+                        "org.freedesktop.impl.portal.Settings" "SettingChanged"
+                        #'my/theme/handle-dbus-event))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -73,6 +103,8 @@
   (setq ns-use-native-fullscreen t))
 
 (use-package! dired-subtree)
+
+(map! :n "C-s" #'save-buffer)
 
 (map! :map org-mode-map
       :leader

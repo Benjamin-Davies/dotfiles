@@ -1,5 +1,4 @@
 {
-  "window.menuBarVisibility": "toggle",
   "git.enableSmartCommit": true,
   "editor.fontFamily": "'Jetbrains Mono', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontSize": 16,
@@ -60,23 +59,35 @@
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Adwaita Dark & default syntax highlighting",
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "Adwaita Dark & default syntax highlighting",
   "workbench.preferredLightColorTheme": "Adwaita Light & default syntax highlighting",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.smoothScrolling": true,
   "debug.toolBarLocation": "docked",
-  "workbench.iconTheme": null,
   "testExplorer.useNativeTesting": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "[dockercompose]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[toml]": {
-    "editor.defaultFormatter": "bodil.prettier-toml"
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "git.mergeEditor": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "extensions.ignoreRecommendations": true,
+  "update.mode": "none",
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "haskell.manageHLS": "GHCup",
+  "window.menuBarVisibility": "toggle",
+  "keyboard.dispatch": "keyCode",
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": true
+  },
+  "workbench.colorTheme": "Adwaita Light & default syntax highlighting"
 }
