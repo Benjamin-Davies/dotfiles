@@ -1,2 +1,0 @@
-https://github.com/junegunn/vim-plug.git	.config/nvim/autoload
-https://github.com/hlissner/doom-emacs	.config/emacs

@@ -1,6 +1,0 @@
-devel
-linux
-macos
-shell
-ssh
-tiling-wm

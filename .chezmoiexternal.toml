@@ -1,0 +1,54 @@
+[".local/oh-my-bash"]
+type = "git-repo"
+url = "https://github.com/ohmybash/oh-my-bash.git"
+refreshPeriod = "168h"
+
+[".local/oh-my-zsh"]
+type = "git-repo"
+url = "https://github.com/ohmyzsh/ohmyzsh.git"
+refreshPeriod = "168h"
+
+[".local/zsh-custom/plugins/zsh-syntax-highlighting"]
+type = "git-repo"
+url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+refreshPeriod = "168h"
+
+[".local/zsh-custom/plugins/zsh-autosuggestions"]
+type = "git-repo"
+url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+refreshPeriod = "168h"
+
+[".vim/pack/sheerun/start/vim-polyglot"]
+type = "git-repo"
+url = "https://github.com/sheerun/vim-polyglot.git"
+refreshPeriod = "168h"
+
+[".vim/pack/tpope/start/vim-repeat"]
+type = "git-repo"
+url = "https://github.com/tpope/vim-repeat.git"
+refreshPeriod = "168h"
+
+[".vim/pack/tpope/start/vim-sensible"]
+type = "git-repo"
+url = "https://github.com/tpope/vim-sensible.git"
+refreshPeriod = "168h"
+
+[".vim/pack/tpope/start/vim-surround"]
+type = "git-repo"
+url = "https://github.com/tpope/vim-surround.git"
+refreshPeriod = "168h"
+
+[".vim/pack/junegunn/start/fzf"]
+type = "git-repo"
+url = "https://github.com/junegunn/fzf.git"
+refreshPeriod = "168h"
+
+[".vim/pack/junegunn/start/fzf.vim"]
+type = "git-repo"
+url = "https://github.com/junegunn/fzf.vim.git"
+refreshPeriod = "168h"
+
+[".vim/pack/jiangmiao/start/auto-pairs"]
+type = "git-repo"
+url = "https://github.com/jiangmiao/auto-pairs.git"
+refreshPeriod = "168h"

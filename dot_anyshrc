@@ -25,6 +25,8 @@ if command -v nvr > /dev/null && \
   export EDITOR='nvr --remote-wait'
 fi
 
+# Chezmoi is kinda hard to spell
+alias cfg=chezmoi
 # Our school SFTP server is kinda fussy
 alias cos='sftp -P 2222 php.mmc.school.nz:/201COS/benjamindavies'
 # More docker-compose aliases

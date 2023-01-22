@@ -1,2 +1,0 @@
-SHELL_SESSIONS_DISABLE=1
-. "$HOME/.cargo/env"
