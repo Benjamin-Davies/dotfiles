@@ -5,6 +5,9 @@ require('packer').startup(function(use)
 	use 'tpope/vim-repeat'
 	use 'tpope/vim-surround'
 
+	-- Languages
+	use 'preservim/vim-markdown'
+
 	-- Colors
 	use 'Mofiqul/adwaita.nvim'
 	use {
