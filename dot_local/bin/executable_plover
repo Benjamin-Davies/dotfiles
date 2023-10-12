@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Allow Plover to access the XOrg display
+xhost + local:
+
+~/Documents/Steno/plover-*.AppImage
