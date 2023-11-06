@@ -80,17 +80,17 @@ type = "file"
 url = "https://raw.githubusercontent.com/openstenoproject/plover/main/plover/assets/commands.json"
 refreshPeriod = "168h"
 
-[".config/plover/ted-navigation.json"]
+[".config/plover/external/ted-navigation.json"]
 type = "file"
 url = "http://www.openstenoproject.org/stenodict/dictionaries/cross_platform_movement.json"
 refreshPeriod = "168h"
 
-[".config/plover/emily-modifiers.json"]
+[".config/plover/external/emily-modifiers.json"]
 type = "file"
 url = "https://raw.githubusercontent.com/EPLHREU/emily-modifiers/master/stuff/emily-modifiers.json"
 refreshPeriod = "168h"
 
-[".config/plover/emily-symbols.json"]
+[".config/plover/external/emily-symbols.json"]
 type = "file"
 url = "https://raw.githubusercontent.com/EPLHREU/emily-symbols/master/stuff/emily-symbols.json"
 refreshPeriod = "168h"
