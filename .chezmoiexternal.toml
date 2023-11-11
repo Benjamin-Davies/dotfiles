@@ -80,6 +80,12 @@ type = "file"
 url = "https://raw.githubusercontent.com/openstenoproject/plover/main/plover/assets/commands.json"
 refreshPeriod = "168h"
 
+[".config/plover/external/di"]
+type = "git-repo"
+url = "https://github.com/didoesdigital/steno-dictionaries.git"
+clone.args = ["--depth=1"]
+refreshPeriod = "168h"
+
 [".config/plover/external/ted-navigation.json"]
 type = "file"
 url = "http://www.openstenoproject.org/stenodict/dictionaries/cross_platform_movement.json"
