@@ -1,0 +1,10 @@
+[
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "ctrl-x": "vim::VisualDelete",
+      "ctrl-c": "vim::VisualYank",
+      "ctrl-v": "vim::Paste"
+    }
+  }
+]
