@@ -18,5 +18,25 @@
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 16,
   "autosave": "on_focus_change",
-  "relative_line_numbers": true
+  "relative_line_numbers": true,
+  "assistant": {
+    "version": "1",
+    "button": false,
+    "enabled": false
+  },
+  "languages": {
+    "Markdown": {
+      "soft_wrap": "preferred_line_length",
+      "preferred_line_length": 80
+    },
+    "Python": {
+      "formatter": {
+        "external": {
+          "command": "black",
+          "arguments": ["-"]
+        }
+      },
+      "format_on_save": "on"
+    }
+  }
 }

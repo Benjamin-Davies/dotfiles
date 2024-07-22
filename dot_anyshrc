@@ -32,6 +32,8 @@ alias cos='sftp -P 2222 php.mmc.school.nz:/201COS/benjamindavies'
 # More docker-compose aliases
 alias dcu='docker-compose up --build'
 alias dcdu='docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build'
+# More git aliases
+alias gpt='git push --tags'
 # Restart the current shell (keeps env)
 alias restart='clear && exec $0'
 alias ec='emacsclient --tty'

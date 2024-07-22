@@ -3,8 +3,29 @@
     "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
     "bindings": {
       "ctrl-x": "vim::VisualDelete",
+      "ctrl-shift-x": "vim::VisualDelete",
       "ctrl-c": "vim::VisualYank",
-      "ctrl-v": "vim::Paste"
+      "ctrl-shift-c": "vim::VisualYank",
+      "ctrl-v": "vim::Paste",
+      "ctrl-shift-v": "vim::Paste",
+      "shift-s": [
+        "vim::PushOperator",
+        {
+          "AddSurrounds": {}
+        }
+      ]
+    }
+  },
+  {
+    "context": "Editor && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-w q": "pane::CloseActiveItem",
+      "ctrl-shift-c": "editor::Copy",
+      "ctrl-shift-x": "editor::Cut",
+      "ctrl-shift-v": "editor::Paste",
+      "ctrl-y": "editor::Undo",
+      "ctrl-f": "buffer_search::Deploy",
+      "ctrl-o": "workspace::Open"
     }
   }
 ]
