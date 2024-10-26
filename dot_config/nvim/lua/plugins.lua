@@ -24,4 +24,5 @@ require('packer').startup(function(use)
 
 	-- Integration
 	use 'tpope/vim-fugitive'
+	use 'Josiah-tan/plover-vim-tutor'
 end)
