@@ -37,7 +37,7 @@
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -62,11 +62,9 @@
   "window.autoDetectColorScheme": true,
   "workbench.preferredDarkColorTheme": "Adwaita Dark & default syntax highlighting",
   "workbench.preferredLightColorTheme": "Adwaita Light & default syntax highlighting",
-  "editor.cursorSmoothCaretAnimation": true,
   "editor.smoothScrolling": true,
   "debug.toolBarLocation": "docked",
   "testExplorer.useNativeTesting": true,
-  "diffEditor.ignoreTrimWhitespace": false,
   "[dockercompose]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -80,6 +78,9 @@
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
+  "[rust]": {
+    "editor.tabSize": 4
+  },
   "extensions.ignoreRecommendations": true,
   "update.mode": "none",
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
@@ -89,5 +90,34 @@
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": true
   },
-  "workbench.colorTheme": "Adwaita Light & default syntax highlighting"
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "github.copilot.editor.enableCodeActions": false,
+  "github.copilot.editor.iterativeFixing": false,
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "editor.renderWhitespace": "none",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "workbench.colorTheme": "Adwaita Light & default syntax highlighting",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "vim.camelCaseMotion.enable": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "workbench.iconTheme": "catppuccin-latte",
+  "gitlens.graph.dateStyle": "relative",
+  "gitlens.graph.showRemoteNames": true
 }

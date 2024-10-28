@@ -19,8 +19,9 @@
   "buffer_font_size": 16,
   "autosave": "on_focus_change",
   "relative_line_numbers": true,
+  // "show_whitespaces": "boundary",
   "assistant": {
-    "version": "1",
+    "version": "2",
     "button": false,
     "enabled": false
   },
@@ -37,6 +38,13 @@
         }
       },
       "format_on_save": "on"
+    },
+    "Haskell": {
+      "tab_size": 2
+    },
+    "Typst": {
+      "soft_wrap": "preferred_line_length",
+      "preferred_line_length": 80
     }
   }
 }
