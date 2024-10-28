@@ -5,9 +5,6 @@
 export PATH="$HOME/.local/bin:$HOME/.deno/bin:./node_modules/.bin:$PATH"
 # If in doubt use good old fashioned VIM
 export EDITOR=vim
-# Very minimal prompt: normally $, or # for root
-export PS1='
-\$ '
 # Hide untracked files in Git
 export DISABLE_UNTRACKED_FILES_DIRTY='true'
 # Politely ask Microsoft not to spy on us
@@ -27,20 +24,21 @@ fi
 
 # Chezmoi is kinda hard to spell
 alias cfg=chezmoi
-# Our school SFTP server is kinda fussy
-alias cos='sftp -P 2222 php.mmc.school.nz:/201COS/benjamindavies'
 # More docker-compose aliases
 alias dcu='docker-compose up --build'
 alias dcdu='docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build'
 # More git aliases
+alias ga.='git add .'
 alias gpt='git push --tags'
+alias gmb='git commit -a -m "manual backup: $(date +%F\ %T)"; git pull; git push'
+alias lg='lazygit'
 # Restart the current shell (keeps env)
 alias restart='clear && exec $0'
-alias ec='emacsclient --tty'
 
 # Lol
 alias donker=docker
 alias shh=ssh
+alias sb='source .env && ./gradlew bootRun'
 
 # Some distros do weird things
 # Use default colors for ls
@@ -55,3 +53,5 @@ export PKGEXT=.pkg.tar
 
 # Lets show some pretty stuff
 myfetch
+# And a blank line for spacing
+echo
