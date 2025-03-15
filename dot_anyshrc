@@ -5,6 +5,7 @@
 export PATH="$HOME/.local/bin:$HOME/.deno/bin:./node_modules/.bin:$PATH"
 # If in doubt use good old fashioned VIM
 export EDITOR=vim
+export VISUAL=vim
 # Hide untracked files in Git
 export DISABLE_UNTRACKED_FILES_DIRTY='true'
 # Politely ask Microsoft not to spy on us
