@@ -1,13 +1,10 @@
 [user]
 	email = bentendavies@gmail.com
 	name = Benjamin Davies
-	signingkey = Benjamin Davies <bentendavies@gmail.com>
 [pull]
 	rebase = false
 [credential]
 	helper = store
-[commit]
-	gpgsign = true
 [core]
 	autocrlf = input
 [log]
